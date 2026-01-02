@@ -87,6 +87,76 @@
             background: rgba(255, 255, 255, 0.2);
             border-radius: 4px;
         }
+
+        /* Premium Card Animation */
+        .premium-card {
+            position: relative;
+            animation: premium-pulse 3s ease-in-out infinite;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 1rem;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #fbbf24, #fcd34d, #fbbf24);
+            background-size: 300% 300%;
+            animation: shimmer 3s linear infinite;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        .premium-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            background: #0f172a;
+            z-index: -1;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes premium-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(251, 191, 36, 0.3), 0 0 40px rgba(251, 191, 36, 0.1);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(251, 191, 36, 0.5), 0 0 60px rgba(251, 191, 36, 0.2);
+            }
+        }
+
+        /* Text Glow Animation */
+        .text-glow {
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5)) drop-shadow(0 0 20px rgba(236, 72, 153, 0.4));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.8)) drop-shadow(0 0 40px rgba(236, 72, 153, 0.6));
+            }
+        }
     </style>
 </head>
 
@@ -100,44 +170,64 @@
     </div>
 
     <!-- Header & Hero -->
-    <header class="container mx-auto px-4 py-12 text-center relative z-10">
-        <div
-            class="inline-block mb-4 px-4 py-1 rounded-full glass-panel text-sm font-semibold tracking-wider text-purple-300">
-            POSTIFY STUDIO
-        </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
-            Elevate Your <span class="text-gradient">Social Presence</span>
-        </h1>
-        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-            Professional social media management tailored for growth, momentum, and authority.
-        </p>
-
-        <!-- Countdown Timer -->
-        <!-- <div
-            class="glass-panel max-w-3xl mx-auto p-6 rounded-2xl border border-pink-500/30 shadow-[0_0_30px_rgba(236,72,153,0.15)]">
-            <h3 class="text-xl font-bold mb-4 text-pink-300 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-fire"></i> Limited Time Offer Ends In
-            </h3>
-            <div id="countdown" class="grid grid-cols-4 gap-4 text-center">
-                <div class="bg-white/5 p-3 rounded-lg">
-                    <span id="days" class="block text-3xl font-bold text-white">00</span>
-                    <span class="text-xs text-gray-400 uppercase">Days</span>
-                </div>
-                <div class="bg-white/5 p-3 rounded-lg">
-                    <span id="hours" class="block text-3xl font-bold text-white">00</span>
-                    <span class="text-xs text-gray-400 uppercase">Hours</span>
-                </div>
-                <div class="bg-white/5 p-3 rounded-lg">
-                    <span id="minutes" class="block text-3xl font-bold text-white">00</span>
-                    <span class="text-xs text-gray-400 uppercase">Mins</span>
-                </div>
-                <div class="bg-white/5 p-3 rounded-lg">
-                    <span id="seconds" class="block text-3xl font-bold text-white">00</span>
-                    <span class="text-xs text-gray-400 uppercase">Secs</span>
-                </div>
+    <header class="relative z-10">
+        <!-- Navigation Bar -->
+        <nav class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-center md:justify-between">
+                <!-- Logo & Brand -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="postify-logo.png" alt="Postify Studio"
+                        class="w-14 h-14 rounded-xl shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <div>
+                        <h2 class="text-2xl font-bold">
+                            <span class="text-white">Postify</span>
+                            <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">Studio</span>
+                        </h2>
+                        <p class="text-xs text-gray-400 tracking-wider">SOCIAL MEDIA AGENCY</p>
+                    </div>
+                </a>
+                <!-- CTA Button (Hidden on mobile) -->
+                <a href="https://wa.me/917874414328?text=Hello,%20I'm%20interested%20in%20your%20services."
+                    target="_blank"
+                    class="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 transition-all duration-300 font-semibold text-sm shadow-lg shadow-purple-500/25 hover:scale-105">
+                    <i class="fa-brands fa-whatsapp"></i> Get Started
+                </a>
             </div>
-            <p class="mt-4 text-sm text-gray-400">Offer valid till 31st December 2025</p>
-        </div> -->
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="container mx-auto px-4 py-12 text-center">
+            <div
+                class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full glass-panel text-sm font-medium text-purple-300 border border-purple-500/30">
+                <i class="fa-solid fa-rocket text-pink-400"></i>
+                <span>Transform Your Brand Today</span>
+                <!-- <i class="fa-solid fa-arrow-right text-xs"></i> -->
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+                Elevate Your<br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Social
+                    Presence</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+                Professional social media management tailored for <span
+                    class="text-purple-400 font-semibold">growth</span>,
+                <span class="text-pink-400 font-semibold">momentum</span>, and <span
+                    class="text-cyan-400 font-semibold">authority</span>.
+            </p>
+            <!-- <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#pricing"
+                    class="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 transition-all duration-300 font-bold text-lg shadow-lg shadow-purple-500/30 hover:scale-105">
+                    View Pricing
+                </a>
+                <a href="https://wa.me/917874414328?text=Hello,%20I%20want%20to%20know%20more%20about%20your%20services."
+                    target="_blank"
+                    class="px-8 py-3 rounded-full glass-panel border border-white/20 hover:bg-white/10 transition-all duration-300 font-semibold text-lg hover:scale-105 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-green-400"></i> Chat With Us
+                </a>
+            </div> -->
+        </div>
     </header>
 
     <!-- Pricing Plans -->
@@ -153,7 +243,7 @@
                 <div class="mb-6">
                     <!-- <div class="text-gray-400 line-through text-lg">₹2,000</div> -->
                     <div class="flex items-end gap-2">
-                        <span class="text-4xl font-bold text-white">₹2,000</span>
+                        <span class="text-4xl font-bold text-white">₹1,999</span>
                         <span class="text-sm text-gray-400 mb-1">/month</span>
                     </div>
                 </div>
@@ -161,12 +251,10 @@
                 <ul class="space-y-3 mb-8 flex-grow text-sm text-gray-300">
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> 10–12
                         High-Quality Posts</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> 1–2 Trending
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> 1–2
                         Reels with Viral Audio</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> 8–10
-                        Stories/month + Highlights</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Full Insta +
-                        GMB Optimization (One-time)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Instagram
+                        Optimization (One-time)</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Smart
                         Hashtags + Captions</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Daily
@@ -198,7 +286,7 @@
                     <!-- <div class="text-gray-400 line-through text-lg">₹3,500</div> -->
                     <div class="flex items-end gap-2">
                         <span
-                            class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">₹3,500</span>
+                            class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">₹3,999</span>
                         <span class="text-sm text-gray-400 mb-1">/month</span>
                     </div>
                 </div>
@@ -212,14 +300,14 @@
                         Premium Posts (More Variety)</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> 3–4
                         Trending & Highly Engaging Reels</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> 13-15
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> 12-14
                         Stories (Polls, Quizzes)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Insta +
+                        Google My Business Optimization (One-time)</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Advanced
                         Hashtag + SEO Captions</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Monthly
-                        30-min Strategy Call (or in-person)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Competitor
-                        Spying Report</li>
+                        30-min Strategic Meeting Call (or in-person)</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i>
                         Professional Monthly Report</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Priority
@@ -233,7 +321,7 @@
             </div>
 
             <!-- Plan 3: Authority Dominator -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col h-full border-t-4 border-t-amber-400">
+            <div class="glass-card premium-card rounded-2xl p-6 flex flex-col h-full">
                 <h3 class="text-2xl font-bold text-white mb-2">Authority Dominator</h3>
                 <p class="text-sm text-gray-400 mb-6 h-12">For serious brands wanting to own their industry & max leads.
                 </p>
@@ -241,7 +329,7 @@
                 <div class="mb-6">
                     <!-- <div class="text-gray-400 line-through text-lg">₹5,500</div> -->
                     <div class="flex items-end gap-2">
-                        <span class="text-4xl font-bold text-white">₹5,500</span>
+                        <span class="text-4xl font-bold text-white">₹6,999</span>
                         <span class="text-sm text-gray-400 mb-1">/month</span>
                     </div>
                 </div>
@@ -259,6 +347,8 @@
                         Professional Video Shoot + Editing (On-location)</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> 18–20
                         Stories across Insta + FB</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Competitor
+                        Spying Report</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> WhatsApp
                         Catalog & Meta Verified Help</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Full
@@ -266,7 +356,7 @@
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Paid Ad
                         Management (1 Campaign)</li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> 2 Strategy
-                        Calls + ROI Focused Report</li>
+                        meetings + ROI Focused Report</li>
                 </ul>
 
                 <a href="https://wa.me/917874414328?text=I'm interested in the AUTHORITY DOMINATOR plan."
@@ -303,47 +393,81 @@
                         <td class="p-4">Reels</td>
                         <td class="p-4 text-center">1–2 Trending</td>
                         <td class="p-4 text-center bg-purple-900/10">3–4 Engaging</td>
-                        <td class="p-4 text-center">6-8 High-Production</td>
+                        <td class="p-4 text-center">6–8 High-Production</td>
                     </tr>
                     <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Stories</td>
-                        <td class="p-4 text-center">8–10</td>
-                        <td class="p-4 text-center bg-purple-900/10">13-15 (Polls/Quiz)</td>
-                        <td class="p-4 text-center">18–20 (Multi-platform)</td>
+                        <td class="p-4">Instagram Optimization</td>
+                        <td class="p-4 text-center">One-time</td>
+                        <td class="p-4 text-center bg-purple-900/10">One-time</td>
+                        <td class="p-4 text-center">Included</td>
                     </tr>
                     <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">On-Location Video Shoot</td>
-                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
-                        <td class="p-4 text-center text-gray-600 bg-purple-900/10"><i class="fa-solid fa-xmark"></i>
-                        </td>
-                        <td class="p-4 text-center text-green-400"><i class="fa-solid fa-check"></i> 1 Shoot/mo</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Competitor Spying</td>
-                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
-                        <td class="p-4 text-center text-green-400 bg-purple-900/10"><i class="fa-solid fa-check"></i>
-                        </td>
-                        <td class="p-4 text-center text-green-400"><i class="fa-solid fa-check"></i> + Trend Alerts</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Ad Management</td>
-                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
-                        <td class="p-4 text-center text-gray-600 bg-purple-900/10"><i class="fa-solid fa-xmark"></i>
-                        </td>
-                        <td class="p-4 text-center text-green-400"><i class="fa-solid fa-check"></i> 1 Campaign</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Strategy Calls</td>
-                        <td class="p-4 text-center text-gray-600">No</td>
-                        <td class="p-4 text-center bg-purple-900/10">1 (30 mins)</td>
-                        <td class="p-4 text-center">2 (In-person/Call)</td>
+                        <td class="p-4">Smart Hashtags + Captions</td>
+                        <td class="p-4 text-center">Basic</td>
+                        <td class="p-4 text-center bg-purple-900/10">Advanced + SEO</td>
+                        <td class="p-4 text-center">Advanced + SEO</td>
                     </tr>
                     <tr class="border-b border-white/5 hover:bg-white/5 transition">
                         <td class="p-4">Engagement</td>
                         <td class="p-4 text-center">Daily (Insta)</td>
-                        <td class="p-4 text-center bg-purple-900/10">Daily (Insta)</td>
-                        <td class="p-4 text-center">Full (Insta/FB/GMB/LI)</td>
+                        <td class="p-4 text-center bg-purple-900/10">Instant (Insta + Facebook)</td>
+                        <td class="p-4 text-center">Instant in all plateforms (Insta/FB/GMB)</td>
                     </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Monthly Report</td>
+                        <td class="p-4 text-center">Basic</td>
+                        <td class="p-4 text-center bg-purple-900/10">Professional</td>
+                        <td class="p-4 text-center">ROI Focused</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Stories</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10">12–14</td>
+                        <td class="p-4 text-center">18–20</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">WhatsApp Support</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10">
+                            Priority</td>
+                        <td class="p-4 text-center text-400">Priority</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Google My Business Optimization</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10">One-time</td>
+                        <td class="p-4 text-center">Included</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">On-Location Video Shoot</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
+                        </td>
+                        <td class="p-4 text-center text-green-400">1 Shoot/mo</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Competitor Spying</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
+                        </td>
+                        <td class="p-4 text-center text-green-400"><i class="fa-solid fa-check"></i> + Trend Alerts</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">WhatsApp Catalog & Meta Verified</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
+                        </td>
+                        <td class="p-4 text-center text-green-400"><i class="fa-solid fa-check"></i></td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Ad Management</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
+                        </td>
+                        <td class="p-4 text-center text-green-400"><i class="fa-solid fa-check"></i> 1 Campaign</td>
+                    </tr>
+
+
                 </tbody>
             </table>
         </div>
@@ -368,20 +492,21 @@
 
             <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
                 <div class="text-blue-400 text-xl mb-2"><i class="fa-solid fa-images"></i></div>
-                <h4 class="font-bold text-lg mb-1">Extra Feed Posts</h4>
-                <p class="text-sm text-gray-300">₹200 <span class="text-xs text-gray-500">per post</span></p>
+                <h4 class="font-bold text-lg mb-1">Extra Posts (Poster)</h4>
+                <p class="text-sm text-gray-300">₹250 <span class="text-xs text-gray-500">per post</span></p>
             </div>
 
             <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
                 <div class="text-purple-400 text-xl mb-2"><i class="fa-solid fa-video"></i></div>
                 <h4 class="font-bold text-lg mb-1">Extra High-Production Reel</h4>
-                <p class="text-sm text-gray-300">₹600 – ₹1,000 <span class="text-xs text-gray-500">per reel</span></p>
+                <p class="text-sm text-gray-300">₹500 – ₹1,000 <span class="text-xs text-gray-500">per reel</span></p>
             </div>
 
             <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
                 <div class="text-orange-400 text-xl mb-2"><i class="fa-solid fa-camera"></i></div>
                 <h4 class="font-bold text-lg mb-1">Pro On-Location Shoot</h4>
-                <p class="text-sm text-gray-300">₹2500 – ₹3500 <span class="text-xs text-gray-500">per shoot</span></p>
+                <p class="text-sm text-gray-300">₹2,000 – ₹4,000 <span class="text-xs text-gray-500">per shoot</span>
+                </p>
                 <p class="text-xs text-gray-500 mt-1">*Travel fee outside Ahmedabad</p>
             </div>
 
@@ -394,14 +519,14 @@
 
             <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
                 <div class="text-blue-500 text-xl mb-2"><i class="fa-solid fa-circle-check"></i></div>
-                <h4 class="font-bold text-lg mb-1">Meta Verified Blue Tick</h4>
-                <p class="text-sm text-gray-300">₹1000 <span class="text-xs text-gray-500">one-time</span></p>
+                <h4 class="font-bold text-lg mb-1">Meta Verified Blue Tick + Setup</h4>
+                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">one-time</span></p>
             </div>
 
             <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
                 <div class="text-blue-700 text-xl mb-2"><i class="fa-brands fa-linkedin"></i></div>
                 <h4 class="font-bold text-lg mb-1">LinkedIn Profile Mgmt</h4>
-                <p class="text-sm text-gray-300">₹1000 <span class="text-xs text-gray-500">/month</span></p>
+                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">/month</span></p>
             </div>
 
             <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
@@ -413,7 +538,25 @@
             <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
                 <div class="text-yellow-400 text-xl mb-2"><i class="fa-solid fa-pen-nib"></i></div>
                 <h4 class="font-bold text-lg mb-1">Logo Design / Re-branding</h4>
-                <p class="text-sm text-gray-300">₹1500 <span class="text-xs text-gray-500">fresh identity</span></p>
+                <p class="text-sm text-gray-300">₹1,500 <span class="text-xs text-gray-500">fresh identity</span></p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-pink-500 text-xl mb-2"><i class="fa-brands fa-instagram"></i></div>
+                <h4 class="font-bold text-lg mb-1">Instagram Optimization</h4>
+                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">one-time</span></p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-blue-400 text-xl mb-2"><i class="fa-brands fa-google"></i></div>
+                <h4 class="font-bold text-lg mb-1">Google My Business Optimization</h4>
+                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">one-time</span></p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-green-500 text-xl mb-2"><i class="fa-brands fa-whatsapp"></i></div>
+                <h4 class="font-bold text-lg mb-1">WhatsApp Optimization</h4>
+                <p class="text-sm text-gray-300">₹1,500 <span class="text-xs text-gray-500">one-time</span></p>
             </div>
         </div>
     </section>
@@ -423,21 +566,43 @@
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-2xl font-bold mb-8">Ready to Scale?</h3>
 
-            <div class="flex flex-col md:flex-row justify-center gap-6 mb-10 text-gray-300">
-                <a href="tel:+917874414328" class="flex items-center justify-center gap-2 hover:text-white transition">
-                    <i class="fa-solid fa-phone"></i> +91 7874414328
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-10">
+                <a href="tel:+917874414328"
+                    class="glass-panel px-6 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-white/10 hover:scale-105 transition-all duration-300 group border border-white/10 hover:border-green-400/50">
+                    <div
+                        class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center group-hover:bg-green-500/30 transition">
+                        <i class="fa-solid fa-phone text-green-400"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-400">Call Us</p>
+                        <p class="text-white font-semibold">+91 7874414328</p>
+                    </div>
                 </a>
                 <a href="mailto:postifystudio1008@gmail.com"
-                    class="flex items-center justify-center gap-2 hover:text-white transition">
-                    <i class="fa-solid fa-envelope"></i> postifystudio1008@gmail.com
+                    class="glass-panel px-6 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-white/10 hover:scale-105 transition-all duration-300 group border border-white/10 hover:border-blue-400/50">
+                    <div
+                        class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition">
+                        <i class="fa-solid fa-envelope text-blue-400"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-400">Email Us</p>
+                        <p class="text-white font-semibold">postifystudio1008@gmail.com</p>
+                    </div>
                 </a>
                 <a href="https://instagram.com/postify.studioo" target="_blank"
-                    class="flex items-center justify-center gap-2 hover:text-white transition">
-                    <i class="fa-brands fa-instagram"></i> postify.studioo
+                    class="glass-panel px-6 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-white/10 hover:scale-105 transition-all duration-300 group border border-white/10 hover:border-pink-400/50">
+                    <div
+                        class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center group-hover:bg-pink-500/30 transition">
+                        <i class="fa-brands fa-instagram text-pink-400"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-400">Follow Us</p>
+                        <p class="text-white font-semibold">@postify.studioo</p>
+                    </div>
                 </a>
             </div>
 
-            <p class="text-gray-500 text-sm">© 2025 Postify Studio. All Rights Reserved.</p>
+            <p class="text-gray-500 text-sm">© 2026 Postify Studio. All Rights Reserved.</p>
         </div>
     </footer>
 
