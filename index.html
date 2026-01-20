@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,23 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #fdfbf7;
             color: #2d2420;
         }
-        h1, h2, h3, .serif {
+
+        h1,
+        h2,
+        h3,
+        .serif {
             font-family: 'Playfair Display', serif;
         }
+
         .blob {
             position: absolute;
             filter: blur(40px);
@@ -25,22 +33,32 @@
             opacity: 0.6;
             animation: float 10s infinite alternate;
         }
+
         @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(20px, 40px) rotate(10deg); }
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(20px, 40px) rotate(10deg);
+            }
         }
+
         .coffee-gradient {
             background: linear-gradient(135deg, #6f4e37 0%, #a67b5b 100%);
         }
+
         .fade-in-up {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+
         .fade-in-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
@@ -48,20 +66,28 @@
         }
     </style>
 </head>
+
 <body class="overflow-x-hidden antialiased">
 
     <!-- Floating Background Blobs -->
-    <div class="blob bg-orange-200 w-64 h-64 rounded-full top-0 left-0 mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-    <div class="blob bg-amber-200 w-64 h-64 rounded-full top-0 right-0 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-    <div class="blob bg-stone-300 w-64 h-64 rounded-full -bottom-32 left-20 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+    <div
+        class="blob bg-orange-200 w-64 h-64 rounded-full top-0 left-0 mix-blend-multiply filter blur-xl opacity-70 animate-blob">
+    </div>
+    <div
+        class="blob bg-amber-200 w-64 h-64 rounded-full top-0 right-0 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000">
+    </div>
+    <div
+        class="blob bg-stone-300 w-64 h-64 rounded-full -bottom-32 left-20 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
+    </div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-xl font-bold text-stone-800 tracking-tighter flex items-center gap-2">
-                <i class="fa-solid fa-mug-hot text-amber-700"></i> Coffee & Connections
+                <i class="fa-solid fa-mug-hot text-amber-700"></i> Black Birds Cafe
             </div>
-            <a href="#reserve" class="hidden md:inline-block bg-stone-900 text-white px-6 py-2 rounded-full font-semibold hover:bg-stone-700 transition transform hover:scale-105 shadow-lg">
+            <a href="#reserve"
+                class="hidden md:inline-block bg-stone-900 text-white px-6 py-2 rounded-full font-semibold hover:bg-stone-700 transition transform hover:scale-105 shadow-lg">
                 Book Seat
             </a>
         </div>
@@ -70,16 +96,20 @@
     <!-- Hero Section -->
     <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div class="container mx-auto px-6 text-center relative z-10">
-            <span class="inline-block py-1 px-3 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold mb-6 animate-pulse">
+            <span
+                class="inline-block py-3 px-5 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold mb-6 animate-pulse">
                 ☕ Nikol’s First Stranger Meetup
             </span>
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-stone-900 mb-6 leading-tight">
-                Strangers become <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-700 to-orange-600 italic pr-2">Friends</span> here.
+                Strangers become <br> <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-amber-700 to-orange-600 italic pr-2">Friends</span>
+                here.
             </h1>
             <p class="text-lg md:text-xl text-stone-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Ever wanted to meet new people without awkward DMs? Join us for a relaxed evening of coffee, games, and genuine conversations.
+                Ever wanted to meet new people without awkward DMs? Join us for a relaxed evening of coffee, games, and
+                genuine conversations.
             </p>
-            
+
             <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-12">
                 <div class="flex items-center gap-2 text-stone-700 bg-white px-4 py-2 rounded-lg shadow-sm">
                     <i class="fa-regular fa-calendar text-amber-600"></i> 08/02/2026
@@ -93,11 +123,15 @@
             </div>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#reserve" class="group relative px-8 py-4 bg-stone-900 text-white rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:bg-stone-800 transition-all overflow-hidden">
+                <a href="#reserve"
+                    class="group relative px-8 py-4 bg-stone-900 text-white rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:bg-stone-800 transition-all overflow-hidden">
                     <span class="relative z-10 group-hover:tracking-wider transition-all">Reserve My Free Seat</span>
-                    <div class="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-amber-700/20"></div>
+                    <div
+                        class="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-amber-700/20">
+                    </div>
                 </a>
-                <a href="#details" class="px-8 py-4 bg-white text-stone-900 border border-stone-200 rounded-full font-bold text-lg hover:bg-stone-50 transition shadow-sm">
+                <a href="#details"
+                    class="px-8 py-4 bg-white text-stone-900 border border-stone-200 rounded-full font-bold text-lg hover:bg-stone-50 transition shadow-sm">
                     Learn More
                 </a>
             </div>
@@ -114,52 +148,64 @@
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="relative scroll-element fade-in-up">
                     <div class="absolute -top-10 -left-10 w-20 h-20 bg-amber-100 rounded-full z-0"></div>
-                    <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=2730&auto=format&fit=crop" alt="Coffee meetup" class="relative z-10 rounded-2xl shadow-2xl rotate-2 hover:rotate-0 transition duration-500">
-                    <div class="absolute -bottom-6 -right-6 bg-stone-900 text-white p-6 rounded-xl shadow-lg z-20 max-w-xs">
+                    <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=2730&auto=format&fit=crop"
+                        alt="Coffee meetup"
+                        class="relative z-10 rounded-2xl shadow-2xl rotate-2 hover:rotate-0 transition duration-500">
+                    <div
+                        class="absolute -bottom-6 -right-6 bg-stone-900 text-white p-6 rounded-xl shadow-lg z-20 max-w-xs">
                         <p class="font-bold text-xl mb-1">50% Female • 50% Male</p>
                         <p class="text-sm text-stone-300">Strictly balanced for comfort & respect.</p>
                     </div>
                 </div>
-                
+
                 <div class="scroll-element fade-in-up">
                     <h2 class="text-4xl font-bold mb-6 serif text-stone-900">What will happen?</h2>
-                    <p class="text-stone-600 mb-8 text-lg">No awkward silence. No forced small talk. Just a well-curated flow of events to make you feel at home.</p>
-                    
+                    <p class="text-stone-600 mb-8 text-lg">No awkward silence. No forced small talk. Just a well-curated
+                        flow of events to make you feel at home.</p>
+
                     <ul class="space-y-6">
                         <li class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center text-amber-700 flex-shrink-0">
+                            <div
+                                class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center text-amber-700 flex-shrink-0">
                                 <i class="fa-solid fa-dice"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-lg text-stone-800">Ice-breaker Games</h4>
-                                <p class="text-stone-600 text-sm">Fun, low-pressure games to get the laughter started. No cringe guaranteed.</p>
+                                <p class="text-stone-600 text-sm">Fun, low-pressure games to get the laughter started.
+                                    No cringe guaranteed.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-700 flex-shrink-0">
+                            <div
+                                class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-700 flex-shrink-0">
                                 <i class="fa-solid fa-stopwatch"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-lg text-stone-800">Speed-Meet Rounds</h4>
-                                <p class="text-stone-600 text-sm">Short 1-on-1 interactions so you get to say hi to everyone.</p>
+                                <p class="text-stone-600 text-sm">Short 1-on-1 interactions so you get to say hi to
+                                    everyone.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-stone-700 flex-shrink-0">
+                            <div
+                                class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-stone-700 flex-shrink-0">
                                 <i class="fa-solid fa-comments"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-lg text-stone-800">Open Mingle</h4>
-                                <p class="text-stone-600 text-sm">Free time to connect deeper with the people you clicked with.</p>
+                                <p class="text-stone-600 text-sm">Free time to connect deeper with the people you
+                                    clicked with.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-pink-50 flex items-center justify-center text-pink-700 flex-shrink-0">
+                            <div
+                                class="w-12 h-12 rounded-full bg-pink-50 flex items-center justify-center text-pink-700 flex-shrink-0">
                                 <i class="fa-solid fa-camera"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-lg text-stone-800">Photos & Reels</h4>
-                                <p class="text-stone-600 text-sm">Optional but encouraged! Capture memories of the fun moments.</p>
+                                <p class="text-stone-600 text-sm">Optional but encouraged! Capture memories of the fun
+                                    moments.</p>
                             </div>
                         </li>
                     </ul>
@@ -167,13 +213,16 @@
                     <div class="mt-10 p-6 bg-amber-50 rounded-xl border border-amber-100">
                         <h4 class="font-bold text-stone-900 mb-3">You’ll leave with:</h4>
                         <div class="flex flex-wrap gap-3">
-                            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white text-stone-700 rounded-full text-sm shadow-sm border border-stone-100">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1 bg-white text-stone-700 rounded-full text-sm shadow-sm border border-stone-100">
                                 <i class="fa-solid fa-user-plus text-amber-600"></i> New Connections
                             </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white text-stone-700 rounded-full text-sm shadow-sm border border-stone-100">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1 bg-white text-stone-700 rounded-full text-sm shadow-sm border border-stone-100">
                                 <i class="fa-solid fa-face-smile text-amber-600"></i> A Fun Experience
                             </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white text-stone-700 rounded-full text-sm shadow-sm border border-stone-100">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1 bg-white text-stone-700 rounded-full text-sm shadow-sm border border-stone-100">
                                 <i class="fa-solid fa-camera text-amber-600"></i> A Story Worth Sharing
                             </span>
                         </div>
@@ -187,24 +236,27 @@
     <section class="py-20 bg-stone-50 border-y border-stone-200">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold mb-12 serif text-stone-900 scroll-element fade-in-up">Who belongs here?</h2>
-            
+
             <div class="grid md:grid-cols-4 gap-6">
                 <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition scroll-element fade-in-up">
                     <i class="fa-solid fa-users text-4xl text-amber-600 mb-4"></i>
                     <h3 class="font-bold text-xl mb-2">Social Butterflies</h3>
                     <p class="text-stone-500 text-sm">People who genuinely enjoy good conversations.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition scroll-element fade-in-up" style="transition-delay: 100ms;">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition scroll-element fade-in-up"
+                    style="transition-delay: 100ms;">
                     <i class="fa-solid fa-compass text-4xl text-amber-600 mb-4"></i>
                     <h3 class="font-bold text-xl mb-2">Explorers</h3>
                     <p class="text-stone-500 text-sm">Anyone bored of the same circle and wanting new vibes.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition scroll-element fade-in-up" style="transition-delay: 200ms;">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition scroll-element fade-in-up"
+                    style="transition-delay: 200ms;">
                     <i class="fa-solid fa-briefcase text-4xl text-amber-600 mb-4"></i>
                     <h3 class="font-bold text-xl mb-2">Professionals & Creatives</h3>
                     <p class="text-stone-500 text-sm">Expand your network in a casual, non-corporate setting.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition scroll-element fade-in-up" style="transition-delay: 300ms;">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition scroll-element fade-in-up"
+                    style="transition-delay: 300ms;">
                     <i class="fa-solid fa-heart text-4xl text-amber-600 mb-4"></i>
                     <h3 class="font-bold text-xl mb-2">Open Minds</h3>
                     <p class="text-stone-500 text-sm">Age 18–30. Respectful, kind, and ready to share stories.</p>
@@ -215,17 +267,23 @@
 
     <!-- Important Notes & Bonus -->
     <section class="py-20 bg-stone-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
+        </div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="scroll-element fade-in-up">
                     <h2 class="text-3xl font-bold mb-6 serif text-amber-400">Important Notes</h2>
                     <ul class="space-y-4 text-stone-300">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Entry is by registration only.</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> 50–50 gender ratio is strictly maintained.</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> We pre-screen entries for safety & balance.</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Photos/videos may be taken for our page.</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Shy? It's okay to just observe!</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Entry is by
+                            registration only.</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> 50–50
+                            gender ratio is strictly maintained.</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> We
+                            pre-screen entries for safety & balance.</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i>
+                            Photos/videos may be taken for our page.</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Shy? It's
+                            okay to just observe!</li>
                     </ul>
                 </div>
                 <div class="bg-amber-600/20 border border-amber-600/50 p-8 rounded-2xl scroll-element fade-in-up">
@@ -233,8 +291,9 @@
                         <i class="fa-solid fa-gift text-3xl text-amber-400"></i>
                         <h3 class="text-2xl font-bold">Bonus Offer</h3>
                     </div>
-                    <p class="text-lg mb-4">Post a story or reel tagging us after the event and get a <span class="text-amber-300 font-bold">FREE dessert or drink</span> on your next visit!</p>
-                    <p class="text-sm text-amber-200/70 italic">*Make sure to tag @BlackBirdsCafe</p>
+                    <p class="text-lg mb-4">Post a story or reel tagging us after the event and get a <span
+                            class="text-amber-300 font-bold">FREE dessert or drink</span> on your next visit!</p>
+                    <p class="text-sm text-amber-200/70 italic">*Make sure to tag @blackbirds_cafe</p>
                 </div>
             </div>
         </div>
@@ -244,9 +303,12 @@
     <section id="reserve" class="py-24 bg-gradient-to-br from-orange-50 to-amber-100">
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="text-center mb-12 scroll-element fade-in-up">
-                <span class="bg-white text-stone-800 px-4 py-1 rounded-full text-sm font-bold shadow-sm mb-4 inline-block">🎟 First Edition Free</span>
+                <span
+                    class="bg-white text-stone-800 px-4 py-1 rounded-full text-sm font-bold shadow-sm mb-4 inline-block">🎟
+                    First Edition Free</span>
                 <h2 class="text-5xl font-bold mb-4 serif text-stone-900">Reserve Your Seat</h2>
-                <p class="text-stone-600 max-w-lg mx-auto">Seats are limited to keep the experience meaningful. We do not overbook any gender to maintain the vibe.</p>
+                <p class="text-stone-600 max-w-lg mx-auto">Seats are limited to keep the experience meaningful. We do
+                    not overbook any gender to maintain the vibe.</p>
             </div>
 
             <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 scroll-element fade-in-up">
@@ -254,18 +316,23 @@
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-stone-700 font-semibold mb-2" for="name">Full Name</label>
-                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-stone-50" placeholder="John Doe">
+                            <input type="text" id="name" required
+                                class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-stone-50"
+                                placeholder="Virat Kohli">
                         </div>
                         <div>
                             <label class="block text-stone-700 font-semibold mb-2" for="age">Age</label>
-                            <input type="number" id="age" min="18" max="30" required class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-stone-50" placeholder="18-30">
+                            <input type="number" id="age" min="18" max="30" required
+                                class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-stone-50"
+                                placeholder="18-30">
                         </div>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-stone-700 font-semibold mb-2" for="gender">Gender</label>
-                            <select id="gender" required class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-stone-50">
+                            <select id="gender" required
+                                class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-stone-50">
                                 <option value="" disabled selected>Select Gender</option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
@@ -275,28 +342,37 @@
                         </div>
                         <div>
                             <label class="block text-stone-700 font-semibold mb-2" for="mobile">Mobile Number</label>
-                            <input type="tel" id="mobile" required class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-stone-50" placeholder="9876543210">
+                            <input type="tel" id="mobile" required
+                                class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-stone-50"
+                                placeholder="9876543210">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-stone-700 font-semibold mb-2" for="instagram">Instagram Handle <span class="text-stone-400 font-normal">(Optional)</span></label>
-                        <input type="text" id="instagram" class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-stone-50" placeholder="@username">
+                        <label class="block text-stone-700 font-semibold mb-2" for="instagram">Instagram Handle <span
+                                class="text-stone-400 font-normal">(Optional)</span></label>
+                        <input type="text" id="instagram"
+                            class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-stone-50"
+                            placeholder="@username">
                     </div>
 
                     <div class="flex items-start gap-3 pt-2">
-                        <input type="checkbox" id="agreement" required class="mt-1 w-5 h-5 text-amber-600 rounded border-stone-300 focus:ring-amber-500">
+                        <input type="checkbox" id="agreement" required
+                            class="mt-1 w-5 h-5 text-amber-600 rounded border-stone-300 focus:ring-amber-500">
                         <label for="agreement" class="text-sm text-stone-600">
-                            I agree to the code of conduct and understand that photos/videos may be taken during the event. I understand that confirmation will be sent via WhatsApp.
+                            I agree to the code of conduct and understand that photos/videos may be taken during the
+                            event. I understand that confirmation will be sent via WhatsApp.
                         </label>
                     </div>
 
-                    <button type="submit" class="w-full py-4 bg-stone-900 text-white rounded-xl font-bold text-lg hover:bg-stone-800 transform hover:scale-[1.01] transition-all shadow-lg flex justify-center items-center gap-2">
+                    <button type="submit"
+                        class="w-full py-4 bg-stone-900 text-white rounded-xl font-bold text-lg hover:bg-stone-800 transform hover:scale-[1.01] transition-all shadow-lg flex justify-center items-center gap-2">
                         <span>Reserve My Free Seat</span>
                         <i class="fa-brands fa-whatsapp text-green-400 text-xl"></i>
                     </button>
                     <p class="text-center text-xs text-stone-500 mt-4">
-                        If one side fills faster, you'll be placed on a priority waitlist. We'll verify your details and send a confirmation.
+                        If one side fills faster, you'll be placed on a priority waitlist. We'll verify your details and
+                        send a confirmation.
                     </p>
                 </form>
             </div>
@@ -307,16 +383,16 @@
     <footer class="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
-                <h4 class="text-white font-bold text-lg mb-1">Coffee & Connections</h4>
+                <h4 class="text-white font-bold text-lg mb-1">Black Bird's Cafe</h4>
                 <p class="text-sm">Building community, one cup at a time.</p>
             </div>
-            <div class="flex gap-6">
+            <!-- <div class="flex gap-6">
                 <a href="#" class="hover:text-amber-500 transition"><i class="fa-brands fa-instagram text-2xl"></i></a>
                 <a href="#" class="hover:text-amber-500 transition"><i class="fa-brands fa-facebook text-2xl"></i></a>
                 <a href="#" class="hover:text-amber-500 transition"><i class="fa-brands fa-twitter text-2xl"></i></a>
-            </div>
+            </div> -->
             <div class="text-sm">
-                &copy; 2026 Black Birds Cafe. All rights reserved.
+                &copy; 2026 Black Bird's Cafe. All rights reserved.
             </div>
         </div>
     </footer>
@@ -346,14 +422,14 @@
         });
 
         // Social Proof / FOMO Notifications
-        const names = ['Aarav', 'Priya', 'Rohan', 'Sneha', 'Vikram', 'Ananya', 'Rahul', 'Kavya'];
-        const actions = ['reserved a seat', 'is viewing the event', 'just registered'];
-        
+        const names = ['Aarav', 'Priya', 'Rohan', 'Sneha', 'Vikram', 'Ananya', 'Rahul', 'Kavya', 'Khusi', 'Dev', 'Neha', 'Nishant', 'Jay', 'Aditi', 'Abhishek', 'Parth', 'Rohit', 'Aman', 'Jiya', 'Reena', 'Krupa', 'Shakshi', 'Jinal', 'Shrusti'];
+        const actions = ['reserved a seat', 'is viewing the event', 'just registered', 'is viewing the event', 'is viewing the event', 'is viewing the event'];
+
         function showNotification() {
             const container = document.getElementById('notification-container');
             const name = names[Math.floor(Math.random() * names.length)];
             const action = actions[Math.floor(Math.random() * actions.length)];
-            
+
             const notif = document.createElement('div');
             notif.className = 'bg-white/90 backdrop-blur-md border border-stone-200 p-4 rounded-lg shadow-xl flex items-center gap-3 transform translate-y-10 opacity-0 transition-all duration-500 w-72 pointer-events-auto';
             notif.innerHTML = `
@@ -365,14 +441,14 @@
                     <p class="text-xs text-stone-500">${action}</p>
                 </div>
             `;
-            
+
             container.appendChild(notif);
-            
+
             // Animate In
             setTimeout(() => {
                 notif.classList.remove('translate-y-10', 'opacity-0');
             }, 100);
-            
+
             // Animate Out
             setTimeout(() => {
                 notif.classList.add('translate-y-10', 'opacity-0');
@@ -387,36 +463,36 @@
         }, 2000);
 
         // Form Submission to WhatsApp
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const name = document.getElementById('name').value;
             const age = document.getElementById('age').value;
             const gender = document.getElementById('gender').value;
             const mobile = document.getElementById('mobile').value;
             const instagram = document.getElementById('instagram').value || 'Not provided';
-            
-            const cafePhoneNumber = '919876543210'; // Replace with actual Cafe WhatsApp Number if available, used placeholder format for India.
+
+            const cafePhoneNumber = '917874414328'; // Replace with actual Cafe WhatsApp Number if available, used placeholder format for India.
 
             const message = `*☕ Seat Reservation Request - Coffee & Connections* %0a%0a` +
-                            `*Name:* ${name} %0a` +
-                            `*Age:* ${age} %0a` +
-                            `*Gender:* ${gender} %0a` +
-                            `*Mobile:* ${mobile} %0a` +
-                            `*Instagram:* ${instagram} %0a%0a` +
-                            `I have agreed to the code of conduct. Please confirm my slot!`;
+                `*Name:* ${name} %0a` +
+                `*Age:* ${age} %0a` +
+                `*Gender:* ${gender} %0a` +
+                `*Mobile:* ${mobile} %0a` +
+                `*Instagram:* ${instagram} %0a%0a` +
+                `I have agreed to the code of conduct. Please confirm my slot!`;
 
             const whatsappURL = `https://wa.me/${cafePhoneNumber}?text=${message}`;
-            
+
             // Open WhatsApp
             window.open(whatsappURL, '_blank');
-            
+
             // Optional: Show some UI feedback
             const btn = this.querySelector('button');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fa-solid fa-check"></i> Redirecting to WhatsApp...';
             btn.classList.add('bg-green-600');
-            
+
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.classList.remove('bg-green-600');
@@ -425,4 +501,5 @@
         });
     </script>
 </body>
+
 </html>
