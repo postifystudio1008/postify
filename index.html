@@ -474,15 +474,15 @@
 
             const cafePhoneNumber = '917874414328'; // Replace with actual Cafe WhatsApp Number if available, used placeholder format for India.
 
-            const message = `*☕ Seat Reservation Request - Coffee & Connections* %0a%0a` +
-                `*Name:* ${name} %0a` +
-                `*Age:* ${age} %0a` +
-                `*Gender:* ${gender} %0a` +
-                `*Mobile:* ${mobile} %0a` +
-                `*Instagram:* ${instagram} %0a%0a` +
+            const message = `*☕ Seat Reservation Request - Coffee & Connections*\n\n` +
+                `*Name:* ${name}\n` +
+                `*Age:* ${age}\n` +
+                `*Gender:* ${gender}\n` +
+                `*Mobile:* ${mobile}\n` +
+                `*Instagram:* ${instagram}\n\n` +
                 `I have agreed to the code of conduct. Please confirm my slot!`;
 
-            const whatsappURL = `https://wa.me/${cafePhoneNumber}?text=${message}`;
+            const whatsappURL = `https://wa.me/${cafePhoneNumber}?text=${encodeURIComponent(message)}`;
 
             // Open WhatsApp
             window.open(whatsappURL, '_blank');
