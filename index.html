@@ -3,679 +3,1178 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Postify Studio - Social Media Pricing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Stranger Meetup 2.0 | Connect. Play. Belong.</title>
+    <meta name="description"
+        content="Ahmedabad's chillest stranger meetup is back! 30 seats, real conversations, fun games, and zero awkwardness. Free entry. March 15, 2026.">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Caveat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #0f172a;
-            color: white;
-            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fffdf7;
+            color: #1a1a2e;
         }
 
-        /* Glassmorphism Utilities */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .handwritten {
+            font-family: 'Caveat', cursive;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(135deg, #a78bfa, #f472b6, #38bdf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .bg-gradient-primary {
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-        }
-
-        /* Background Blobs */
-        .blob {
+        /* Floating shapes */
+        .floating-shape {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: -1;
-            animation: move 20s infinite alternate;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        @keyframes move {
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-20px) rotate(8deg);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes floatDown {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+
+            100% {
+                transform: translateY(15px) rotate(-5deg) scale(1.05);
+            }
+        }
+
+        @keyframes wiggle {
+
+            0%,
+            100% {
+                transform: rotate(-3deg);
+            }
+
+            50% {
+                transform: rotate(3deg);
+            }
+        }
+
+        @keyframes slideInLeft {
             from {
-                transform: translate(0, 0) scale(1);
+                opacity: 0;
+                transform: translateX(-40px);
             }
 
             to {
-                transform: translate(20px, -20px) scale(1.1);
+                opacity: 1;
+                transform: translateX(0);
             }
         }
 
-        /* Custom Scrollbar for Table */
-        .custom-scrollbar::-webkit-scrollbar {
-            height: 8px;
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            70% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
+        @keyframes countPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
         }
 
-        /* Premium Card Animation */
-        .premium-card {
-            position: relative;
-            animation: premium-pulse 3s ease-in-out infinite;
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
 
-        .premium-card::before {
-            content: '';
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .slide-left.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .slide-right.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .pop-in {
+            opacity: 0;
+            transform: scale(0.7);
+            transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .pop-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+
+        .emoji-float {
             position: absolute;
-            inset: -2px;
-            border-radius: 1rem;
-            background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #fbbf24, #fcd34d, #fbbf24);
-            background-size: 300% 300%;
-            animation: shimmer 3s linear infinite;
-            z-index: -1;
-            opacity: 0.8;
+            font-size: 1.5rem;
+            animation: floatUp 3s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .premium-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 1rem;
-            background: #0f172a;
-            z-index: -1;
+        /* Fun gradient */
+        .hero-gradient {
+            background: linear-gradient(180deg, #fff5e1 0%, #ffe8f0 40%, #e8f4fd 70%, #fffdf7 100%);
         }
 
+        .warm-gradient-text {
+            background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #f97316, #f43f5e);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.35);
+        }
+
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.5);
+        }
+
+        .btn-book:active {
+            transform: translateY(0);
+        }
+
+        .card-pastel {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .card-pastel:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Mystery card shimmer */
         @keyframes shimmer {
             0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
+                background-position: -200% 0;
             }
 
             100% {
-                background-position: 0% 50%;
+                background-position: 200% 0;
             }
         }
 
-        @keyframes premium-pulse {
+        .shimmer-bg {
+            background: linear-gradient(90deg, transparent 0%, rgba(249, 115, 22, 0.08) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes tickDown {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            20%,
+            80% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            10%,
+            90% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Glow pulse for urgency */
+        @keyframes urgencyPulse {
 
             0%,
             100% {
-                box-shadow: 0 0 20px rgba(251, 191, 36, 0.3), 0 0 40px rgba(251, 191, 36, 0.1);
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
             }
 
             50% {
-                box-shadow: 0 0 30px rgba(251, 191, 36, 0.5), 0 0 60px rgba(251, 191, 36, 0.2);
+                box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
             }
         }
 
-        /* Text Glow Animation */
-        .text-glow {
-            animation: textGlow 3s ease-in-out infinite;
+        /* Countdown card */
+        .countdown-num {
+            animation: countPulse 2s ease-in-out infinite;
         }
 
-        @keyframes textGlow {
+        /* Sticky mobile CTA */
+        .mobile-sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 12px 16px;
+            background: rgba(255, 253, 247, 0.95);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
 
-            0%,
-            100% {
-                filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5)) drop-shadow(0 0 20px rgba(236, 72, 153, 0.4));
-            }
+        .mobile-sticky-cta.show {
+            transform: translateY(0);
+        }
 
-            50% {
-                filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.8)) drop-shadow(0 0 40px rgba(236, 72, 153, 0.6));
-            }
+        input,
+        select {
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
     </style>
 </head>
 
-<body class="relative min-h-screen">
+<body class="overflow-x-hidden antialiased">
 
-    <!-- Background Decoration -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="blob bg-purple-600 w-96 h-96 top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="blob bg-blue-600 w-80 h-80 bottom-0 right-0 translate-x-1/2 translate-y-1/2 delay-1000"></div>
-        <div class="blob bg-pink-600 w-64 h-64 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 delay-2000"></div>
-    </div>
-
-    <!-- Header & Hero -->
-    <header class="relative z-10">
-        <!-- Navigation Bar -->
-        <nav class="container mx-auto px-4 py-6">
-            <div class="flex items-center justify-center md:justify-between">
-                <!-- Logo & Brand -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <img src="postify-logo.png" alt="Postify Studio"
-                        class="w-14 h-14 rounded-xl shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
-                    <div>
-                        <h2 class="text-2xl font-bold">
-                            <span class="text-white">Postify</span>
-                            <span
-                                class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">Studio</span>
-                        </h2>
-                        <p class="text-xs text-gray-400 tracking-wider">SOCIAL MEDIA AGENCY</p>
-                    </div>
-                </a>
-                <!-- CTA Button (Hidden on mobile) -->
-                <a href="https://wa.me/917874414328?text=Hello,%20I'm%20interested%20in%20your%20services."
-                    target="_blank"
-                    class="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 transition-all duration-300 font-semibold text-sm shadow-lg shadow-purple-500/25 hover:scale-105">
-                    <i class="fa-brands fa-whatsapp"></i> Get Started
-                </a>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/85 backdrop-blur-lg border-b border-black/5">
+        <div class="container mx-auto px-5 py-3.5 flex justify-between items-center">
+            <div class="text-lg font-extrabold text-gray-900 tracking-tight flex items-center gap-2">
+                <span class="text-2xl">🤝</span> Stranger Meetup
             </div>
-        </nav>
+            <a href="#reserve" class="hidden md:inline-block btn-book px-5 py-2 rounded-full font-bold text-sm">
+                Grab Your Seat →
+            </a>
+        </div>
+    </nav>
 
-        <!-- Hero Section -->
-        <div class="container mx-auto px-4 py-12 text-center">
-            <div
-                class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full glass-panel text-sm font-medium text-purple-300 border border-purple-500/30">
-                <i class="fa-solid fa-rocket text-pink-400"></i>
-                <span>Transform Your Brand Today</span>
-                <!-- <i class="fa-solid fa-arrow-right text-xs"></i> -->
-            </div>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-                Elevate Your<br>
+    <!-- Hero Section -->
+    <header class="hero-gradient relative pt-28 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+        <!-- Decorative floating emojis -->
+        <span class="emoji-float" style="top:15%;left:5%;animation-delay:0s;">🎲</span>
+        <span class="emoji-float" style="top:25%;right:8%;animation-delay:0.5s;">☀️</span>
+        <span class="emoji-float" style="top:60%;left:10%;animation-delay:1s;">🎉</span>
+        <span class="emoji-float" style="bottom:20%;right:12%;animation-delay:1.5s;">💬</span>
+        <span class="emoji-float hidden md:block" style="top:40%;left:80%;animation-delay:2s;">🧡</span>
+        <span class="emoji-float hidden md:block" style="top:70%;right:80%;animation-delay:0.8s;">✨</span>
+
+        <div class="container mx-auto px-5 text-center relative z-10">
+            <div class="scroll-element fade-in-up">
                 <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Social
-                    Presence</span>
+                    class="inline-block py-2 px-5 rounded-full bg-orange-100 text-orange-700 text-sm font-bold mb-5 border border-orange-200">
+                    ☀️ Edition 2.0 — Bigger, Better & FREE
+                </span>
+            </div>
+
+            <h1
+                class="text-[2.5rem] md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-5 leading-[1.1] tracking-tight scroll-element fade-in-up">
+                Step out. <br>
+                <span class="warm-gradient-text">Show up.</span><br>
+                <span class="text-gray-900">Vibe together.</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-                Professional social media management tailored for <span
-                    class="text-purple-400 font-semibold">growth</span>,
-                <span class="text-pink-400 font-semibold">momentum</span>, and <span
-                    class="text-cyan-400 font-semibold">authority</span>.
+
+            <p class="text-base md:text-lg text-gray-500 mb-8 max-w-md mx-auto leading-relaxed scroll-element fade-in-up"
+                style="transition-delay: 0.1s;">
+                Ditch the screen. Meet real people. Play fun games. Have conversations that actually mean something.
+                <span class="handwritten text-orange-500 text-xl block mt-2">— your weekend plans, sorted ✌️</span>
             </p>
-            <!-- <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#pricing"
-                    class="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 transition-all duration-300 font-bold text-lg shadow-lg shadow-purple-500/30 hover:scale-105">
-                    View Pricing
-                </a>
-                <a href="https://wa.me/917874414328?text=Hello,%20I%20want%20to%20know%20more%20about%20your%20services."
-                    target="_blank"
-                    class="px-8 py-3 rounded-full glass-panel border border-white/20 hover:bg-white/10 transition-all duration-300 font-semibold text-lg hover:scale-105 flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-green-400"></i> Chat With Us
-                </a>
-            </div> -->
+
+            <!-- Event Info — sleek inline design -->
+            <div class="scroll-element fade-in-up mb-6 mt-4" style="transition-delay: 0.15s;">
+                <div
+                    class="inline-flex flex-wrap justify-center items-center gap-x-4 gap-y-3 bg-white px-5 py-3.5 rounded-2xl shadow-sm border border-gray-100 mx-auto max-w-lg">
+                    <div class="flex items-center gap-2 text-sm font-bold text-gray-800">
+                        <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500"><i
+                                class="fa-regular fa-calendar-days"></i></div>
+                        15 Mar
+                    </div>
+                    <div class="hidden sm:block w-px h-5 bg-gray-200"></div>
+                    <div class="flex items-center gap-2 text-sm font-bold text-gray-800">
+                        <div class="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-pink-500"><i
+                                class="fa-regular fa-clock"></i></div>
+                        3 PM onwards
+                    </div>
+                    <div class="hidden sm:block w-px h-5 bg-gray-200"></div>
+                    <a href="https://maps.app.goo.gl/Y64wyucKdDpHWPPv5" target="_blank"
+                        class="flex items-center gap-2 text-sm font-bold text-orange-500 hover:text-orange-600 transition">
+                        <div class="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center"><i
+                                class="fa-solid fa-location-dot"></i></div>
+                        The Black bird's Cafe ↗
+                    </a>
+                    <div class="hidden sm:block w-px h-5 bg-gray-200"></div>
+                    <div class="flex items-center gap-2 text-sm font-bold text-green-600">
+                        <div class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center"><i
+                                class="fa-solid fa-ticket"></i></div>
+                        FREE
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col items-center gap-4 scroll-element fade-in-up relative z-30"
+            style="transition-delay: 0.35s;">
+            <a href="#reserve"
+                class="btn-book px-8 py-3.5 rounded-full w-full max-w-xs text-center flex flex-col items-center justify-center leading-tight shadow-xl shadow-orange-500/20 group">
+                <span class="font-extrabold text-lg group-hover:scale-105 transition-transform">Reserve My Spot
+                    🎉</span>
+            </a>
+        </div>
+
+        <!-- Unified FOMO / Social Proof Block -->
+        <div class="mt-6 max-w-[300px] mx-auto scroll-element pop-in relative z-20" style="transition-delay: 0.5s;">
+            <div
+                class="bg-gradient-to-r from-red-50 to-orange-50 border border-red-100/50 rounded-2xl p-3.5 flex items-center gap-3 text-left shadow-sm">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm border border-red-50"
+                    style="animation: urgencyPulse 2s infinite;">
+                    <span class="text-lg">🔥</span>
+                </div>
+                <div>
+                    <p class="text-xs font-extrabold text-red-700 leading-tight uppercase tracking-wide">Edition 1
+                        Sold Out in 3 Days</p>
+                </div>
+            </div>
+        </div>
         </div>
     </header>
 
-    <!-- Pricing Plans -->
-    <section class="container mx-auto px-4 py-16 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-            <!-- Plan 1: Growth Starter -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col h-full border-t-4 border-t-blue-400">
-                <h3 class="text-2xl font-bold text-white mb-2">Growth Starter</h3>
-                <p class="text-sm text-gray-400 mb-6 h-12">Perfect for startups & local businesses wanting consistent
-                    online presence.</p>
-
-                <div class="mb-6">
-                    <!-- <div class="text-gray-400 line-through text-lg">₹2,000</div> -->
-                    <div class="flex items-end gap-2">
-                        <span class="text-4xl font-bold text-white">₹2,999</span>
-                        <span class="text-sm text-gray-400 mb-1">/month</span>
-                    </div>
+    <!-- Countdown Section -->
+    <section class="py-10 bg-white border-y border-gray-100">
+        <div class="container mx-auto px-5">
+            <div class="flex justify-center items-center gap-3 md:gap-6 scroll-element pop-in">
+                <p class="text-sm font-bold text-gray-400 uppercase tracking-wider mr-2">Event in</p>
+                <div class="text-center countdown-num">
+                    <div id="cd-days" class="text-3xl md:text-4xl font-extrabold text-orange-500">--</div>
+                    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Days</div>
                 </div>
+                <span class="text-2xl text-gray-300 font-light">:</span>
+                <div class="text-center countdown-num" style="animation-delay:0.3s;">
+                    <div id="cd-hours" class="text-3xl md:text-4xl font-extrabold text-pink-500">--</div>
+                    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Hours</div>
+                </div>
+                <span class="text-2xl text-gray-300 font-light">:</span>
+                <div class="text-center countdown-num" style="animation-delay:0.6s;">
+                    <div id="cd-mins" class="text-3xl md:text-4xl font-extrabold text-violet-500">--</div>
+                    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Mins</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <ul class="space-y-3 mb-8 flex-grow text-sm text-gray-300">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> 10–12
-                        High-Quality Posts</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> 1–2
-                        Reels with Viral Audio</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Instagram
-                        Optimization</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Smart
-                        Hashtags + Captions</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Daily
-                        Engagement (Comments/DMs)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Basic
-                        Monthly Report</li>
-                </ul>
-
-                <a href="https://wa.me/917874414328?text=I'm interested in the GROWTH STARTER plan." target="_blank"
-                    class="block w-full text-center py-3 rounded-xl bg-white/10 hover:bg-blue-600 transition-colors font-semibold border border-white/10 hover:border-blue-500">
-                    Select Plan
-                </a>
+    <!-- What to Expect — Suspense / Mystery Section -->
+    <section id="details" class="py-16 md:py-20 bg-[#fffdf7]">
+        <div class="container mx-auto px-5 max-w-lg">
+            <div class="text-center mb-8 scroll-element fade-in-up">
+                <span class="handwritten text-3xl text-orange-400">Curious? 👀</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-1">What's Going to Happen?</h2>
+                <p class="text-gray-400 mt-2 text-sm">We could tell you everything... but where's the fun in that?</p>
             </div>
 
-            <!-- Plan 2: Momentum Builder (Most Popular) -->
-            <div
-                class="glass-card rounded-2xl p-6 flex flex-col h-full transform md:-translate-y-4 border-t-4 border-t-purple-500 relative">
+            <!-- Mystery teaser cards -->
+            <div class="space-y-3 mb-8">
                 <div
-                    class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-lg">
-                    MOST POPULAR ⭐
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-2">Momentum Builder</h3>
-                <p class="text-sm text-gray-400 mb-6 h-12">Perfect for growing brands that want to dominate their niche.
-                </p>
-
-                <div class="mb-6">
-                    <!-- <div class="text-gray-400 line-through text-lg">₹3,500</div> -->
-                    <div class="flex items-end gap-2">
-                        <span
-                            class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">₹5,999</span>
-                        <span class="text-sm text-gray-400 mb-1">/month</span>
+                    class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm scroll-element slide-left shimmer-bg">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🎲</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Games you've never played before</h4>
+                            <p class="text-gray-400 text-xs mt-0.5">Not your typical truth or dare. Trust us.</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="bg-purple-500/10 p-3 rounded-lg mb-4 text-xs text-purple-200 border border-purple-500/20">
-                    Includes everything in Growth Starter, plus:
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm scroll-element slide-right shimmer-bg"
+                    style="transition-delay:0.1s;">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🤫</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900">A surprise activity nobody expects</h4>
+                            <p class="text-gray-400 text-xs mt-0.5">Let's just say... you'll remember this one.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <ul class="space-y-3 mb-8 flex-grow text-sm text-gray-300">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> 15–17
-                        Premium Posts (More Variety)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> 3–4
-                        Trending & Highly Engaging Reels</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Insta +
-                        Google My Business Optimization</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Advanced
-                        Hashtag + SEO Captions</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Monthly
-                        30-min Strategic Meeting Call (or in-person)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i>
-                        Professional Monthly Report</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Priority
-                        WhatsApp Support</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Monthly
-                        Content Calendar</li>
-                </ul>
-
-                <a href="https://wa.me/917874414328?text=I'm interested in the MOMENTUM BUILDER plan." target="_blank"
-                    class="block w-full text-center py-4 rounded-xl bg-gradient-primary hover:opacity-90 transition-opacity font-bold shadow-lg shadow-purple-500/25">
-                    Select Plan
-                </a>
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm scroll-element slide-left shimmer-bg"
+                    style="transition-delay:0.2s;">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">💬</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Conversations that hit different</h4>
+                            <p class="text-gray-400 text-xs mt-0.5">No "what do you do?" stuff. We go deeper.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm scroll-element slide-right shimmer-bg"
+                    style="transition-delay:0.3s;">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl">🎁</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900">...and one more thing 👀</h4>
+                            <p class="text-gray-400 text-xs mt-0.5">You'll only find out when you're there.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Plan 3: Authority Dominator -->
-            <div class="glass-card premium-card rounded-2xl p-6 flex flex-col h-full">
-                <h3 class="text-2xl font-bold text-white mb-2">Authority Dominator</h3>
-                <p class="text-sm text-gray-400 mb-6 h-12">For serious brands wanting to own their industry & max leads.
-                </p>
-
-                <div class="mb-6">
-                    <!-- <div class="text-gray-400 line-through text-lg">₹5,500</div> -->
-                    <div class="flex items-end gap-2">
-                        <span class="text-4xl font-bold text-white">₹9,999</span>
-                        <span class="text-sm text-gray-400 mb-1">/month</span>
-                    </div>
-                </div>
-
-                <div class="bg-amber-500/10 p-3 rounded-lg mb-4 text-xs text-amber-200 border border-amber-500/20">
-                    Includes everything in Momentum Builder, plus:
-                </div>
-
-                <ul class="space-y-3 mb-8 flex-grow text-sm text-gray-300">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> 20–22
-                        Premium Posts (Carousel, Infographics)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> 6-8
-                        High-Production Reels (Motion Graphics)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> 1
-                        Professional Video Shoot + Editing (On-location)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Competitor
-                        Spying Report</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> WhatsApp
-                        Catalog & Meta Verified Help</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Full
-                        Engagement (Insta, FB, Google, LinkedIn)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Paid Ad
-                        Management (1 Campaign)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Market
-                        Trends & Business Growth Strategy</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> 2 Strategy
-                        meetings + ROI Focused Report</li>
-                </ul>
-
-                <a href="https://wa.me/917874414328?text=I'm interested in the AUTHORITY DOMINATOR plan."
-                    target="_blank"
-                    class="block w-full text-center py-3 rounded-xl bg-white/10 hover:bg-amber-600 transition-colors font-semibold border border-white/10 hover:border-amber-500">
-                    Select Plan
-                </a>
+            <!-- The only hint -->
+            <div
+                class="bg-gradient-to-r from-orange-50 to-pink-50 rounded-3xl p-6 text-center scroll-element pop-in border border-orange-100 mb-8">
+                <p class="handwritten text-2xl md:text-3xl text-gray-800 leading-snug">
+                    "The best things in life happen<br>when you put your phone down."</p>
+                <p class="text-sm text-gray-400 mt-3 font-medium">— Everyone who attended Edition 1 😉</p>
             </div>
 
         </div>
     </section>
 
-    <!-- Comparison Table -->
-    <section class="container mx-auto px-4 py-16 relative z-10">
-        <h2 class="text-3xl font-bold text-center mb-10">Feature Comparison</h2>
-        <div class="glass-panel rounded-2xl overflow-hidden custom-scrollbar overflow-x-auto">
-            <table class="w-full text-left border-collapse min-w-[800px]">
-                <thead>
-                    <tr class="bg-white/5 border-b border-white/10">
-                        <th class="p-4 text-gray-300 font-semibold">Features</th>
-                        <th class="p-4 text-center text-blue-300 font-bold">Growth Starter</th>
-                        <th class="p-4 text-center text-purple-300 font-bold bg-purple-900/20">Momentum Builder</th>
-                        <th class="p-0 align-bottom">
-                            <div
-                                class="p-4 text-center text-amber-300 font-bold bg-amber-900/20 border-x border-t border-amber-500/20 rounded-t-xl relative overflow-hidden h-full flex items-center justify-center">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-b from-amber-500/10 to-transparent pointer-events-none">
-                                </div>
-                                <span class="relative z-10"><i class="fa-solid fa-crown mr-2 mb-1"></i>Authority
-                                    Dominator</span>
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="text-sm text-gray-300">
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Feed Posts</td>
-                        <td class="p-4 text-center">10–12 High-Quality</td>
-                        <td class="p-4 text-center bg-purple-900/10">15–17 Premium</td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
-                            20–22 Advanced</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Reels</td>
-                        <td class="p-4 text-center">1–2 Trending</td>
-                        <td class="p-4 text-center bg-purple-900/10">3–4 Engaging</td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
-                            6–8 High-Production</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Instagram Optimization</td>
-                        <td class="p-4 text-center">Basic</td>
-                        <td class="p-4 text-center bg-purple-900/10">SEO Optimized</td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
-                            SEO Optimized + Engaging</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Smart Hashtags + Captions</td>
-                        <td class="p-4 text-center">Basic</td>
-                        <td class="p-4 text-center bg-purple-900/10">Advanced + SEO</td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
-                            Advanced + SEO + Engaging</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Engagement</td>
-                        <td class="p-4 text-center">Daily (Insta)</td>
-                        <td class="p-4 text-center bg-purple-900/10">Instant (Insta + Facebook)</td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
-                            Instant in all plateforms (Insta/FB/GMB)</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Monthly Report</td>
-                        <td class="p-4 text-center">Basic</td>
-                        <td class="p-4 text-center bg-purple-900/10">Professional</td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
-                            ROI Focused</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">WhatsApp Support</td>
-                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
-                        <td class="p-4 text-center bg-purple-900/10">
-                            Priority</td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
-                            Priority</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Google My Business Optimization</td>
-                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
-                        <td class="p-4 text-center bg-purple-900/10">Included</td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-green-400 font-bold">
-                            Advanced Optimized</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">On-Location Video Shoot</td>
-                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
-                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
-                        </td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-green-400 font-bold">
-                            1 Shoot/mo</td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Competitor Spying</td>
-                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
-                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
-                        </td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-green-400 font-bold">
-                            <i class="fa-solid fa-check"></i>
-                        </td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">WhatsApp Catalog & Meta Verified</td>
-                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
-                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
-                        </td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-green-400">
-                            <i class="fa-solid fa-check"></i>
-                        </td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Ad Management</td>
-                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
-                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
-                        </td>
-                        <td
-                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-green-400">
-                            <i class="fa-solid fa-check"></i>
-                        </td>
-                    </tr>
-                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                        <td class="p-4">Market Trends & Business Growth Strategy</td>
-                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
-                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
-                        </td>
-                        <td class="p-0">
-                            <div
-                                class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-b border-amber-500/20 rounded-b-xl text-green-400">
-                                <i class="fa-solid fa-check"></i>
-                            </div>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
+    <!-- The Vibe Strip -->
+    <section class="py-10 bg-gradient-to-r from-orange-400 via-pink-500 to-violet-500 overflow-hidden">
+        <div
+            class="animate-marquee flex gap-8 whitespace-nowrap text-white font-bold text-lg md:text-xl tracking-wide w-max">
+            <!-- First Set -->
+            <span>☀️ CHILL VIBES</span><span>•</span>
+            <span>🎲 FUN GAMES</span><span>•</span>
+            <span>💬 REAL TALK</span><span>•</span>
+            <span>🧡 NEW FRIENDS</span><span>•</span>
+            <span>� COOL MEMORIES</span><span>•</span>
+            <span>🎉 ZERO CRINGE</span><span>•</span>
+            <span>🆓 100% FREE</span><span>•</span>
+            <!-- Duplicate Set for infinite loop -->
+            <span>☀️ CHILL VIBES</span><span>•</span>
+            <span>🎲 FUN GAMES</span><span>•</span>
+            <span>💬 REAL TALK</span><span>•</span>
+            <span>🧡 NEW FRIENDS</span><span>•</span>
+            <span>📸 COOL MEMORIES</span><span>•</span>
+            <span>🎉 ZERO CRINGE</span><span>•</span>
+            <span>🆓 100% FREE</span><span>•</span>
         </div>
     </section>
 
-    <!-- Service Extensions -->
-    <section class="container mx-auto px-4 py-16 relative z-10">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4">Service Extensions</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto">Tailor your package with these optional power-ups to suit your
-                specific needs.</p>
+    <!-- Who is this for? -->
+    <section class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-5 max-w-lg md:max-w-4xl">
+            <div class="text-center mb-10 scroll-element fade-in-up">
+                <span class="handwritten text-3xl text-pink-400">Find your people 🫶</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-1">Made for you if...</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+                <div class="card-pastel p-5 md:p-6 rounded-2xl text-center scroll-element pop-in">
+                    <div class="text-4xl mb-3">🦋</div>
+                    <h3 class="font-bold text-sm md:text-base mb-1 text-gray-900">Social Butterfly</h3>
+                    <p class="text-gray-400 text-xs">You thrive on good conversations.</p>
+                </div>
+                <div class="card-pastel p-5 md:p-6 rounded-2xl text-center scroll-element pop-in"
+                    style="transition-delay: 0.1s;">
+                    <div class="text-4xl mb-3">🌍</div>
+                    <h3 class="font-bold text-sm md:text-base mb-1 text-gray-900">New in Town</h3>
+                    <p class="text-gray-400 text-xs">Looking for your crew in the city.</p>
+                </div>
+                <div class="card-pastel p-5 md:p-6 rounded-2xl text-center scroll-element pop-in"
+                    style="transition-delay: 0.2s;">
+                    <div class="text-4xl mb-3">💡</div>
+                    <h3 class="font-bold text-sm md:text-base mb-1 text-gray-900">Creator / Hustler</h3>
+                    <p class="text-gray-400 text-xs">Want to expand your circle, casually.</p>
+                </div>
+                <div class="card-pastel p-5 md:p-6 rounded-2xl text-center scroll-element pop-in"
+                    style="transition-delay: 0.3s;">
+                    <div class="text-4xl mb-3">✨</div>
+                    <h3 class="font-bold text-sm md:text-base mb-1 text-gray-900">Open Heart</h3>
+                    <p class="text-gray-400 text-xs">18–30, respectful & ready for fun.</p>
+                </div>
+            </div>
+
+            <!-- Fun stat strip -->
+            <div class="mt-10 grid grid-cols-3 gap-3 scroll-element fade-in-up">
+                <div class="bg-orange-50 rounded-2xl p-4 text-center border border-orange-100">
+                    <p class="text-2xl md:text-3xl font-extrabold text-orange-500">30</p>
+                    <p class="text-xs text-gray-500 font-bold">Total Seats</p>
+                </div>
+                <div class="bg-pink-50 rounded-2xl p-4 text-center border border-pink-100">
+                    <p class="text-2xl md:text-3xl font-extrabold text-pink-500">15:15</p>
+                    <p class="text-xs text-gray-500 font-bold">M : F Ratio</p>
+                </div>
+                <div class="bg-green-50 rounded-2xl p-4 text-center border border-green-100">
+                    <p class="text-2xl md:text-3xl font-extrabold text-green-500">₹0</p>
+                    <p class="text-xs text-gray-500 font-bold">Entry Fee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wall of Love (Reviews) -->
+    <section class="py-16 md:py-20 bg-gradient-to-b from-white to-[#fffdf7] border-t border-gray-100 overflow-hidden">
+        <div class="container mx-auto px-5 mb-8 text-center scroll-element fade-in-up">
+            <span class="handwritten text-3xl text-orange-400">Don't just take our word for it 💌</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-1">Wall of Love</h2>
+            <p class="text-gray-500 mt-2 text-sm md:text-base">Hear from the people who took the leap in Edition 1.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Extension Card -->
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-pink-400 text-xl mb-2"><i class="fa-solid fa-handshake"></i></div>
-                <h4 class="font-bold text-lg mb-1">Influencer Collaborations</h4>
-                <p class="text-sm text-gray-300">₹4000 – ₹15,000+ <span class="text-xs text-gray-500">per collab</span>
+        <!-- Horizontal Scrolling Container -->
+        <div id="reviews-slider"
+            class="flex overflow-x-auto gap-5 px-5 md:px-10 pb-10 snap-x snap-mandatory hide-scroll border-y border-transparent scroll-element pop-in"
+            style="transition-delay: 0.2s;">
+            <!-- Review 1 -->
+            <div
+                class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="flex gap-1 text-orange-400 text-sm mb-3">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-[14px] font-bold text-gray-800 leading-relaxed mb-4">"I went alone and left with 5 new
+                    friends. Best Sunday ever!"</p>
+                <div class="flex items-center gap-3 mt-auto">
+                    <div
+                        class="w-8 h-8 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center font-bold text-xs">
+                        P</div>
+                    <p class="text-xs text-gray-500 font-medium">Priya, 24</p>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div
+                class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="flex gap-1 text-orange-400 text-sm mb-3">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-[14px] font-bold text-gray-800 leading-relaxed mb-4">"Zero awkwardness. The games act as
+                    perfect icebreakers."</p>
+                <div class="flex items-center gap-3 mt-auto">
+                    <div
+                        class="w-8 h-8 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center font-bold text-xs">
+                        R</div>
+                    <p class="text-xs text-gray-500 font-medium">Rohan, 26</p>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div
+                class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="flex gap-1 text-orange-400 text-sm mb-3">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-[14px] font-bold text-gray-800 leading-relaxed mb-4">"Finally an event where people
+                    actually want to talk."</p>
+                <div class="flex items-center gap-3 mt-auto">
+                    <div
+                        class="w-8 h-8 rounded-full bg-pink-100 text-pink-500 flex items-center justify-center font-bold text-xs">
+                        S</div>
+                    <p class="text-xs text-gray-500 font-medium">Sneha, 23</p>
+                </div>
+            </div>
+
+            <!-- Review 4 -->
+            <div
+                class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="flex gap-1 text-orange-400 text-sm mb-3">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-[14px] font-bold text-gray-800 leading-relaxed mb-4">"So refreshing to disconnect from
+                    screens for 2 hours."</p>
+                <div class="flex items-center gap-3 mt-auto">
+                    <div
+                        class="w-8 h-8 rounded-full bg-violet-100 text-violet-500 flex items-center justify-center font-bold text-xs">
+                        V</div>
+                    <p class="text-xs text-gray-500 font-medium">Vikram, 27</p>
+                </div>
+            </div>
+
+            <!-- Review 5 -->
+            <div
+                class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-3xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="flex gap-1 text-orange-400 text-sm mb-3">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-[14px] font-bold text-gray-800 leading-relaxed mb-4">"I was so nervous but everyone was
+                    incredibly nice!"</p>
+                <div class="flex items-center gap-3 mt-auto">
+                    <div
+                        class="w-8 h-8 rounded-full bg-green-100 text-green-500 flex items-center justify-center font-bold text-xs">
+                        K</div>
+                    <p class="text-xs text-gray-500 font-medium">Kavya, 22</p>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            /* Hide scrollbar for Chrome, Safari and Opera */
+            .hide-scroll::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            .hide-scroll {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
+            }
+        </style>
+    </section>
+
+    <!-- Good To Know -->
+    <section class="py-16 md:py-20 bg-[#fffdf7] border-t border-gray-100">
+        <div class="container mx-auto px-5 max-w-lg">
+            <div class="text-center mb-10 scroll-element fade-in-up">
+                <span class="handwritten text-3xl text-violet-400">No stress, just vibes 🫧</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-1">Good To Know</h2>
+            </div>
+
+            <div class="space-y-3 scroll-element fade-in-up">
+                <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100">
+                    <span class="text-lg mt-0.5">✅</span>
+                    <p class="text-gray-600 text-sm"><strong>Registration only</strong> — no walk-ins, so everyone's
+                        expected and welcomed.</p>
+                </div>
+                <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100">
+                    <span class="text-lg mt-0.5">⚖️</span>
+                    <p class="text-gray-600 text-sm"><strong>50-50 ratio</strong> is strictly maintained. Equal guys,
+                        equal girls.</p>
+                </div>
+                <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100">
+                    <span class="text-lg mt-0.5">🛡️</span>
+                    <p class="text-gray-600 text-sm"><strong>Pre-screened entries</strong> — we check every registration
+                        for safety & balance.</p>
+                </div>
+                <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100">
+                    <span class="text-lg mt-0.5">📸</span>
+                    <p class="text-gray-600 text-sm"><strong>Photos & reels</strong> may be captured during the event
+                        for our socials.</p>
+                </div>
+                <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100">
+                    <span class="text-lg mt-0.5">🐢</span>
+                    <p class="text-gray-600 text-sm"><strong>Introvert-friendly!</strong> Go at your own pace — no
+                        pressure to be the life of the party.</p>
+                </div>
+            </div>
+
+            <!-- Bonus Card -->
+            <div
+                class="mt-8 bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 p-6 rounded-3xl border border-orange-100 scroll-element pop-in">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🎁</span>
+                    <h3 class="text-xl font-extrabold text-gray-900">Bonus Surprise</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-2">Post a story or reel tagging us after the event and win a <strong
+                        class="text-orange-600">FREE dessert or drink</strong> next time!</p>
+                <p class="text-xs text-gray-400 italic">*Remember to tag us in your story to claim.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Hosts -->
+    <!-- <section class="py-16 md:py-20 bg-white border-y border-gray-100">
+        <div class="container mx-auto px-5 max-w-3xl text-center">
+            <div class="mb-10 scroll-element fade-in-up">
+                <span class="handwritten text-3xl text-pink-400">Who's behind this? 👋</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-1">Meet Your Hosts</h2>
+                <p class="text-gray-500 mt-3 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
+                    Walking into a room full of strangers can be daunting. We're here to make sure you feel welcome,
+                    included, and have a blast!
                 </p>
             </div>
 
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-blue-400 text-xl mb-2"><i class="fa-solid fa-images"></i></div>
-                <h4 class="font-bold text-lg mb-1">Extra Posts (Poster)</h4>
-                <p class="text-sm text-gray-300">₹250 <span class="text-xs text-gray-500">per post</span></p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 max-w-2xl mx-auto">
+                <div class="scroll-element slide-left">
+                    <div class="relative w-40 h-40 mx-auto mb-5 group">
+                        <div
+                            class="absolute inset-0 bg-blue-100 rounded-full transform translate-x-2 translate-y-2 transition-transform group-hover:translate-x-3 group-hover:translate-y-3">
+                        </div>
+                        <img src="host_male.png" alt="Host"
+                            class="relative w-full h-full object-cover rounded-full border-4 border-white shadow-md">
+                        <div
+                            class="absolute bottom-0 right-2 bg-blue-500 text-white w-10 h-10 rounded-full flex items-center justify-center border-4 border-white shadow-sm text-sm">
+                            <i class="fa-solid fa-comment-dots"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Rahul</h3>
+                    <p class="text-blue-500 font-bold text-[11px] uppercase tracking-wider mb-2">The Ultimate Connector
+                    </p>
+                    <p class="text-gray-500 text-sm leading-relaxed px-2">The guy who makes sure you're never standing
+                        alone. Whether it's cracking a joke to break the ice or matching you with someone who shares
+                        your exact niche interests, Rahul's got you. He believes every great friendship starts with a
+                        simple "hey".</p>
+                </div>
+
+                <div class="scroll-element slide-right" style="transition-delay: 0.15s;">
+                    <div class="relative w-40 h-40 mx-auto mb-5 group">
+                        <div
+                            class="absolute inset-0 bg-pink-100 rounded-full transform -translate-x-2 translate-y-2 transition-transform group-hover:-translate-x-3 group-hover:translate-y-3">
+                        </div>
+                        <img src="host_female.png" alt="Host"
+                            class="relative w-full h-full object-cover rounded-full border-4 border-white shadow-md">
+                        <div
+                            class="absolute bottom-0 left-2 bg-pink-500 text-white w-10 h-10 rounded-full flex items-center justify-center border-4 border-white shadow-sm text-sm">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Ananya</h3>
+                    <p class="text-pink-500 font-bold text-[11px] uppercase tracking-wider mb-2">The Hype Woman</p>
+                    <p class="text-gray-500 text-sm leading-relaxed px-2">Your designated vibe checker. Ananya is here
+                        to make sure you're comfortable, laughing, and getting those aesthetic candid pictures. Think of
+                        her as your highly extroverted best friend who dragged you out (in the best way possible).</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-20 bg-[#fffdf7]">
+        <div class="container mx-auto px-5 max-w-2xl">
+            <div class="text-center mb-10 scroll-element fade-in-up">
+                <span class="handwritten text-3xl text-orange-400">Still thinking? 🤔</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-1">Frequently Asked Questions</h2>
             </div>
 
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-purple-400 text-xl mb-2"><i class="fa-solid fa-video"></i></div>
-                <h4 class="font-bold text-lg mb-1">Extra High-Production Reel</h4>
-                <p class="text-sm text-gray-300">₹500 – ₹1,000 <span class="text-xs text-gray-500">per reel</span></p>
+            <div class="space-y-4">
+                <div
+                    class="border border-orange-100 rounded-2xl p-5 md:p-6 bg-white shadow-sm scroll-element fade-in-up hover:border-orange-200 transition">
+                    <h4 class="font-bold text-gray-900 text-base flex gap-3"><span
+                            class="text-orange-500 font-extrabold text-lg leading-none">Q.</span> Can I come alone?</h4>
+                    <p class="text-gray-500 text-sm mt-2 pl-[1.65rem] leading-relaxed">Absolutely! In fact, almost
+                        everyone comes alone. It's the best way to mingle, and our icebreakers are designed exactly for
+                        that.</p>
+                </div>
+
+                <div class="border border-orange-100 rounded-2xl p-5 md:p-6 bg-white shadow-sm scroll-element fade-in-up hover:border-orange-200 transition"
+                    style="transition-delay: 0.1s;">
+                    <h4 class="font-bold text-gray-900 text-base flex gap-3"><span
+                            class="text-pink-500 font-extrabold text-lg leading-none">Q.</span> Is it safe and verified?
+                    </h4>
+                    <p class="text-gray-500 text-sm mt-2 pl-[1.65rem] leading-relaxed">100%. We manually screen all
+                        registrations, host it in a well-lit premium cafe, and have a strict code of conduct. Any
+                        misbehavior means immediate removal.</p>
+                </div>
+
+                <div class="border border-orange-100 rounded-2xl p-5 md:p-6 bg-white shadow-sm scroll-element fade-in-up hover:border-orange-200 transition"
+                    style="transition-delay: 0.2s;">
+                    <h4 class="font-bold text-gray-900 text-base flex gap-3"><span
+                            class="text-violet-500 font-extrabold text-lg leading-none">Q.</span> I'm an introvert. Will
+                        it be awkward?</h4>
+                    <p class="text-gray-500 text-sm mt-2 pl-[1.65rem] leading-relaxed">Not at all! You don't have to
+                        carry the conversation. Our structured games and activities do the hard work of breaking the ice
+                        for you.</p>
+                </div>
+
+                <div class="border border-orange-100 rounded-2xl p-5 md:p-6 bg-white shadow-sm scroll-element fade-in-up hover:border-orange-200 transition"
+                    style="transition-delay: 0.3s;">
+                    <h4 class="font-bold text-gray-900 text-base flex gap-3"><span
+                            class="text-green-500 font-extrabold text-lg leading-none">Q.</span> What if I don't know
+                        anyone?</h4>
+                    <p class="text-gray-500 text-sm mt-2 pl-[1.65rem] leading-relaxed">That's exactly the point! 90% of
+                        the people who come to our meetups show up solo. The whole event is built specifically for
+                        making new friends from scratch.</p>
+                </div>
+
+                <div class="border border-orange-100 rounded-2xl p-5 md:p-6 bg-white shadow-sm scroll-element fade-in-up hover:border-orange-200 transition"
+                    style="transition-delay: 0.4s;">
+                    <h4 class="font-bold text-gray-900 text-base flex gap-3"><span
+                            class="text-blue-500 font-extrabold text-lg leading-none">Q.</span> What should I wear?</h4>
+                    <p class="text-gray-500 text-sm mt-2 pl-[1.65rem] leading-relaxed">Whatever makes you feel confident
+                        and chill. Smart casual, sneakers, or a cute top—just bring good energy and a
+                        smile!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="reserve" class="py-16 md:py-24 bg-gradient-to-b from-orange-50 via-pink-50 to-[#fffdf7]">
+        <div class="container mx-auto px-5 max-w-lg">
+            <div class="text-center mb-8 scroll-element fade-in-up">
+                <span class="handwritten text-3xl text-orange-400">Let's make it official 🎟️</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-1">Grab Your Free Seat</h2>
+                <p class="text-gray-400 mt-2 text-sm">Takes 30 seconds. Confirmation via WhatsApp.</p>
             </div>
 
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-orange-400 text-xl mb-2"><i class="fa-solid fa-camera"></i></div>
-                <h4 class="font-bold text-lg mb-1">Pro On-Location Shoot</h4>
-                <p class="text-sm text-gray-300">₹2,000 – ₹4,000 <span class="text-xs text-gray-500">per shoot</span>
-                </p>
-                <p class="text-xs text-gray-500 mt-1">*Travel fee outside Ahmedabad</p>
+            <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 border border-gray-100 scroll-element fade-in-up">
+                <form id="bookingForm" class="space-y-5">
+                    <div>
+                        <label class="block text-gray-600 font-semibold mb-1.5 text-sm" for="name">Full Name</label>
+                        <input type="text" id="name" required
+                            class="w-full px-4 py-3.5 rounded-2xl border border-gray-200 focus:border-orange-400 focus:ring-3 focus:ring-orange-100 outline-none transition bg-gray-50 text-gray-900 text-base"
+                            placeholder="Your name">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-gray-600 font-semibold mb-1.5 text-sm" for="age">Age</label>
+                            <input type="number" id="age" min="18" max="35" required
+                                class="w-full px-4 py-3.5 rounded-2xl border border-gray-200 focus:border-orange-400 focus:ring-3 focus:ring-orange-100 outline-none transition bg-gray-50 text-gray-900 text-base"
+                                placeholder="18-35">
+                        </div>
+                        <div>
+                            <label class="block text-gray-600 font-semibold mb-1.5 text-sm" for="gender">Gender</label>
+                            <select id="gender" required
+                                class="w-full px-4 py-3.5 rounded-2xl border border-gray-200 focus:border-orange-400 focus:ring-3 focus:ring-orange-100 outline-none transition bg-gray-50 text-gray-900 text-base">
+                                <option value="" disabled selected>Select</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <p class="text-[10px] text-gray-400 mt-1">For maintaining 15:15 balance</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-600 font-semibold mb-1.5 text-sm" for="mobile">Mobile
+                            Number</label>
+                        <input type="tel" id="mobile" required
+                            class="w-full px-4 py-3.5 rounded-2xl border border-gray-200 focus:border-orange-400 focus:ring-3 focus:ring-orange-100 outline-none transition bg-gray-50 text-gray-900 text-base"
+                            placeholder="98765 43210">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-600 font-semibold mb-1.5 text-sm" for="instagram">Instagram
+                            Handle</label>
+                        <input type="text" id="instagram"
+                            class="w-full px-4 py-3.5 rounded-2xl border border-gray-200 focus:border-orange-400 focus:ring-3 focus:ring-orange-100 outline-none transition bg-gray-50 text-gray-900 text-base"
+                            placeholder="@username">
+                    </div>
+
+                    <div class="flex items-start gap-3 pt-1">
+                        <input type="checkbox" id="agreement" required
+                            class="mt-1 w-5 h-5 text-orange-500 rounded-md border-gray-300 focus:ring-orange-400">
+                        <label for="agreement" class="text-xs text-gray-400 leading-relaxed">
+                            I agree to the code of conduct and understand that photos/videos may be taken. Confirmation
+                            will be sent via WhatsApp.
+                        </label>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-4 btn-book rounded-2xl font-bold text-base flex justify-center items-center gap-2 active:scale-[0.98] transition-transform">
+                        <span>Book My Free Seat</span>
+                        <i class="fa-brands fa-whatsapp text-xl opacity-80"></i>
+                    </button>
+
+                    <p class="text-center text-[11px] text-gray-400 mt-3 leading-relaxed">
+                        If one side fills up, you'll be on a priority waitlist.<br>We'll verify and confirm within 24
+                        hours.
+                    </p>
+                </form>
             </div>
 
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-green-400 text-xl mb-2"><i class="fa-solid fa-bullhorn"></i></div>
-                <h4 class="font-bold text-lg mb-1">Meta Ads Management</h4>
-                <p class="text-sm text-gray-300">15% of spend <span class="text-xs text-gray-500">or min ₹500/mo</span>
-                </p>
-            </div>
-
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-blue-500 text-xl mb-2"><i class="fa-solid fa-circle-check"></i></div>
-                <h4 class="font-bold text-lg mb-1">Meta Verified Blue Tick + Setup</h4>
-                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">one-time</span></p>
-            </div>
-
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-blue-700 text-xl mb-2"><i class="fa-brands fa-linkedin"></i></div>
-                <h4 class="font-bold text-lg mb-1">LinkedIn Profile Mgmt</h4>
-                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">/month</span></p>
-            </div>
-
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-red-400 text-xl mb-2"><i class="fa-solid fa-bolt"></i></div>
-                <h4 class="font-bold text-lg mb-1">Urgent/Same-Day Post</h4>
-                <p class="text-sm text-gray-300">+ ₹250 <span class="text-xs text-gray-500">extra charges</span></p>
-            </div>
-
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-yellow-400 text-xl mb-2"><i class="fa-solid fa-pen-nib"></i></div>
-                <h4 class="font-bold text-lg mb-1">Logo Design / Re-branding</h4>
-                <p class="text-sm text-gray-300">₹1,500 <span class="text-xs text-gray-500">fresh identity</span></p>
-            </div>
-
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-pink-500 text-xl mb-2"><i class="fa-brands fa-instagram"></i></div>
-                <h4 class="font-bold text-lg mb-1">Instagram Optimization</h4>
-                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">one-time</span></p>
-            </div>
-
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-blue-400 text-xl mb-2"><i class="fa-brands fa-google"></i></div>
-                <h4 class="font-bold text-lg mb-1">Google My Business Optimization</h4>
-                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">one-time</span></p>
-            </div>
-
-            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
-                <div class="text-green-500 text-xl mb-2"><i class="fa-brands fa-whatsapp"></i></div>
-                <h4 class="font-bold text-lg mb-1">WhatsApp Optimization</h4>
-                <p class="text-sm text-gray-300">₹1,500 <span class="text-xs text-gray-500">one-time</span></p>
+            <!-- Trust signals -->
+            <div class="mt-6 flex justify-center gap-6 text-gray-300 scroll-element fade-in-up">
+                <div class="flex items-center gap-1.5 text-xs font-semibold">
+                    <i class="fa-solid fa-lock text-green-400"></i> <span class="text-gray-400">Secure</span>
+                </div>
+                <div class="flex items-center gap-1.5 text-xs font-semibold">
+                    <i class="fa-solid fa-shield-halved text-blue-400"></i> <span class="text-gray-400">Verified</span>
+                </div>
+                <div class="flex items-center gap-1.5 text-xs font-semibold">
+                    <i class="fa-solid fa-heart text-pink-400"></i> <span class="text-gray-400">Community</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black/40 backdrop-blur-md pt-16 pb-24 relative z-10 border-t border-white/10">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-2xl font-bold mb-8">Ready to Scale?</h3>
-
-            <div class="flex flex-col md:flex-row justify-center gap-4 mb-10">
-                <a href="tel:+917874414328"
-                    class="glass-panel px-6 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-white/10 hover:scale-105 transition-all duration-300 group border border-white/10 hover:border-green-400/50">
-                    <div
-                        class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center group-hover:bg-green-500/30 transition">
-                        <i class="fa-solid fa-phone text-green-400"></i>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-xs text-gray-400">Call Us</p>
-                        <p class="text-white font-semibold">+91 7874414328</p>
-                    </div>
-                </a>
-                <a href="mailto:postifystudio1008@gmail.com"
-                    class="glass-panel px-6 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-white/10 hover:scale-105 transition-all duration-300 group border border-white/10 hover:border-blue-400/50">
-                    <div
-                        class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition">
-                        <i class="fa-solid fa-envelope text-blue-400"></i>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-xs text-gray-400">Email Us</p>
-                        <p class="text-white font-semibold">postifystudio1008@gmail.com</p>
-                    </div>
-                </a>
-                <a href="https://instagram.com/postify.studioo" target="_blank"
-                    class="glass-panel px-6 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-white/10 hover:scale-105 transition-all duration-300 group border border-white/10 hover:border-pink-400/50">
-                    <div
-                        class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center group-hover:bg-pink-500/30 transition">
-                        <i class="fa-brands fa-instagram text-pink-400"></i>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-xs text-gray-400">Follow Us</p>
-                        <p class="text-white font-semibold">@postify.studioo</p>
-                    </div>
-                </a>
-            </div>
-
-            <p class="text-gray-500 text-sm">© 2026 Postify Studio. All Rights Reserved.</p>
+    <footer class="bg-gray-900 text-gray-400 py-10 pb-32 md:pb-10">
+        <div class="container mx-auto px-5 text-center">
+            <div class="text-2xl mb-2">🤝</div>
+            <h4 class="text-white font-bold text-base mb-1">Stranger Meetup</h4>
+            <p class="text-xs mb-4">Building friendships, one meetup at a time.</p>
+            <p class="text-[11px] text-gray-500">&copy; 2026 Stranger Meetup. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Fixed WhatsApp Button -->
-    <a href="https://wa.me/917874414328?text=Hello,%20I%20have%20a%20query%20about%20your%20services." target="_blank"
-        class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110 flex items-center justify-center w-14 h-14">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-    </a>
+    <!-- Mobile Sticky CTA -->
+    <div id="mobileCta" class="mobile-sticky-cta md:hidden">
+        <a href="#reserve"
+            class="btn-book w-full py-3.5 rounded-2xl font-bold text-base flex justify-center items-center gap-2 active:scale-[0.98] transition-transform">
+            <span>Grab Your Seat</span> <span class="bg-white/20 px-2 py-0.5 rounded text-xs ml-1"><span
+                    class="dynamic-seats text-white">11</span> left</span>
+        </a>
+    </div>
+
+    <!-- Social Proof Notification Container -->
+    <div id="notification-container"
+        class="fixed bottom-16 md:bottom-4 left-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
     <script>
-        // Countdown Timer Logic
-        function updateCountdown() {
-            const endDate = new Date("December 31, 2025 23:59:59").getTime();
-            const now = new Date().getTime();
-            const distance = endDate - now;
+        // Scroll Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
 
-            if (distance < 0) {
-                document.getElementById("countdown").innerHTML = "Offer Expired";
+        document.querySelectorAll('.scroll-element').forEach(el => observer.observe(el));
+
+        // Countdown Timer to March 15, 2026, 3:00 PM IST
+        function updateCountdown() {
+            const eventDate = new Date('2026-03-15T15:00:00+05:30');
+            const now = new Date();
+            const diff = eventDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent = '🎉';
+                document.getElementById('cd-hours').textContent = 'IT\'S';
+                document.getElementById('cd-mins').textContent = 'NOW!';
                 return;
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
-            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Show sticky mobile CTA after scrolling past hero
+        const mobileCta = document.getElementById('mobileCta');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                mobileCta.classList.add('show');
+            } else {
+                mobileCta.classList.remove('show');
+            }
+        }, { passive: true });
+
+        // Social Proof Notifications
+        const names = ['Aarav', 'Priya', 'Rohan', 'Sneha', 'Vikram', 'Ananya', 'Rahul', 'Kavya', 'Khusi', 'Dev', 'Neha', 'Nishant', 'Jay', 'Aditi', 'Abhishek', 'Parth', 'Rohit', 'Aman', 'Jiya', 'Reena', 'Krupa', 'Shakshi', 'Jinal', 'Shrusti'];
+        const actions = ['just reserved a seat! 🎉', 'is checking this out 👀', 'signed up just now ✅', 'is browsing the event', 'grabbed their seat!', 'is viewing the page'];
+
+        function showNotification() {
+            const container = document.getElementById('notification-container');
+            const name = names[Math.floor(Math.random() * names.length)];
+            const action = actions[Math.floor(Math.random() * actions.length)];
+
+            const notif = document.createElement('div');
+            notif.className = 'bg-white/95 backdrop-blur-md border border-gray-200 p-3.5 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-10 opacity-0 transition-all duration-500 w-72 pointer-events-auto';
+            notif.innerHTML = `
+                <div class="w-9 h-9 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center flex-shrink-0 text-sm font-bold">
+                    ${name[0]}
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-gray-800">${name}</p>
+                    <p class="text-xs text-gray-400">${action}</p>
+                </div>
+            `;
+
+            container.appendChild(notif);
+            setTimeout(() => notif.classList.remove('translate-y-10', 'opacity-0'), 100);
+            setTimeout(() => {
+                notif.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => notif.remove(), 500);
+            }, 4000);
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        setTimeout(() => {
+            showNotification();
+            setInterval(showNotification, 8000 + Math.random() * 5000);
+        }, 3000);
+
+        // Form Submission to WhatsApp
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const mobile = document.getElementById('mobile').value;
+            const instagram = document.getElementById('instagram').value || 'Not provided';
+
+            const phoneNumber = '917874414328';
+
+            const message = `*STRANGER MEETUP 2.0*\n` +
+                `Seat Reservation Request\n` +
+                `--------------------------\n\n` +
+                `Name: ${name}\n` +
+                `Age: ${age}\n` +
+                `Gender: ${gender}\n` +
+                `Mobile: ${mobile}\n` +
+                `Instagram: ${instagram}\n\n` +
+                `--------------------------\n` +
+                `Event: 15 March 2026\n` +
+                `Time: 3:00 - 5:00 PM\n` +
+                `Entry: FREE\n\n` +
+                `I agree to the code of conduct. Please confirm my seat!`;
+
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+
+            const btn = this.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✅ Opening WhatsApp...';
+            btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                this.reset();
+            }, 3000);
+        });
+        // Wall of Love Auto-Scroll Logic
+        const slider = document.getElementById('reviews-slider');
+        let autoScrollInterval;
+
+        function startAutoScroll() {
+            if (!slider) return;
+            autoScrollInterval = setInterval(() => {
+                // Get the width of one review card plus the gap (20px)
+                const cardElement = slider.querySelector(':scope > div');
+                if (!cardElement) return;
+
+                const cardWidth = cardElement.offsetWidth + 20;
+
+                // If we've reached the end, scroll back to the start
+                if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+                    slider.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                }
+            }, 3500); // Scrolls every 3.5 seconds
+        }
+
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+
+        if (slider) {
+            // Start scrolling initially
+            setTimeout(startAutoScroll, 2000); // Small initial delay
+
+            // Pause auto-scroll when user interacts with it
+            slider.addEventListener('mouseenter', stopAutoScroll);
+            slider.addEventListener('mouseleave', startAutoScroll);
+            slider.addEventListener('touchstart', stopAutoScroll, { passive: true });
+            slider.addEventListener('touchend', () => {
+                stopAutoScroll(); // Clear any existing
+                setTimeout(startAutoScroll, 1500); // Resume shortly after touch ends
+            }, { passive: true });
+        }
+
+
+        // Dynamic Seat Urgency Decrement
+        let seatsLeft = 11;
+        function updateDynamicSeats() {
+            if (seatsLeft <= 4) return; // Stop at 4 seats to keep some credibility but high fomo
+
+            // 70% chance to drop 1 seat every 5-12 seconds
+            if (Math.random() > 0.3) {
+                seatsLeft--;
+                document.querySelectorAll('.dynamic-seats').forEach(el => {
+                    // Quick flash effect
+                    el.style.transform = 'scale(1.3)';
+                    el.style.color = '#fff0f0';
+                    el.textContent = seatsLeft;
+                    setTimeout(() => {
+                        el.style.transform = 'scale(1)';
+                        el.style.color = '';
+                    }, 200);
+                });
+            }
+            // re-trigger
+            setTimeout(updateDynamicSeats, Math.random() * 7000 + 5000);
+        }
+        setTimeout(updateDynamicSeats, 4000); // Start dropping seats after 4 seconds
     </script>
 </body>
 
