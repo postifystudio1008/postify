@@ -3,790 +3,666 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Stranger Meetup | Chapter 3 at the Cafe</title>
-    <meta name="description"
-        content="Step into the cafe. Play games. Meet strangers. Leave with friends. Chapter 3 is here on April 12th.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postify Studio - Social Media Pricing</title>
+    <link rel="icon" type="image/png" href="postify-logo.png">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Caveat:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #faf7f2;
-            /* Warm latte cream */
-            color: #3e2a21;
-            /* Espresso dark brown */
-        }
-
-        .handwritten {
-            font-family: 'Caveat', cursive;
-        }
-
-        /* Warm Cafe Gradient Elements */
-        .cafe-gradient {
-            background: linear-gradient(135deg, #fcead2 0%, #f3dbbe 50%, #e6cdb2 100%);
-        }
-
-        .warm-text-gradient {
-            background: linear-gradient(135deg, #b45309 0%, #9a3412 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Primary Button - Caramel/Orange */
-        .btn-cafe {
-            background: linear-gradient(135deg, #d97706, #c2410c);
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f172a;
             color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(194, 65, 12, 0.25);
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .btn-cafe:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(194, 65, 12, 0.4);
-        }
-
-        .btn-cafe:active {
-            transform: translateY(0);
-        }
-
-        .cafe-card {
-            background: #ffffff;
-            border: 1px solid #efe4d7;
-            box-shadow: 0 4px 20px rgba(90, 60, 40, 0.04);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s ease;
         }
 
-        .cafe-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(90, 60, 40, 0.08);
-            border-color: #e6cdb2;
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* Animations */
-        @keyframes fadeUp {
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #a78bfa, #f472b6, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+        }
+
+        /* Background Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
             from {
-                opacity: 0;
-                transform: translateY(30px);
+                transform: translate(0, 0) scale(1);
             }
 
             to {
-                opacity: 1;
-                transform: translateY(0);
+                transform: translate(20px, -20px) scale(1.1);
             }
         }
 
-        .scroll-element {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        /* Custom Scrollbar for Table */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
         }
 
-        .scroll-element.visible {
-            opacity: 1;
-            transform: none;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
         }
 
-        @keyframes marquee {
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        /* Premium Card Animation */
+        .premium-card {
+            position: relative;
+            animation: premium-pulse 3s ease-in-out infinite;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 1rem;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #fbbf24, #fcd34d, #fbbf24);
+            background-size: 300% 300%;
+            animation: shimmer 3s linear infinite;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        .premium-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            background: #0f172a;
+            z-index: -1;
+        }
+
+        @keyframes shimmer {
             0% {
-                transform: translateX(0);
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
             }
 
             100% {
-                transform: translateX(-50%);
+                background-position: 0% 50%;
             }
         }
 
-        .animate-marquee {
-            animation: marquee 20s linear infinite;
-        }
+        @keyframes premium-pulse {
 
-        /* Input styling */
-        .cafe-input {
-            background: #fff;
-            border: 1px solid #e1d5c5;
-            transition: all 0.3s ease;
-        }
-
-        .cafe-input:focus {
-            background: #fff;
-            border-color: #d97706;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
-        }
-
-        /* Floating Coffee/Game icons */
-        .float-icon {
-            position: absolute;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.7;
-            animation: float 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes float {
-            from {
-                transform: translateY(0px) rotate(-5deg);
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(251, 191, 36, 0.3), 0 0 40px rgba(251, 191, 36, 0.1);
             }
 
-            to {
-                transform: translateY(-15px) rotate(5deg);
+            50% {
+                box-shadow: 0 0 30px rgba(251, 191, 36, 0.5), 0 0 60px rgba(251, 191, 36, 0.2);
+            }
+        }
+
+        /* Text Glow Animation */
+        .text-glow {
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5)) drop-shadow(0 0 20px rgba(236, 72, 153, 0.4));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.8)) drop-shadow(0 0 40px rgba(236, 72, 153, 0.6));
             }
         }
     </style>
 </head>
 
-<body class="overflow-x-hidden antialiased">
+<body class="relative min-h-screen">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-[#faf7f2]/90 backdrop-blur-md border-b border-[#e6cdb2]">
-        <div class="container mx-auto px-5 py-3.5 flex justify-between items-center">
-            <div class="text-lg font-extrabold text-[#3e2a21] tracking-tight flex items-center gap-2">
-                <span class="text-2xl">☕</span> Stranger Meetup
-            </div>
-            <a href="#reserve" class="hidden md:inline-block btn-cafe px-5 py-2 rounded-full font-bold text-sm">
-                Reserve Seat →
-            </a>
-        </div>
-    </nav>
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="blob bg-purple-600 w-96 h-96 top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="blob bg-blue-600 w-80 h-80 bottom-0 right-0 translate-x-1/2 translate-y-1/2 delay-1000"></div>
+        <div class="blob bg-pink-600 w-64 h-64 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 delay-2000"></div>
+    </div>
 
-    <!-- Hero Section -->
-    <header class="cafe-gradient relative pt-28 pb-16 lg:pt-40 lg:pb-24 overflow-hidden border-b border-[#e1d5c5]">
-        <div class="float-icon text-3xl" style="top:20%; left:8%; animation-delay: 0s;">🎲</div>
-        <div class="float-icon text-3xl" style="top:30%; right:10%; animation-delay: 1s;">☕</div>
-        <div class="float-icon text-3xl md:block hidden" style="top:60%; left:12%; animation-delay: 0.5s;">🍰</div>
-        <div class="float-icon text-3xl md:block hidden" style="top:50%; right:15%; animation-delay: 1.5s;">🧩</div>
-
-        <div class="container mx-auto px-5 text-center relative z-10">
-            <div class="scroll-element">
-                <span
-                    class="inline-block py-1.5 px-4 rounded-full bg-white text-orange-800 text-xs font-bold mb-5 border border-orange-200">
-                    Chapter 3 • The Connection Edition
-                </span>
-            </div>
-
-            <h1
-                class="text-[2.5rem] md:text-6xl lg:text-7xl font-extrabold text-[#2a1b15] mb-5 leading-[1.1] tracking-tight scroll-element">
-                Arrive as strangers.<br>
-                <span class="warm-text-gradient">Leave with new friends.</span>
-            </h1>
-
-            <p class="text-base md:text-lg text-[#5a4336] mb-8 max-w-lg mx-auto leading-relaxed scroll-element font-medium"
-                style="transition-delay: 0.1s;">
-                A refreshing way to spend your weekend. Meet strangers, play interactive games, test your wits in
-                quizzes, and enjoy group activities—all designed for genuine connection.
-                <span class="handwritten text-orange-600 text-2xl block mt-2">— Your new friends are waiting.</span>
-            </p>
-
-            <!-- Event Info -->
-            <div class="scroll-element mb-8" style="transition-delay: 0.15s;">
-                <div
-                    class="inline-flex flex-wrap justify-center items-center gap-x-5 gap-y-3 bg-white px-6 py-4 rounded-2xl shadow-sm border border-[#efe4d7] mx-auto">
-                    <div class="flex items-center gap-2 text-sm font-bold text-[#3e2a21]">
-                        <div class="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center text-orange-600">
-                            <i class="fa-regular fa-calendar-days"></i>
-                        </div>
-                        12th April
+    <!-- Header & Hero -->
+    <header class="relative z-10">
+        <!-- Navigation Bar -->
+        <nav class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-center md:justify-between">
+                <!-- Logo & Brand -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="postify-logo.png" alt="Postify Studio"
+                        class="w-14 h-14 rounded-xl shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <div>
+                        <h2 class="text-2xl font-bold">
+                            <span class="text-white">Postify</span>
+                            <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">Studio</span>
+                        </h2>
+                        <p class="text-xs text-gray-400 tracking-wider">SOCIAL MEDIA AGENCY</p>
                     </div>
-                    <div class="hidden sm:block w-px h-5 bg-[#e1d5c5]"></div>
-                    <div class="flex items-center gap-2 text-sm font-bold text-[#3e2a21]">
-                        <div class="w-8 h-8 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-600">
-                            <i class="fa-regular fa-clock"></i>
-                        </div>
-                        5:00 PM Let's go!
-                    </div>
-                    <div class="hidden sm:block w-px h-5 bg-[#e1d5c5]"></div>
-                    <a href="https://maps.app.goo.gl/Y64wyucKdDpHWPPv5" target="_blank"
-                        class="flex items-center gap-2 text-sm font-bold text-orange-600 hover:text-orange-800 transition">
-                        <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center"><i
-                                class="fa-solid fa-location-dot"></i></div>
-                        The Black bird's Cafe ↗
-                    </a>
-                </div>
-            </div>
-
-            <!-- CTA -->
-            <div class="scroll-element relative z-30" style="transition-delay: 0.2s;">
-                <a href="#reserve"
-                    class="btn-cafe inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full text-center group w-full max-w-xs shadow-xl">
-                    <span class="font-extrabold text-lg group-hover:scale-105 transition-transform">Get Your
-                        Ticket</span>
+                </a>
+                <!-- CTA Button (Hidden on mobile) -->
+                <a href="https://wa.me/917874414328?text=Hello,%20I'm%20interested%20in%20your%20services."
+                    target="_blank"
+                    class="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 transition-all duration-300 font-semibold text-sm shadow-lg shadow-purple-500/25 hover:scale-105">
+                    <i class="fa-brands fa-whatsapp"></i> Get Started
                 </a>
             </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="container mx-auto px-4 py-12 text-center">
+            <div
+                class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full glass-panel text-sm font-medium text-purple-300 border border-purple-500/30">
+                <i class="fa-solid fa-rocket text-pink-400"></i>
+                <span>Transform Your Brand Today</span>
+                <!-- <i class="fa-solid fa-arrow-right text-xs"></i> -->
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+                Elevate Your<br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Social
+                    Presence</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+                Professional social media management tailored for <span
+                    class="text-purple-400 font-semibold">growth</span>,
+                <span class="text-pink-400 font-semibold">momentum</span>, and <span
+                    class="text-cyan-400 font-semibold">authority</span>.
+            </p>
+            <!-- <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#pricing"
+                    class="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 transition-all duration-300 font-bold text-lg shadow-lg shadow-purple-500/30 hover:scale-105">
+                    View Pricing
+                </a>
+                <a href="https://wa.me/917874414328?text=Hello,%20I%20want%20to%20know%20more%20about%20your%20services."
+                    target="_blank"
+                    class="px-8 py-3 rounded-full glass-panel border border-white/20 hover:bg-white/10 transition-all duration-300 font-semibold text-lg hover:scale-105 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-green-400"></i> Chat With Us
+                </a>
+            </div> -->
         </div>
     </header>
 
-    <!-- Countdown Section -->
-    <section class="py-8 bg-white border-b border-[#efe4d7]">
-        <div class="container mx-auto px-5">
-            <div class="flex justify-center items-center gap-4 md:gap-8 scroll-element">
-                <p class="text-xs md:text-sm font-bold text-[#8a6b57] uppercase tracking-widest mr-2">Games begin in</p>
-                <div class="text-center">
-                    <div id="cd-days" class="text-3xl md:text-4xl font-black text-[#c2410c]">--</div>
-                    <div class="text-[10px] text-[#8a6b57] font-bold uppercase tracking-wider">Days</div>
+    <!-- Pricing Plans -->
+    <section class="container mx-auto px-4 py-16 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Plan 1: Growth Starter -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col h-full border-t-4 border-t-blue-400">
+                <h3 class="text-2xl font-bold text-white mb-2">Growth Starter</h3>
+                <p class="text-sm text-gray-400 mb-6 h-12">Perfect for startups & local businesses wanting consistent
+                    online presence.</p>
+
+                <div class="mb-6">
+                    <!-- <div class="text-gray-400 line-through text-lg">₹2,000</div> -->
+                    <div class="flex items-end gap-2">
+                        <span class="text-4xl font-bold text-white">₹2,999</span>
+                        <span class="text-sm text-gray-400 mb-1">/month</span>
+                    </div>
                 </div>
-                <span class="text-2xl text-[#d5c3b3] font-light">:</span>
-                <div class="text-center">
-                    <div id="cd-hours" class="text-3xl md:text-4xl font-black text-[#d97706]">--</div>
-                    <div class="text-[10px] text-[#8a6b57] font-bold uppercase tracking-wider">Hours</div>
-                </div>
-                <span class="text-2xl text-[#d5c3b3] font-light">:</span>
-                <div class="text-center">
-                    <div id="cd-mins" class="text-3xl md:text-4xl font-black text-[#b45309]">--</div>
-                    <div class="text-[10px] text-[#8a6b57] font-bold uppercase tracking-wider">Mins</div>
-                </div>
+
+                <ul class="space-y-3 mb-8 flex-grow text-sm text-gray-300">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> 10–12
+                        High-Quality Posts</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> 3-4
+                        Reels with Viral Audio</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Instagram
+                        Optimization</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Smart
+                        Hashtags + Captions</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Daily
+                        Engagement (Comments/DMs)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-blue-400 mt-1"></i> Basic
+                        Monthly Report</li>
+                </ul>
+
+                <a href="https://wa.me/917874414328?text=I'm interested in the GROWTH STARTER plan." target="_blank"
+                    class="block w-full text-center py-3 rounded-xl bg-white/10 hover:bg-blue-600 transition-colors font-semibold border border-white/10 hover:border-blue-500">
+                    Select Plan
+                </a>
             </div>
+
+            <!-- Plan 2: Momentum Builder (Most Popular) -->
+            <div
+                class="glass-card rounded-2xl p-6 flex flex-col h-full transform md:-translate-y-4 border-t-4 border-t-purple-500 relative">
+                <div
+                    class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-lg">
+                    MOST POPULAR ⭐
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">Momentum Builder</h3>
+                <p class="text-sm text-gray-400 mb-6 h-12">Perfect for growing brands that want to dominate their niche.
+                </p>
+
+                <div class="mb-6">
+                    <!-- <div class="text-gray-400 line-through text-lg">₹3,500</div> -->
+                    <div class="flex items-end gap-2">
+                        <span
+                            class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">₹5,999</span>
+                        <span class="text-sm text-gray-400 mb-1">/month</span>
+                    </div>
+                </div>
+
+                <div class="bg-purple-500/10 p-3 rounded-lg mb-4 text-xs text-purple-200 border border-purple-500/20">
+                    Includes everything in Growth Starter, plus:
+                </div>
+
+                <ul class="space-y-3 mb-8 flex-grow text-sm text-gray-300">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> 15–17
+                        Premium Posts (More Variety)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> 6-8
+                        Trending Reels</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Insta +
+                        Google My Business Optimization</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Advanced
+                        Hashtag + SEO Captions</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Monthly
+                        30-min Strategic Meeting Call (or in-person)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i>
+                        Professional Monthly Report</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-1"></i> Priority
+                        WhatsApp Support</li>
+                </ul>
+
+                <a href="https://wa.me/917874414328?text=I'm interested in the MOMENTUM BUILDER plan." target="_blank"
+                    class="block w-full text-center py-4 rounded-xl bg-gradient-primary hover:opacity-90 transition-opacity font-bold shadow-lg shadow-purple-500/25">
+                    Select Plan
+                </a>
+            </div>
+
+            <!-- Plan 3: Authority Dominator -->
+            <div class="glass-card premium-card rounded-2xl p-6 flex flex-col h-full">
+                <h3 class="text-2xl font-bold text-white mb-2">Authority Dominator</h3>
+                <p class="text-sm text-gray-400 mb-6 h-12">For serious brands wanting to own their industry & max leads.
+                </p>
+
+                <div class="mb-6">
+                    <!-- <div class="text-gray-400 line-through text-lg">₹5,500</div> -->
+                    <div class="flex items-end gap-2">
+                        <span class="text-4xl font-bold text-white">₹9,999</span>
+                        <span class="text-sm text-gray-400 mb-1">/month</span>
+                    </div>
+                </div>
+
+                <div class="bg-amber-500/10 p-3 rounded-lg mb-4 text-xs text-amber-200 border border-amber-500/20">
+                    Includes everything in Momentum Builder, plus:
+                </div>
+
+                <ul class="space-y-3 mb-8 flex-grow text-sm text-gray-300">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> 20–22
+                        Premium Posts (Carousel, Infographics)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> 10-12
+                        High-Production Reels</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> 1
+                        Professional Video Shoot + Editing (On-location)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Competitor
+                        Spying Report</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Full
+                        Engagement (Insta, FB, Google, LinkedIn)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Paid Ad
+                        Management</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> Market
+                        Trends & Business Growth Strategy</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-amber-400 mt-1"></i> 2 Strategy
+                        meetings + ROI Focused Report</li>
+                </ul>
+
+                <a href="https://wa.me/917874414328?text=I'm interested in the AUTHORITY DOMINATOR plan."
+                    target="_blank"
+                    class="block w-full text-center py-3 rounded-xl bg-white/10 hover:bg-amber-600 transition-colors font-semibold border border-white/10 hover:border-amber-500">
+                    Select Plan
+                </a>
+            </div>
+
         </div>
     </section>
 
-    <!-- What to Expect Section -->
-    <section id="details" class="py-16 md:py-24">
-        <div class="container mx-auto px-5 max-w-3xl">
-            <div class="text-center mb-10 scroll-element">
-                <span class="handwritten text-3xl md:text-4xl text-orange-500">So, what's brewing? ☕</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-[#2a1b15] mt-2">Here's how we roll.</h2>
-                <p class="text-[#5a4336] mt-3">No awkward standing around. We've built an evening designed for
-                    introductions and fun.</p>
-            </div>
-
-            <div class="space-y-4">
-                <!-- Card 1 -->
-                <div class="cafe-card rounded-2xl p-6 scroll-element flex items-start md:items-center gap-4">
-                    <div
-                        class="w-14 h-14 shrink-0 bg-yellow-50 rounded-xl flex items-center justify-center text-2xl text-yellow-600 border border-yellow-100">
-                        🎲
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-[#2a1b15]">Group Activities & Games</h4>
-                        <p class="text-[#5a4336] text-sm mt-1 leading-relaxed">We kick off with fun quizzes, curated
-                            games, and team activities. It beautifully breaks the ice and completely eliminates the
-                            "what do I say?" pressure.</p>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="cafe-card rounded-2xl p-6 scroll-element flex items-start md:items-center gap-4"
-                    style="transition-delay: 0.1s;">
-                    <div
-                        class="w-14 h-14 shrink-0 bg-orange-50 rounded-xl flex items-center justify-center text-2xl text-orange-600 border border-orange-100">
-                        🪩
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-[#2a1b15]">Spontaneous Flow & Dancing/Garba</h4>
-                        <p class="text-[#5a4336] text-sm mt-1 leading-relaxed">Expect more than just sitting at a table!
-                            The energy naturally builds into moments of spontaneous fun, dancing/Garba, and genuinely
-                            unforgettable group enjoyment.</p>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="cafe-card rounded-2xl p-6 scroll-element flex items-start md:items-center gap-4"
-                    style="transition-delay: 0.2s;">
-                    <div
-                        class="w-14 h-14 shrink-0 bg-amber-50 rounded-xl flex items-center justify-center text-2xl text-amber-600 border border-amber-100">
-                        🫂
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-[#2a1b15]">Strangers Become Friends</h4>
-                        <p class="text-[#5a4336] text-sm mt-1 leading-relaxed">The roadmap of the entire evening is
-                            built specifically to connect you with incredible people. You walk into the warm cafe alone,
-                            but you never leave that way.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Vibe Strip -->
-    <section class="py-8 bg-gradient-to-r from-[#c2410c] to-[#d97706] overflow-hidden">
-        <div
-            class="animate-marquee flex gap-8 whitespace-nowrap text-white font-bold text-lg tracking-widest w-max uppercase">
-            <span>🧠 Trivia Quizzes</span><span>•</span>
-            <span>🎲 Fun Games</span><span>•</span>
-            <span>🪩 Dancing/Garba & Vibes</span><span>•</span>
-            <span>🫂 Making Friends</span><span>•</span>
-            <span>🎪 Group Activities</span><span>•</span>
-            <span>🧠 Trivia Quizzes</span><span>•</span>
-            <span>🎲 Fun Games</span><span>•</span>
-            <span>🪩 Dancing/Garba & Vibes</span><span>•</span>
-            <span>🫂 Making Friends</span><span>•</span>
-            <span>🎪 Group Activities</span><span>•</span>
-        </div>
-    </section>
-
-    <!-- Who is this for + Stats -->
-    <section class="py-16 md:py-24 bg-white border-b border-[#efe4d7]">
-        <div class="container mx-auto px-5 max-w-4xl">
-            <div class="text-center mb-12 scroll-element">
-                <span class="handwritten text-3xl md:text-4xl text-[#c2410c]">Pull up a chair if... 🪑</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-[#2a1b15] mt-1">This event is for you</h2>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="cafe-card p-6 rounded-2xl text-center scroll-element">
-                    <div class="text-3xl mb-3">🦋</div>
-                    <h3 class="font-bold text-[#2a1b15] mb-1">Social Seekers</h3>
-                    <p class="text-[#6c5446] text-xs">You love adding new faces to your weekend.</p>
-                </div>
-                <div class="cafe-card p-6 rounded-2xl text-center scroll-element" style="transition-delay: 0.1s;">
-                    <div class="text-3xl mb-3">🌍</div>
-                    <h3 class="font-bold text-[#2a1b15] mb-1">New in Town</h3>
-                    <p class="text-[#6c5446] text-xs">Looking to build your tribe in the city.</p>
-                </div>
-                <div class="cafe-card p-6 rounded-2xl text-center scroll-element" style="transition-delay: 0.2s;">
-                    <div class="text-3xl mb-3">🧩</div>
-                    <h3 class="font-bold text-[#2a1b15] mb-1">Game Lovers</h3>
-                    <p class="text-[#6c5446] text-xs">Because everything is better around a table.</p>
-                </div>
-                <div class="cafe-card p-6 rounded-2xl text-center scroll-element" style="transition-delay: 0.3s;">
-                    <div class="text-3xl mb-3">✨</div>
-                    <h3 class="font-bold text-[#2a1b15] mb-1">Curious Minds</h3>
-                    <p class="text-[#6c5446] text-xs">Want to shake up the usual boring routine.</p>
-                </div>
-            </div>
-
-            <!-- Stats Strip -->
-            <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 scroll-element">
-                <div class="bg-[#faf7f2] rounded-2xl p-4 text-center border border-[#efe4d7]">
-                    <p class="text-2xl md:text-3xl font-black text-[#c2410c]">30</p>
-                    <p class="text-xs text-[#8a6b57] font-bold uppercase tracking-wider mt-1">Seats limit</p>
-                </div>
-                <div class="bg-[#faf7f2] rounded-2xl p-4 text-center border border-[#efe4d7]">
-                    <p class="text-2xl md:text-3xl font-black text-[#d97706]">50:50</p>
-                    <p class="text-xs text-[#8a6b57] font-bold uppercase tracking-wider mt-1">Gender Ratio</p>
-                </div>
-                <div class="bg-[#faf7f2] rounded-2xl p-4 text-center border border-[#efe4d7]">
-                    <p class="text-2xl md:text-3xl font-black text-[#b45309]">18-30</p>
-                    <p class="text-xs text-[#8a6b57] font-bold uppercase tracking-wider mt-1">Age Group</p>
-                </div>
-                <div class="bg-[#faf7f2] rounded-2xl p-4 text-center border border-[#efe4d7]">
-                    <p class="text-2xl md:text-3xl font-black text-green-600">FREE</p>
-                    <p class="text-xs text-[#8a6b57] font-bold uppercase tracking-wider mt-1">For Girls</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Wall of Love -->
-    <section class="py-16 md:py-24 bg-[#faf7f2]">
-        <div class="container mx-auto px-5 mb-10 text-center scroll-element">
-            <span class="handwritten text-3xl md:text-4xl text-[#d97706]">Don't just take our word for it 💌</span>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-[#2a1b15] mt-1">Wall of Love</h2>
-            <p class="text-[#6c5446] mt-2 max-w-lg mx-auto text-sm">Hear from the people who played the games and drank
-                the coffee in the previous chapters.</p>
-        </div>
-
-        <div id="reviews-slider"
-            class="flex overflow-x-auto gap-5 px-5 md:px-10 pb-10 snap-x snap-mandatory scroll-element"
-            style="scrollbar-width: none;">
-            <div class="snap-center shrink-0 w-[280px] md:w-[320px] cafe-card rounded-3xl p-6">
-                <div class="flex gap-1 text-[#d97706] text-sm mb-3">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <p class="text-sm font-semibold text-[#3e2a21] leading-relaxed mb-4">"The cafe vibe combined with the
-                    board games made introducing myself incredibly easy. Loved every second!"</p>
-                <div class="flex items-center gap-3 mt-auto">
-                    <div
-                        class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs">
-                        P</div>
-                    <p class="text-xs text-[#8a6b57] font-bold">Priya, 24</p>
-                </div>
-            </div>
-
-            <div class="snap-center shrink-0 w-[280px] md:w-[320px] cafe-card rounded-3xl p-6">
-                <div class="flex gap-1 text-[#d97706] text-sm mb-3">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <p class="text-sm font-semibold text-[#3e2a21] leading-relaxed mb-4">"Zero awkwardness. Bringing people
-                    together around a game table is the best idea ever. Completely refreshing."</p>
-                <div class="flex items-center gap-3 mt-auto">
-                    <div
-                        class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xs">
-                        R</div>
-                    <p class="text-xs text-[#8a6b57] font-bold">Rohan, 26</p>
-                </div>
-            </div>
-
-            <div class="snap-center shrink-0 w-[280px] md:w-[320px] cafe-card rounded-3xl p-6">
-                <div class="flex gap-1 text-[#d97706] text-sm mb-3">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <p class="text-sm font-semibold text-[#3e2a21] leading-relaxed mb-4">"It actually delivered on the
-                    promise of meeting strangers comfortably. The hosts were amazing!"</p>
-                <div class="flex items-center gap-3 mt-auto">
-                    <div
-                        class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center font-bold text-xs">
-                        S</div>
-                    <p class="text-xs text-[#8a6b57] font-bold">Sneha, 23</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Good To Know -->
-    <section class="py-16 md:py-24 bg-white border-y border-[#efe4d7]">
-        <div class="container mx-auto px-5 max-w-2xl">
-            <div class="text-center mb-10 scroll-element">
-                <span class="handwritten text-3xl md:text-4xl text-[#c2410c]">House Rules 📋</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-[#2a1b15] mt-1">Good To Know</h2>
-            </div>
-
-            <div class="space-y-3">
-                <div class="flex items-start gap-3 cafe-card p-4 rounded-2xl scroll-element">
-                    <span class="text-lg mt-0.5">✅</span>
-                    <p class="text-[#5a4336] text-sm"><strong>Registration only</strong> — no walk-ins. We cap it
-                        exactly at 30 seats to keep it intimate.</p>
-                </div>
-                <div class="flex items-start gap-3 cafe-card p-4 rounded-2xl scroll-element"
-                    style="transition-delay: 0.1s;">
-                    <span class="text-lg mt-0.5">⚖️</span>
-                    <p class="text-[#5a4336] text-sm"><strong>Equal Ratio</strong> — To ensure proper dynamics, we
-                        tightly control the male-to-female ratio.</p>
-                </div>
-                <div class="flex items-start gap-3 cafe-card p-4 rounded-2xl scroll-element"
-                    style="transition-delay: 0.2s;">
-                    <span class="text-lg mt-0.5">🛡️</span>
-                    <p class="text-[#5a4336] text-sm"><strong>Curated & Safe</strong> — Every registration is screened.
-                        Disrespectful behavior means immediate removal.</p>
-                </div>
-                <div class="flex items-start gap-3 cafe-card p-4 rounded-2xl scroll-element"
-                    style="transition-delay: 0.3s;">
-                    <span class="text-lg mt-0.5">📸</span>
-                    <p class="text-[#5a4336] text-sm"><strong>Photography</strong> — We capture moments for our socials.
-                        Let us know if you prefer to stay off-camera.</p>
-                </div>
-                <div class="flex items-start gap-3 cafe-card p-4 rounded-2xl scroll-element"
-                    style="transition-delay: 0.4s;">
-                    <span class="text-lg mt-0.5">🐢</span>
-                    <p class="text-[#5a4336] text-sm"><strong>Introvert-friendly</strong> — The entire evening revolves
-                        around games, so you never have to "force" a chat.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Meet the Hosts -->
-    <!-- <section class="py-16 md:py-24 bg-[#faf7f2]">
-        <div class="container mx-auto px-5 max-w-4xl text-center">
-            <div class="mb-12 scroll-element">
-                <span class="handwritten text-3xl md:text-4xl text-[#d97706]">Your Game Masters 👋</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-[#2a1b15] mt-1">Meet the Hosts</h2>
-                <p class="text-[#6c5446] mt-3 text-sm md:text-base max-w-lg mx-auto">We'll be there to explain the
-                    rules, introduce you to people, and make sure everyone feels at home.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="scroll-element cafe-card p-8 rounded-3xl">
-                    <div
-                        class="w-32 h-32 mx-auto mb-4 bg-orange-100 rounded-full border-4 border-white shadow-sm flex items-center justify-center text-4xl overflow-hidden relative">
-                        <img src="host_male.png" alt="Host Rahul"
-                            onerror="this.onerror=null; this.innerHTML='🤠'; this.className='absolute text-6xl opacity-50';"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-xl font-bold text-[#2a1b15]">Rahul</h3>
-                    <p class="text-[#c2410c] font-black text-[11px] uppercase tracking-wider mb-3">The Connector</p>
-                    <p class="text-[#5a4336] text-sm leading-relaxed">He ensures nobody sits alone. Rahul is an expert
-                        at teaching game rules in 60 seconds and matching you with people who share your vibe.</p>
-                </div>
-                <div class="scroll-element cafe-card p-8 rounded-3xl" style="transition-delay: 0.2s;">
-                    <div
-                        class="w-32 h-32 mx-auto mb-4 bg-yellow-100 rounded-full border-4 border-white shadow-sm flex items-center justify-center text-4xl overflow-hidden relative">
-                        <img src="host_female.png" alt="Host Ananya"
-                            onerror="this.onerror=null; this.innerHTML='👩‍🎨'; this.className='absolute text-6xl opacity-50';"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-xl font-bold text-[#2a1b15]">Ananya</h3>
-                    <p class="text-[#d97706] font-black text-[11px] uppercase tracking-wider mb-3">The Energy Checker
-                    </p>
-                    <p class="text-[#5a4336] text-sm leading-relaxed">Your designated hype woman. Ananya makes sure the
-                        table is always laughing, comfortable, and capturing the best aesthetic candid moments.</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- FAQ Section -->
-    <section class="py-16 md:py-24 bg-white border-t border-[#efe4d7]">
-        <div class="container mx-auto px-5 max-w-3xl">
-            <div class="text-center mb-10 scroll-element">
-                <span class="handwritten text-3xl md:text-4xl text-[#c2410c]">Still wondering? 🤔</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-[#2a1b15] mt-1">Frequently Asked Questions</h2>
-            </div>
-
-            <div class="space-y-4">
-                <div class="cafe-card rounded-2xl p-6 scroll-element">
-                    <h4 class="font-bold text-[#2a1b15] flex gap-3"><span
-                            class="text-[#d97706] font-extrabold">Q.</span> Can I come alone?</h4>
-                    <p class="text-[#6c5446] text-sm mt-2 pl-[1.65rem] leading-relaxed">Absolutely! The entire event is
-                        designed for people walking in solo. The board games are meant to instantly break the ice.</p>
-                </div>
-                <div class="cafe-card rounded-2xl p-6 scroll-element">
-                    <h4 class="font-bold text-[#2a1b15] flex gap-3"><span
-                            class="text-[#d97706] font-extrabold">Q.</span> What kind of games will we play?</h4>
-                    <p class="text-[#6c5446] text-sm mt-2 pl-[1.65rem] leading-relaxed">Light, highly interactive, and
-                        extremely easy-to-learn games (think social deduction, drawing, or conversation-starters). No
-                        monopoly, we promise.</p>
-                </div>
-                <div class="cafe-card rounded-2xl p-6 scroll-element">
-                    <h4 class="font-bold text-[#2a1b15] flex gap-3"><span
-                            class="text-[#d97706] font-extrabold">Q.</span> Do I need to be a coffee drinker?</h4>
-                    <p class="text-[#6c5446] text-sm mt-2 pl-[1.65rem] leading-relaxed">Not at all! The cafe offers tea,
-                        coolers, and great food. The "cafe vibe" is just about the cozy atmosphere.</p>
-                </div>
-                <div class="cafe-card rounded-2xl p-6 scroll-element">
-                    <h4 class="font-bold text-[#2a1b15] flex gap-3"><span
-                            class="text-[#d97706] font-extrabold">Q.</span> What should I wear?</h4>
-                    <p class="text-[#6c5446] text-sm mt-2 pl-[1.65rem] leading-relaxed">Smart casual or whatever makes
-                        you feel confident and comfortable sitting around a table!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section id="reserve" class="py-16 md:py-24 cafe-gradient border-t border-[#efe4d7]">
-        <div class="container mx-auto px-5 max-w-4xl">
-            <div class="bg-white rounded-[2rem] p-6 md:p-10 shadow-2xl border border-[#efe4d7] scroll-element">
-                <div class="text-center mb-8">
-                    <span class="handwritten text-4xl text-[#c2410c]">Ready to play? 🎟️</span>
-                    <h2 class="text-3xl md:text-4xl font-extrabold mt-1 mb-2 text-[#2a1b15]">Save Your Seat</h2>
-                    <p class="text-[#6c5446] text-sm">Spaces are strictly limited. Fill this out, scan the QR (if
-                        applicable), and we'll confirm your ticket via WhatsApp.</p>
-                </div>
-
-                <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
-
-                    <!-- Payment Details -->
-                    <div class="w-full md:w-5/12 bg-[#faf7f2] p-6 rounded-3xl border border-[#efe4d7]">
-                        <h3 class="text-lg font-extrabold text-[#2a1b15] mb-5 border-b border-[#e1d5c5] pb-3">Ticket
-                            Details</h3>
-
-                        <div
-                            class="flex justify-between items-center bg-white p-4 rounded-xl border border-[#e1d5c5] mb-3 shadow-sm">
-                            <span class="font-bold text-[#5a4336]">Boys Entry</span>
-                            <span class="font-black text-lg text-[#c2410c]">₹99</span>
-                        </div>
-                        <div
-                            class="flex justify-between items-center bg-[#fff8f1] p-4 rounded-xl border border-orange-200 mb-6 shadow-sm">
-                            <span class="font-bold text-orange-800">Girls Entry</span>
-                            <span class="font-black text-lg text-green-600 uppercase tracking-widest">Free</span>
-                        </div>
-
-                        <div class="text-center bg-white p-5 rounded-2xl border border-[#e1d5c5] shadow-sm">
-                            <p class="text-xs font-black text-[#5a4336] uppercase tracking-wider mb-3">UPI Payment QR
-                            </p>
-                            <!-- Payment QR Code placement -->
+    <!-- Comparison Table -->
+    <section class="container mx-auto px-4 py-16 relative z-10">
+        <h2 class="text-3xl font-bold text-center mb-10">Feature Comparison</h2>
+        <div class="glass-panel rounded-2xl overflow-hidden custom-scrollbar overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[800px]">
+                <thead>
+                    <tr class="bg-white/5 border-b border-white/10">
+                        <th class="p-4 text-gray-300 font-semibold">Features</th>
+                        <th class="p-4 text-center text-blue-300 font-bold">Growth Starter</th>
+                        <th class="p-4 text-center text-purple-300 font-bold bg-purple-900/20">Momentum Builder</th>
+                        <th class="p-0 align-bottom">
                             <div
-                                class="w-44 h-44 bg-gray-50 rounded-xl mx-auto mb-3 flex items-center justify-center border-2 border-dashed border-[#d5c3b3] p-2">
-                                <img src="upi-qr.png" alt="Scan to Pay" class="w-full h-full object-cover rounded-lg"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                class="p-4 text-center text-amber-300 font-bold bg-amber-900/20 border-x border-t border-amber-500/20 rounded-t-xl relative overflow-hidden h-full flex items-center justify-center">
                                 <div
-                                    class="hidden text-[#8a6b57] text-xs font-bold w-full h-full flex-col justify-center items-center">
-                                    <i class="fa-solid fa-qrcode text-3xl mb-2 text-[#d5c3b3]"></i>
-                                    Place your QR<br>named 'upi-qr.png' here
+                                    class="absolute inset-0 bg-gradient-to-b from-amber-500/10 to-transparent pointer-events-none">
                                 </div>
+                                <span class="relative z-10"><i class="fa-solid fa-crown mr-2 mb-1"></i>Authority
+                                    Dominator</span>
                             </div>
-                            <p class="text-[11px] text-[#8a6b57] font-semibold leading-relaxed">Boys: Scan this QR to
-                                pay ₹99.</p>
-                            <div class="mt-2 text-xs font-bold text-[#3e2a21] bg-[#fff8f1] p-2.5 rounded-lg border border-orange-100 flex items-center justify-between cursor-pointer hover:bg-orange-50 transition"
-                                onclick="copyNumber()">
-                                <span>UPI No: <span id="upi-number">7874414328</span></span>
-                                <i class="fa-regular fa-copy text-[#d97706] text-sm" id="copy-icon"></i>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm text-gray-300">
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Feed Posts</td>
+                        <td class="p-4 text-center">10–12 High-Quality</td>
+                        <td class="p-4 text-center bg-purple-900/10">15–17 Premium</td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
+                            20–22 Advanced</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Reels</td>
+                        <td class="p-4 text-center">3-4 Trending</td>
+                        <td class="p-4 text-center bg-purple-900/10">6-8 Engaging</td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
+                            10-12 High-Production</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Instagram Optimization</td>
+                        <td class="p-4 text-center">Basic</td>
+                        <td class="p-4 text-center bg-purple-900/10">SEO Optimized</td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
+                            SEO Optimized + Engaging</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Smart Hashtags + Captions</td>
+                        <td class="p-4 text-center">Basic</td>
+                        <td class="p-4 text-center bg-purple-900/10">Advanced + SEO</td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
+                            Advanced + SEO + Engaging</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Engagement</td>
+                        <td class="p-4 text-center">Daily (Insta)</td>
+                        <td class="p-4 text-center bg-purple-900/10">Instant (Insta + Facebook)</td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
+                            Instant in all plateforms (Insta/FB/GMB)</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Monthly Report</td>
+                        <td class="p-4 text-center">Basic</td>
+                        <td class="p-4 text-center bg-purple-900/10">Professional</td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
+                            ROI Focused</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">WhatsApp Support</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10">
+                            Priority</td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-yellow-100 font-semibold">
+                            Priority</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Google My Business Optimization</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10">Included</td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-green-400 font-bold">
+                            Advanced Optimized</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">On-Location Video Shoot</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
+                        </td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-green-400 font-bold">
+                            1 Shoot/mo</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Competitor Spying</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
+                        </td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-green-400 font-bold">
+                            <i class="fa-solid fa-check"></i>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Ad Management</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
+                        </td>
+                        <td
+                            class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-amber-500/20 text-green-400">
+                            <i class="fa-solid fa-check"></i>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                        <td class="p-4">Market Trends & Business Growth Strategy</td>
+                        <td class="p-4 text-center text-gray-600"><i class="fa-solid fa-xmark"></i></td>
+                        <td class="p-4 text-center bg-purple-900/10 text-gray-600"><i class="fa-solid fa-xmark"></i>
+                        </td>
+                        <td class="p-0">
+                            <div
+                                class="p-4 text-center bg-gradient-to-b from-amber-900/10 to-transparent border-x border-b border-amber-500/20 rounded-b-xl text-green-400">
+                                <i class="fa-solid fa-check"></i>
                             </div>
-                            <p class="text-[10px] text-[#8a6b57] mt-1.5 font-semibold">Tap to copy number. We'll verify
-                                payment on WhatsApp.</p>
-                        </div>
-                    </div>
+                        </td>
+                    </tr>
 
-                    <!-- Booking Form -->
-                    <div class="w-full md:w-7/12">
-                        <form id="bookingForm" class="space-y-4">
-                            <div>
-                                <label class="block text-[#5a4336] font-bold mb-1.5 text-sm" for="name">Full
-                                    Name</label>
-                                <input type="text" id="name" required
-                                    class="w-full px-4 py-3.5 rounded-xl cafe-input text-[#2a1b15]"
-                                    placeholder="Your name">
-                            </div>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-[#5a4336] font-bold mb-1.5 text-sm" for="age">Age</label>
-                                    <input type="number" id="age" min="18" max="30" required
-                                        class="w-full px-4 py-3.5 rounded-xl cafe-input text-[#2a1b15]"
-                                        placeholder="18-30">
-                                </div>
-                                <div>
-                                    <label class="block text-[#5a4336] font-bold mb-1.5 text-sm"
-                                        for="gender">Gender</label>
-                                    <select id="gender" required
-                                        class="w-full px-4 py-3.5 rounded-xl cafe-input text-[#2a1b15]">
-                                        <option value="" disabled selected>Select</option>
-                                        <option value="Female">Female (Free)</option>
-                                        <option value="Male">Male (₹99)</option>
-                                    </select>
-                                </div>
-                            </div>
+    <!-- Service Extensions -->
+    <section class="container mx-auto px-4 py-16 relative z-10">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">Service Extensions</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Tailor your package with these optional power-ups to suit your
+                specific needs.</p>
+        </div>
 
-                            <div>
-                                <label class="block text-[#5a4336] font-bold mb-1.5 text-sm" for="mobile">WhatsApp
-                                    Number</label>
-                                <input type="tel" id="mobile" required
-                                    class="w-full px-4 py-3.5 rounded-xl cafe-input text-[#2a1b15]"
-                                    placeholder="Need exactly 10 digits">
-                            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Extension Card -->
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-pink-400 text-xl mb-2"><i class="fa-solid fa-handshake"></i></div>
+                <h4 class="font-bold text-lg mb-1">Influencer Collaborations</h4>
+                <p class="text-sm text-gray-300">₹4000 – ₹15,000+ <span class="text-xs text-gray-500">per collab</span>
+                </p>
+            </div>
 
-                            <div>
-                                <label class="block text-[#5a4336] font-bold mb-1.5 text-sm" for="instagram">Instagram
-                                    Handle</label>
-                                <input type="text" id="instagram"
-                                    class="w-full px-4 py-3.5 rounded-xl cafe-input text-[#2a1b15]"
-                                    placeholder="@username">
-                            </div>
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-blue-400 text-xl mb-2"><i class="fa-solid fa-images"></i></div>
+                <h4 class="font-bold text-lg mb-1">Extra Posts (Poster)</h4>
+                <p class="text-sm text-gray-300">₹250 <span class="text-xs text-gray-500">per post</span></p>
+            </div>
 
-                            <div class="flex items-start gap-2 pt-1">
-                                <input type="checkbox" id="agreement" required
-                                    class="mt-1 w-4 h-4 text-[#d97706] rounded border-gray-300 focus:ring-[#d97706]">
-                                <label for="agreement" class="text-[11px] text-[#8a6b57]">I understand the house rules
-                                    and the payment process.</label>
-                            </div>
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-purple-400 text-xl mb-2"><i class="fa-solid fa-video"></i></div>
+                <h4 class="font-bold text-lg mb-1">Extra Reel</h4>
+                <p class="text-sm text-gray-300">₹500 – ₹1,000 <span class="text-xs text-gray-500">per reel</span></p>
+            </div>
 
-                            <button type="submit"
-                                class="w-full mt-2 py-4 btn-cafe rounded-xl font-extrabold text-base flex justify-center items-center gap-2">
-                                <span>Get Your Ticket on WhatsApp</span>
-                                <i class="fa-brands fa-whatsapp text-xl"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-orange-400 text-xl mb-2"><i class="fa-solid fa-camera"></i></div>
+                <h4 class="font-bold text-lg mb-1">Pro On-Location Shoot</h4>
+                <p class="text-sm text-gray-300">₹2,000 – ₹4,000 <span class="text-xs text-gray-500">per shoot</span>
+                </p>
+                <p class="text-xs text-gray-500 mt-1">*Travel fee outside Ahmedabad</p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-green-400 text-xl mb-2"><i class="fa-solid fa-bullhorn"></i></div>
+                <h4 class="font-bold text-lg mb-1">Meta Ads Management</h4>
+                <p class="text-sm text-gray-300">15% of spend <span class="text-xs text-gray-500">or min ₹500/mo</span>
+                </p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-blue-500 text-xl mb-2"><i class="fa-solid fa-circle-check"></i></div>
+                <h4 class="font-bold text-lg mb-1">Meta Verified Blue Tick + Setup</h4>
+                <p class="text-sm text-gray-300">₹500 <span class="text-xs text-gray-500">one-time</span></p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-blue-700 text-xl mb-2"><i class="fa-brands fa-linkedin"></i></div>
+                <h4 class="font-bold text-lg mb-1">LinkedIn Profile Mgmt</h4>
+                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">/month</span></p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-red-400 text-xl mb-2"><i class="fa-solid fa-bolt"></i></div>
+                <h4 class="font-bold text-lg mb-1">Urgent/Same-Day Post</h4>
+                <p class="text-sm text-gray-300">+ ₹250 <span class="text-xs text-gray-500">extra charges</span></p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-yellow-400 text-xl mb-2"><i class="fa-solid fa-pen-nib"></i></div>
+                <h4 class="font-bold text-lg mb-1">Logo Design / Re-branding</h4>
+                <p class="text-sm text-gray-300">₹1,500 <span class="text-xs text-gray-500">fresh identity</span></p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-pink-500 text-xl mb-2"><i class="fa-brands fa-instagram"></i></div>
+                <h4 class="font-bold text-lg mb-1">Instagram Optimization</h4>
+                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">one-time</span></p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-blue-400 text-xl mb-2"><i class="fa-brands fa-google"></i></div>
+                <h4 class="font-bold text-lg mb-1">Google My Business Optimization</h4>
+                <p class="text-sm text-gray-300">₹1,000 <span class="text-xs text-gray-500">one-time</span></p>
+            </div>
+
+            <div class="glass-panel p-5 rounded-xl hover:bg-white/10 transition border border-white/5">
+                <div class="text-green-500 text-xl mb-2"><i class="fa-brands fa-whatsapp"></i></div>
+                <h4 class="font-bold text-lg mb-1">WhatsApp Optimization</h4>
+                <p class="text-sm text-gray-300">₹1,500 <span class="text-xs text-gray-500">one-time</span></p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#2a1b15] text-[#d5c3b3] py-12 text-center">
-        <div class="container mx-auto px-5">
-            <div class="text-3xl mb-3">☕</div>
-            <h4 class="text-white font-extrabold text-lg mb-1">Stranger Meetup</h4>
-            <p class="text-sm text-[#8a6b57] font-medium">Coffee, games, and new friends.</p>
-            <p class="text-xs text-[#5a4336] mt-6 font-semibold">&copy; 2026 Stranger Meetup. All rights reserved.</p>
+    <footer class="bg-black/40 backdrop-blur-md pt-16 pb-24 relative z-10 border-t border-white/10">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-8">Ready to Scale?</h3>
+
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-10">
+                <a href="tel:+917874414328"
+                    class="glass-panel px-6 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-white/10 hover:scale-105 transition-all duration-300 group border border-white/10 hover:border-green-400/50">
+                    <div
+                        class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center group-hover:bg-green-500/30 transition">
+                        <i class="fa-solid fa-phone text-green-400"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-400">Call Us</p>
+                        <p class="text-white font-semibold">+91 7874414328</p>
+                    </div>
+                </a>
+                <a href="mailto:postifystudio1008@gmail.com"
+                    class="glass-panel px-6 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-white/10 hover:scale-105 transition-all duration-300 group border border-white/10 hover:border-blue-400/50">
+                    <div
+                        class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition">
+                        <i class="fa-solid fa-envelope text-blue-400"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-400">Email Us</p>
+                        <p class="text-white font-semibold">postifystudio1008@gmail.com</p>
+                    </div>
+                </a>
+                <a href="https://instagram.com/postify.studioo" target="_blank"
+                    class="glass-panel px-6 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-white/10 hover:scale-105 transition-all duration-300 group border border-white/10 hover:border-pink-400/50">
+                    <div
+                        class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center group-hover:bg-pink-500/30 transition">
+                        <i class="fa-brands fa-instagram text-pink-400"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-400">Follow Us</p>
+                        <p class="text-white font-semibold">@postify.studioo</p>
+                    </div>
+                </a>
+            </div>
+
+            <p class="text-gray-500 text-sm">© 2026 Postify Studio. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Fixed WhatsApp Button -->
+    <a href="https://wa.me/917874414328?text=Hello,%20I%20have%20a%20query%20about%20your%20services." target="_blank"
+        class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110 flex items-center justify-center w-14 h-14">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
     <script>
-        // Scroll Reveal Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.scroll-element').forEach(el => observer.observe(el));
-
-        // Countdown Timer down to April 12th, 5 PM
+        // Countdown Timer Logic
         function updateCountdown() {
-            const eventDate = new Date('2026-04-12T17:00:00+05:30');
-            const now = new Date();
-            const diff = eventDate - now;
+            const endDate = new Date("December 31, 2025 23:59:59").getTime();
+            const now = new Date().getTime();
+            const distance = endDate - now;
 
-            if (diff <= 0) {
-                document.getElementById('cd-days').textContent = '00';
-                document.getElementById('cd-hours').textContent = '00';
-                document.getElementById('cd-mins').textContent = '00';
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "Offer Expired";
                 return;
             }
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
         }
+
+        setInterval(updateCountdown, 1000);
         updateCountdown();
-        setInterval(updateCountdown, 60000);
-
-        // Horizontal slider auto-scroll
-        const slider = document.getElementById('reviews-slider');
-        if (slider) {
-            setInterval(() => {
-                if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
-                    slider.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    slider.scrollBy({ left: 300, behavior: 'smooth' });
-                }
-            }, 4000);
-        }
-
-        // WhatsApp Form Submission Logic
-        document.getElementById('bookingForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const age = document.getElementById('age').value;
-            const gender = document.getElementById('gender').value;
-            const mobile = document.getElementById('mobile').value;
-            const instagram = document.getElementById('instagram').value || 'Not provided';
-
-            const isMale = gender === 'Male';
-            const paymentText = isMale
-                ? `💸 *Payment:* I've paid ₹99 via QR! (Will share the screenshot over chat!)`
-                : `✨ *Entry:* Girls Entry (Free!)`;
-
-            const phoneNumber = '917874414328';
-            const message = `Hey Dev! 👋 I'm super excited for *STRANGER MEETUP | Chapter 3!* ☕🎲\n\n` +
-                `Here are my details to lock in my seat:\n\n` +
-                `👤 *Name:* ${name}\n` +
-                `🎂 *Age:* ${age}\n` +
-                `🌟 *Gender:* ${gender}\n` +
-                `📞 *WhatsApp:* ${mobile}\n` +
-                `📸 *Insta:* ${instagram}\n\n` +
-                `${paymentText}\n\n` +
-                `Can't wait to meet everyone! Please confirm my reservation! 🥳🎉`;
-
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappURL, '_blank');
-
-            const btn = this.querySelector('button');
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> Redirecting...';
-            btn.style.opacity = '0.7';
-
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.style.opacity = '1';
-                this.reset();
-            }, 3000);
-        });
-
-        // Copy Number Logic
-        function copyNumber() {
-            navigator.clipboard.writeText('7874414328').then(() => {
-                const icon = document.getElementById('copy-icon');
-                icon.className = 'fa-solid fa-check text-green-600 text-sm';
-                setTimeout(() => {
-                    icon.className = 'fa-regular fa-copy text-[#d97706] text-sm';
-                }, 2000);
-            });
-        }
     </script>
 </body>
 
