@@ -290,9 +290,9 @@
             cursor: pointer;
             backface-visibility: hidden;
             transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-                        box-shadow 0.4s ease,
-                        border-color 0.4s ease,
-                        opacity 0.3s ease;
+                box-shadow 0.4s ease,
+                border-color 0.4s ease,
+                opacity 0.3s ease;
             transform-origin: center center;
             /* Will be placed via JS transform */
         }
@@ -401,18 +401,36 @@
         }
 
         @keyframes modalPop {
-            from { transform: scale(0.85); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
-        .globe-modal-card .g-quote { font-size: 2.5rem; }
+        .globe-modal-card .g-quote {
+            font-size: 2.5rem;
+        }
+
         .globe-modal-card .g-text {
             -webkit-line-clamp: unset;
             font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.7);
         }
-        .globe-modal-card .g-name { font-size: 0.85rem; }
-        .globe-modal-card .g-avatar { width: 40px; height: 40px; font-size: 0.85rem; }
+
+        .globe-modal-card .g-name {
+            font-size: 0.85rem;
+        }
+
+        .globe-modal-card .g-avatar {
+            width: 40px;
+            height: 40px;
+            font-size: 0.85rem;
+        }
 
         .globe-modal-close {
             position: absolute;
@@ -431,6 +449,7 @@
             font-size: 1rem;
             transition: all 0.2s ease;
         }
+
         .globe-modal-close:hover {
             background: var(--neon);
             color: #000;
@@ -440,31 +459,64 @@
         /* Desktop hover expand hint */
         .globe-hint {
             text-align: center;
-            color: rgba(255,255,255,0.3);
+            color: rgba(255, 255, 255, 0.3);
             font-size: 0.8rem;
             margin-top: 1rem;
         }
-        .globe-hint i { color: var(--neon); margin-right: 0.3rem; }
+
+        .globe-hint i {
+            color: var(--neon);
+            margin-right: 0.3rem;
+        }
 
         @media (max-width: 768px) {
             .globe-container {
                 height: 500px;
             }
+
             .globe-card {
                 width: 200px;
                 padding: 1rem;
             }
+
             .globe-card .g-text {
                 -webkit-line-clamp: 2;
                 font-size: 0.65rem;
             }
-            .globe-card .g-quote { font-size: 1.5rem; }
-            .globe-card .g-name { font-size: 0.65rem; }
-            .globe-card .g-avatar { width: 26px; height: 26px; font-size: 0.6rem; }
-            .globe-card .g-badge { font-size: 0.5rem; padding: 0.15rem 0.35rem; }
-            .globe-ring { width: 280px; height: 280px; }
-            .globe-ring-2 { width: 380px; height: 380px; }
-            .globe-center-orb { width: 120px; height: 120px; }
+
+            .globe-card .g-quote {
+                font-size: 1.5rem;
+            }
+
+            .globe-card .g-name {
+                font-size: 0.65rem;
+            }
+
+            .globe-card .g-avatar {
+                width: 26px;
+                height: 26px;
+                font-size: 0.6rem;
+            }
+
+            .globe-card .g-badge {
+                font-size: 0.5rem;
+                padding: 0.15rem 0.35rem;
+            }
+
+            .globe-ring {
+                width: 280px;
+                height: 280px;
+            }
+
+            .globe-ring-2 {
+                width: 380px;
+                height: 380px;
+            }
+
+            .globe-center-orb {
+                width: 120px;
+                height: 120px;
+            }
         }
 
         /* client badge used in modal */
@@ -534,7 +586,8 @@
         </div>
 
         <!-- Right Content: Floating Image & Creative Arrow -->
-        <div class="w-full lg:w-1/2 relative min-h-[320px] md:min-h-[500px] flex justify-center items-center mt-4 lg:mt-0">
+        <div
+            class="w-full lg:w-1/2 relative min-h-[320px] md:min-h-[500px] flex justify-center items-center mt-4 lg:mt-0">
 
             <!-- Background Giant Text -->
             <div
@@ -580,11 +633,14 @@
     </div>
 
     <!-- Real Growth Stats Section -->
-    <section id="real-growth" class="container mx-auto px-4 md:px-6 py-16 md:py-24 relative z-10 border-t border-white/5">
+    <section id="real-growth"
+        class="container mx-auto px-4 md:px-6 py-16 md:py-24 relative z-10 border-t border-white/5">
         <div class="mb-10 md:mb-16 max-w-2xl">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4">Real <span class="text-neon">Growth</span>, Not Vanity Metrics.
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4">Real <span class="text-neon">Growth</span>, Not
+                Vanity Metrics.
             </h2>
-            <p class="text-gray-400 text-base md:text-lg leading-relaxed">Every number below reflects actual brand impact, audience
+            <p class="text-gray-400 text-base md:text-lg leading-relaxed">Every number below reflects actual brand
+                impact, audience
                 response, and business results.</p>
         </div>
 
@@ -643,8 +699,10 @@
     <!-- Words from Real Clients — 3D Globe -->
     <section id="testimonials" class="globe-section py-16 md:py-24 relative z-10 border-t border-white/5">
         <div class="mb-6 md:mb-8 text-center px-4 md:px-6">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4 font-display">Words from <span class="text-neon">Real Clients</span></h2>
-            <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">We let our clients do the talking. Here's what they have
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4 font-display">Words from <span
+                    class="text-neon">Real Clients</span></h2>
+            <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">We let our clients do the talking. Here's
+                what they have
                 to say about working with Postify.</p>
         </div>
 
@@ -678,91 +736,112 @@
     <!-- Sleek Pricing -->
     <section id="pricing" class="container mx-auto px-4 md:px-6 py-16 md:py-24 relative z-10 border-t border-white/5">
         <div class="text-center mb-12 md:mb-20">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4">Choose Your <span class="text-neon">Weapon.</span></h2>
-            <p class="text-gray-400 text-base md:text-lg max-w-xl mx-auto">No confusing fluff. Just highly structured tiers designed
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4">Choose Your <span
+                    class="text-neon">Weapon.</span></h2>
+            <p class="text-gray-400 text-base md:text-lg max-w-xl mx-auto">No confusing fluff. Just highly structured
+                tiers designed
                 to scale your business at your current level.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <!-- Tier 1 -->
-            <div class="pricing-card rounded-2xl p-8 hover:-translate-y-2 transition-transform duration-300">
-                <div class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-2">Level 01</div>
-                <h3 class="text-3xl font-display font-bold mb-6">Growth Starter</h3>
-                <div class="text-4xl font-black mb-8">₹2,999<span class="text-base text-gray-500 font-normal">/mo</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start">
+            <!-- Tier 1: Growth Starter -->
+            <div class="pricing-card rounded-2xl p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                <h3 class="text-2xl md:text-3xl font-display font-bold mb-2">Growth Starter</h3>
+                <p class="text-gray-500 text-sm mb-6">Perfect for startups & local businesses wanting consistent online
+                    presence.</p>
+                <div class="text-4xl font-black mb-8">₹2,999<span
+                        class="text-base text-gray-500 font-normal">/month</span>
                 </div>
 
-                <ul class="space-y-4 mb-8 text-sm text-gray-300">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gray-500"></i> 10–12
+                <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 10–12
                         High-Quality Posts</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gray-500"></i> 3-4 Viral Reels
-                    </li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gray-500"></i> Instagram
-                        Optimization</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gray-500"></i> Smart Hashtags
-                    </li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gray-500"></i> Basic Reporting
-                    </li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 3-4
+                        Reels with Viral Audio</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i>
+                        Instagram Optimization</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Smart
+                        Hashtags + Captions</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Daily
+                        Engagement (Comments/DMs)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Basic
+                        Monthly Report</li>
                 </ul>
                 <a href="https://wa.me/917874414328"
-                    class="block text-center py-3 w-full rounded-xl bg-white/5 hover:bg-white/10 transition font-semibold border border-white/10">Start
-                    Growing</a>
+                    class="block text-center py-3 w-full rounded-xl bg-white/5 hover:bg-white/10 transition font-semibold border border-white/10">Select
+                    Plan</a>
             </div>
 
-            <!-- Tier 2 Premium -->
+            <!-- Tier 2: Momentum Builder (Most Popular) -->
             <div
-                class="pricing-card premium rounded-2xl p-8 hover:-translate-y-2 transition-transform duration-300 md:-mt-6 relative">
+                class="pricing-card premium rounded-2xl p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300 md:-mt-6 relative">
                 <div
                     class="absolute top-0 inset-x-0 mx-auto w-max px-4 py-1.5 bg-[#ccff00] text-black text-xs font-bold uppercase rounded-b-lg tracking-wider">
-                    Most Aggressive
+                    Most Popular ✨
                 </div>
-                <div class="text-[#ccff00] text-sm font-semibold uppercase tracking-wider mb-2 mt-4">Level 02</div>
-                <h3 class="text-3xl font-display font-bold mb-6">Momentum Builder</h3>
-                <div class="text-5xl font-black mb-8 text-[#ccff00]">₹5,999<span
-                        class="text-base text-gray-500 font-normal">/mo</span></div>
+                <h3 class="text-2xl md:text-3xl font-display font-bold mb-2 mt-4">Momentum Builder</h3>
+                <p class="text-gray-500 text-sm mb-6">Perfect for growing brands that want to dominate their niche.</p>
+                <div class="text-4xl md:text-5xl font-black mb-6 text-[#ccff00]">₹6,999<span
+                        class="text-base text-gray-500 font-normal">/month</span></div>
 
-                <ul class="space-y-4 mb-8 text-sm text-gray-300">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#ccff00]"></i> 15–17 Premium
-                        Posts</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#ccff00]"></i> 6-8 Trending
-                        Reels</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#ccff00]"></i> GMB + Insta SEO
-                    </li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#ccff00]"></i> Advanced
-                        Hashtag Strategy</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#ccff00]"></i> Strategy
-                        Meeting Call</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-[#ccff00]"></i> Priority
-                        Support</li>
+                <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-400 mb-6">
+                    Includes everything in Growth Starter, plus:
+                </div>
+
+                <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> 15–17
+                        Premium Posts (More Variety)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> 6-8
+                        Trending Reels</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> Insta +
+                        Google My Business Optimization</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> Advanced
+                        Hashtag + SEO Captions</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> Monthly
+                        30-min Strategic Meeting Call (or in-person)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i>
+                        Professional Monthly Report</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> Priority
+                        WhatsApp Support</li>
                 </ul>
                 <a href="https://wa.me/917874414328"
-                    class="block text-center py-4 w-full rounded-xl bg-[#ccff00] hover:bg-[#b3e600] text-black transition font-bold shadow-[0_0_20px_rgba(204,255,0,0.4)]">Deploy
-                    Momentum</a>
+                    class="block text-center py-4 w-full rounded-xl bg-[#ccff00] hover:bg-[#b3e600] text-black transition font-bold shadow-[0_0_20px_rgba(204,255,0,0.4)]">Select
+                    Plan</a>
             </div>
 
-            <!-- Tier 3 -->
-            <div class="pricing-card rounded-2xl p-8 hover:-translate-y-2 transition-transform duration-300">
-                <div class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-2">Level 03</div>
-                <h3 class="text-3xl font-display font-bold mb-6">Authority Dominator</h3>
-                <div class="text-4xl font-black mb-8">₹9,999<span class="text-base text-gray-500 font-normal">/mo</span>
+            <!-- Tier 3: Authority Dominator -->
+            <div class="pricing-card rounded-2xl p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
+                <h3 class="text-2xl md:text-3xl font-display font-bold mb-2">Authority Dominator</h3>
+                <p class="text-gray-500 text-sm mb-6">For serious brands wanting to own their industry & max leads.</p>
+                <div class="text-4xl font-black mb-6">₹9,999<span
+                        class="text-base text-gray-500 font-normal">/month</span>
                 </div>
 
-                <ul class="space-y-4 mb-8 text-sm text-gray-300">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-purple-500"></i> 20–22 Advanced
-                        Posts</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-purple-500"></i> 10-12 High-End
-                        Reels</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-purple-500"></i> 1 Video Shoot
-                        / mo</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-purple-500"></i> Competitor
-                        Spying</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-purple-500"></i> Paid Ad
+                <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-400 mb-6">
+                    Includes everything in Momentum Builder, plus:
+                </div>
+
+                <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 20–22
+                        Premium Posts (Carousel, Infographics)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 10-12
+                        High-Production Reels</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 1
+                        Professional Video Shoot + Editing (On-location)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i>
+                        Competitor Spying Report</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Full
+                        Engagement (Insta, FB, Google, LinkedIn)</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Paid Ad
                         Management</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-purple-500"></i> 2 Strategy
-                        Meetings</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Market
+                        Trends & Business Growth Strategy</li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 2
+                        Strategy Meetings + ROI Focused Report</li>
                 </ul>
                 <a href="https://wa.me/917874414328"
-                    class="block text-center py-3 w-full rounded-xl bg-white/5 hover:bg-white/10 transition font-semibold border border-white/10">Become
-                    Authority</a>
+                    class="block text-center py-3 w-full rounded-xl bg-white/5 hover:bg-white/10 transition font-semibold border border-white/10">Select
+                    Plan</a>
             </div>
         </div>
     </section>
@@ -793,95 +872,95 @@
 
 
     <script>
-    (function() {
-        // === Testimonial Data ===
-        const testimonials = [
-            {
-                text: "Before working with Postify, our Instagram had minimal traction. Within a short span, our content started gaining serious momentum—one reel crossed 1 million views even when we had just around 150 followers. More importantly, this wasn't just vanity growth—we started receiving genuine travel inquiries directly through Instagram, turning content into real business opportunities.",
-                name: "Waycation Tours & Internationals",
-                initial: "W",
-                avatarGrad: "linear-gradient(135deg, #ccff00, #16a34a)",
-                avatarTextColor: "#000",
-                badge: "Travel Agency",
-                badgeIcon: "fa-solid fa-plane-departure"
-            },
-            {
-                text: "Postify didn't just manage our social media—they helped us position our brand strategically. Through consistent content and smart campaigns, our cafe started gaining strong local recognition across Ahmedabad. We've seen a noticeable increase in customer engagement and footfall driven by Instagram.",
-                name: "The Black Bird's Cafe",
-                initial: "B",
-                avatarGrad: "linear-gradient(135deg, #1a1a2e, #0f0f1a)",
-                avatarTextColor: "#fff",
-                badge: "Cafe",
-                badgeIcon: "fa-solid fa-mug-hot",
-                avatarBorder: true
-            },
-            {
-                text: "Our Instagram presence has completely transformed. The content quality, design, and overall feed now look professional and premium, which has significantly improved how customers perceive our brand. We finally have a profile that builds trust at first glance.",
-                name: "Jay Mahakali Tours & Travels",
-                initial: "J",
-                avatarGrad: "linear-gradient(135deg, #f97316, #c2410c)",
-                avatarTextColor: "#fff",
-                badge: "Travel",
-                badgeIcon: "fa-solid fa-van-shuttle"
-            },
-            {
-                text: "Our account was almost inactive before Postify stepped in. After proper optimization and content strategy, our page is now active, engaging, and bringing in real customer inquiries. It feels like our business finally exists online in a meaningful way.",
-                name: "Kensho Furniture",
-                initial: "K",
-                avatarGrad: "linear-gradient(135deg, #b45309, #78350f)",
-                avatarTextColor: "#fff",
-                badge: "Furniture",
-                badgeIcon: "fa-solid fa-couch"
-            },
-            {
-                text: "Honestly, the results felt like magic—but it's actually strategy. Soon after starting with Postify, we experienced a sharp increase in calls and booking inquiries. Instagram has now become a consistent source of clients for us.",
-                name: "Riddhi Nail Studio",
-                initial: "R",
-                avatarGrad: "linear-gradient(135deg, #ec4899, #e11d48)",
-                avatarTextColor: "#fff",
-                badge: "Beauty",
-                badgeIcon: "fa-solid fa-hand-sparkles"
-            },
-            {
-                text: "Postify helped us reach the right audience. We started receiving genuine student inquiries and direct calls, which has directly contributed to our growth. The content is not just attractive—it actually converts.",
-                name: "Skillkit Design Institute",
-                initial: "S",
-                avatarGrad: "linear-gradient(135deg, #3b82f6, #4f46e5)",
-                avatarTextColor: "#fff",
-                badge: "Education",
-                badgeIcon: "fa-solid fa-graduation-cap"
-            }
-        ];
+        (function () {
+            // === Testimonial Data ===
+            const testimonials = [
+                {
+                    text: "Before working with Postify, our Instagram had minimal traction. Within a short span, our content started gaining serious momentum—one reel crossed 1 million views even when we had just around 150 followers. More importantly, this wasn't just vanity growth—we started receiving genuine travel inquiries directly through Instagram, turning content into real business opportunities.",
+                    name: "Waycation Tours & Internationals",
+                    initial: "W",
+                    avatarGrad: "linear-gradient(135deg, #ccff00, #16a34a)",
+                    avatarTextColor: "#000",
+                    badge: "Travel Agency",
+                    badgeIcon: "fa-solid fa-plane-departure"
+                },
+                {
+                    text: "Postify didn't just manage our social media—they helped us position our brand strategically. Through consistent content and smart campaigns, our cafe started gaining strong local recognition across Ahmedabad. We've seen a noticeable increase in customer engagement and footfall driven by Instagram.",
+                    name: "The Black Bird's Cafe",
+                    initial: "B",
+                    avatarGrad: "linear-gradient(135deg, #1a1a2e, #0f0f1a)",
+                    avatarTextColor: "#fff",
+                    badge: "Cafe",
+                    badgeIcon: "fa-solid fa-mug-hot",
+                    avatarBorder: true
+                },
+                {
+                    text: "Our Instagram presence has completely transformed. The content quality, design, and overall feed now look professional and premium, which has significantly improved how customers perceive our brand. We finally have a profile that builds trust at first glance.",
+                    name: "Jay Mahakali Tours & Travels",
+                    initial: "J",
+                    avatarGrad: "linear-gradient(135deg, #f97316, #c2410c)",
+                    avatarTextColor: "#fff",
+                    badge: "Travel",
+                    badgeIcon: "fa-solid fa-van-shuttle"
+                },
+                {
+                    text: "Our account was almost inactive before Postify stepped in. After proper optimization and content strategy, our page is now active, engaging, and bringing in real customer inquiries. It feels like our business finally exists online in a meaningful way.",
+                    name: "Kensho Furniture",
+                    initial: "K",
+                    avatarGrad: "linear-gradient(135deg, #b45309, #78350f)",
+                    avatarTextColor: "#fff",
+                    badge: "Furniture",
+                    badgeIcon: "fa-solid fa-couch"
+                },
+                {
+                    text: "Honestly, the results felt like magic—but it's actually strategy. Soon after starting with Postify, we experienced a sharp increase in calls and booking inquiries. Instagram has now become a consistent source of clients for us.",
+                    name: "Riddhi Nail Studio",
+                    initial: "R",
+                    avatarGrad: "linear-gradient(135deg, #ec4899, #e11d48)",
+                    avatarTextColor: "#fff",
+                    badge: "Beauty",
+                    badgeIcon: "fa-solid fa-hand-sparkles"
+                },
+                {
+                    text: "Postify helped us reach the right audience. We started receiving genuine student inquiries and direct calls, which has directly contributed to our growth. The content is not just attractive—it actually converts.",
+                    name: "Skillkit Design Institute",
+                    initial: "S",
+                    avatarGrad: "linear-gradient(135deg, #3b82f6, #4f46e5)",
+                    avatarTextColor: "#fff",
+                    badge: "Education",
+                    badgeIcon: "fa-solid fa-graduation-cap"
+                }
+            ];
 
-        // === DOM Elements ===
-        const container = document.getElementById('globeContainer');
-        const world = document.getElementById('globeWorld');
-        const modal = document.getElementById('globeModal');
-        const modalContent = document.getElementById('globeModalContent');
-        const modalClose = document.getElementById('globeModalClose');
+            // === DOM Elements ===
+            const container = document.getElementById('globeContainer');
+            const world = document.getElementById('globeWorld');
+            const modal = document.getElementById('globeModal');
+            const modalContent = document.getElementById('globeModalContent');
+            const modalClose = document.getElementById('globeModalClose');
 
-        // === Globe Config ===
-        const isMobile = window.innerWidth <= 768;
-        let RADIUS = isMobile ? 220 : 340;
-        let rotationY = 0;
-        let rotationX = 15; // slight tilt for 3D depth
-        let autoSpeed = 0.15; // degrees per frame
-        let isHovering = false;
-        let isDragging = false;
-        let dragStartX = 0;
-        let dragStartY = 0;
-        let dragStartRotY = 0;
-        let dragStartRotX = 0;
-        let velocity = 0;
+            // === Globe Config ===
+            const isMobile = window.innerWidth <= 768;
+            let RADIUS = isMobile ? 220 : 340;
+            let rotationY = 0;
+            let rotationX = 15; // slight tilt for 3D depth
+            let autoSpeed = 0.15; // degrees per frame
+            let isHovering = false;
+            let isDragging = false;
+            let dragStartX = 0;
+            let dragStartY = 0;
+            let dragStartRotY = 0;
+            let dragStartRotX = 0;
+            let velocity = 0;
 
-        // Pinch zoom
-        let initialPinchDist = 0;
-        let initialRadius = RADIUS;
+            // Pinch zoom
+            let initialPinchDist = 0;
+            let initialRadius = RADIUS;
 
-        // === Build Card HTML ===
-        function buildCardHTML(t) {
-            const borderStyle = t.avatarBorder ? 'border: 1px solid rgba(255,255,255,0.15);' : '';
-            return `
+            // === Build Card HTML ===
+            function buildCardHTML(t) {
+                const borderStyle = t.avatarBorder ? 'border: 1px solid rgba(255,255,255,0.15);' : '';
+                return `
                 <div class="g-quote">"</div>
                 <div class="g-text">${t.text}</div>
                 <div class="g-author">
@@ -892,171 +971,171 @@
                     </div>
                 </div>
             `;
-        }
+            }
 
-        // === Create Cards ===
-        const cards = [];
-        const cardCount = testimonials.length;
+            // === Create Cards ===
+            const cards = [];
+            const cardCount = testimonials.length;
 
-        // Distribute cards on a sphere using golden angle for even spacing
-        testimonials.forEach((t, i) => {
-            const card = document.createElement('div');
-            card.className = 'globe-card';
-            card.innerHTML = buildCardHTML(t);
-            card.dataset.index = i;
+            // Distribute cards on a sphere using golden angle for even spacing
+            testimonials.forEach((t, i) => {
+                const card = document.createElement('div');
+                card.className = 'globe-card';
+                card.innerHTML = buildCardHTML(t);
+                card.dataset.index = i;
 
-            card.addEventListener('click', (e) => {
-                e.stopPropagation();
-                openModal(i);
+                card.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openModal(i);
+                });
+
+                // Pause only when hovering directly on a card
+                card.addEventListener('mouseenter', () => { isHovering = true; });
+                card.addEventListener('mouseleave', () => { isHovering = false; });
+
+                world.appendChild(card);
+                cards.push(card);
             });
 
-            // Pause only when hovering directly on a card
-            card.addEventListener('mouseenter', () => { isHovering = true; });
-            card.addEventListener('mouseleave', () => { isHovering = false; });
-
-            world.appendChild(card);
-            cards.push(card);
-        });
-
-        // === Spherical positioning ===
-        // Distribute cards on an arc (latitude bands) for visual balance
-        function getSphericalPositions(count) {
-            const positions = [];
-            for (let i = 0; i < count; i++) {
-                // Golden angle distribution for even-ish spread
-                const phi = Math.acos(1 - (2 * (i + 0.5)) / count); // latitude: 0 to PI
-                const theta = (2 * Math.PI * i) / ((1 + Math.sqrt(5)) / 2); // golden angle
-                positions.push({ phi, theta });
-            }
-            return positions;
-        }
-
-        const positions = getSphericalPositions(cardCount);
-
-        // === Render Loop ===
-        function render() {
-            if (!isDragging && !isHovering) {
-                rotationY += autoSpeed + velocity;
-                velocity *= 0.95; // decay momentum
-                if (Math.abs(velocity) < 0.01) velocity = 0;
+            // === Spherical positioning ===
+            // Distribute cards on an arc (latitude bands) for visual balance
+            function getSphericalPositions(count) {
+                const positions = [];
+                for (let i = 0; i < count; i++) {
+                    // Golden angle distribution for even-ish spread
+                    const phi = Math.acos(1 - (2 * (i + 0.5)) / count); // latitude: 0 to PI
+                    const theta = (2 * Math.PI * i) / ((1 + Math.sqrt(5)) / 2); // golden angle
+                    positions.push({ phi, theta });
+                }
+                return positions;
             }
 
-            // Apply rotation to each card individually (fake world rotation)
-            const radY = (rotationY * Math.PI) / 180;
-            const radX = (rotationX * Math.PI) / 180;
+            const positions = getSphericalPositions(cardCount);
 
-            cards.forEach((card, i) => {
-                const { phi, theta } = positions[i];
+            // === Render Loop ===
+            function render() {
+                if (!isDragging && !isHovering) {
+                    rotationY += autoSpeed + velocity;
+                    velocity *= 0.95; // decay momentum
+                    if (Math.abs(velocity) < 0.01) velocity = 0;
+                }
 
-                // Spherical to cartesian
-                let x = RADIUS * Math.sin(phi) * Math.cos(theta + radY);
-                let y = RADIUS * Math.cos(phi);
-                let z = RADIUS * Math.sin(phi) * Math.sin(theta + radY);
+                // Apply rotation to each card individually (fake world rotation)
+                const radY = (rotationY * Math.PI) / 180;
+                const radX = (rotationX * Math.PI) / 180;
 
-                // Apply X rotation (tilt)
-                const y2 = y * Math.cos(radX) - z * Math.sin(radX);
-                const z2 = y * Math.sin(radX) + z * Math.cos(radX);
-                y = y2;
-                z = z2;
+                cards.forEach((card, i) => {
+                    const { phi, theta } = positions[i];
 
-                // Scale and opacity based on depth (z)
-                const scale = mapRange(z, -RADIUS, RADIUS, 0.5, 1.1);
-                const opacity = mapRange(z, -RADIUS, RADIUS, 0.2, 1);
-                const zIndex = Math.round(mapRange(z, -RADIUS, RADIUS, 0, 50));
+                    // Spherical to cartesian
+                    let x = RADIUS * Math.sin(phi) * Math.cos(theta + radY);
+                    let y = RADIUS * Math.cos(phi);
+                    let z = RADIUS * Math.sin(phi) * Math.sin(theta + radY);
 
-                // Center the card
-                const cardW = isMobile ? 200 : 280;
-                const cardH = isMobile ? 140 : 180;
+                    // Apply X rotation (tilt)
+                    const y2 = y * Math.cos(radX) - z * Math.sin(radX);
+                    const z2 = y * Math.sin(radX) + z * Math.cos(radX);
+                    y = y2;
+                    z = z2;
 
-                card.style.transform = `translate3d(${x - cardW / 2}px, ${y - cardH / 2}px, ${z}px) scale(${scale})`;
-                card.style.opacity = opacity;
-                card.style.zIndex = zIndex;
-            });
+                    // Scale and opacity based on depth (z)
+                    const scale = mapRange(z, -RADIUS, RADIUS, 0.5, 1.1);
+                    const opacity = mapRange(z, -RADIUS, RADIUS, 0.2, 1);
+                    const zIndex = Math.round(mapRange(z, -RADIUS, RADIUS, 0, 50));
 
-            requestAnimationFrame(render);
-        }
+                    // Center the card
+                    const cardW = isMobile ? 200 : 280;
+                    const cardH = isMobile ? 140 : 180;
 
-        function mapRange(value, inMin, inMax, outMin, outMax) {
-            return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin);
-        }
+                    card.style.transform = `translate3d(${x - cardW / 2}px, ${y - cardH / 2}px, ${z}px) scale(${scale})`;
+                    card.style.opacity = opacity;
+                    card.style.zIndex = zIndex;
+                });
 
-        // === Desktop: Hover pause is handled per-card (see card creation above) ===
-
-        // === Desktop: Drag to spin ===
-        container.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            dragStartX = e.clientX;
-            dragStartY = e.clientY;
-            dragStartRotY = rotationY;
-            dragStartRotX = rotationX;
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const dx = e.clientX - dragStartX;
-            const dy = e.clientY - dragStartY;
-            rotationY = dragStartRotY - dx * 0.3;
-            rotationX = Math.max(-40, Math.min(40, dragStartRotX + dy * 0.3));
-        });
-
-        window.addEventListener('mouseup', (e) => {
-            if (isDragging) {
-                isDragging = false;
-                const dx = e.clientX - dragStartX;
-                velocity = -dx * 0.05;
+                requestAnimationFrame(render);
             }
-        });
 
-        // === Mobile: Touch drag ===
-        container.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 1) {
+            function mapRange(value, inMin, inMax, outMin, outMax) {
+                return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin);
+            }
+
+            // === Desktop: Hover pause is handled per-card (see card creation above) ===
+
+            // === Desktop: Drag to spin ===
+            container.addEventListener('mousedown', (e) => {
                 isDragging = true;
-                isHovering = true;
-                dragStartX = e.touches[0].clientX;
-                dragStartY = e.touches[0].clientY;
+                dragStartX = e.clientX;
+                dragStartY = e.clientY;
                 dragStartRotY = rotationY;
                 dragStartRotX = rotationX;
-            }
-            // Pinch start
-            if (e.touches.length === 2) {
-                initialPinchDist = getPinchDist(e);
-                initialRadius = RADIUS;
-            }
-        }, { passive: true });
+            });
 
-        container.addEventListener('touchmove', (e) => {
-            if (e.touches.length === 1 && isDragging) {
-                const dx = e.touches[0].clientX - dragStartX;
-                const dy = e.touches[0].clientY - dragStartY;
-                rotationY = dragStartRotY - dx * 0.4;
-                rotationX = Math.max(-40, Math.min(40, dragStartRotX + dy * 0.4));
-            }
-            // Pinch zoom
-            if (e.touches.length === 2) {
-                const dist = getPinchDist(e);
-                const ratio = dist / initialPinchDist;
-                RADIUS = Math.max(150, Math.min(500, initialRadius * ratio));
-            }
-        }, { passive: true });
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const dx = e.clientX - dragStartX;
+                const dy = e.clientY - dragStartY;
+                rotationY = dragStartRotY - dx * 0.3;
+                rotationX = Math.max(-40, Math.min(40, dragStartRotX + dy * 0.3));
+            });
 
-        container.addEventListener('touchend', (e) => {
-            if (e.touches.length === 0) {
-                isDragging = false;
-                isHovering = false;
+            window.addEventListener('mouseup', (e) => {
+                if (isDragging) {
+                    isDragging = false;
+                    const dx = e.clientX - dragStartX;
+                    velocity = -dx * 0.05;
+                }
+            });
+
+            // === Mobile: Touch drag ===
+            container.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) {
+                    isDragging = true;
+                    isHovering = true;
+                    dragStartX = e.touches[0].clientX;
+                    dragStartY = e.touches[0].clientY;
+                    dragStartRotY = rotationY;
+                    dragStartRotX = rotationX;
+                }
+                // Pinch start
+                if (e.touches.length === 2) {
+                    initialPinchDist = getPinchDist(e);
+                    initialRadius = RADIUS;
+                }
+            }, { passive: true });
+
+            container.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging) {
+                    const dx = e.touches[0].clientX - dragStartX;
+                    const dy = e.touches[0].clientY - dragStartY;
+                    rotationY = dragStartRotY - dx * 0.4;
+                    rotationX = Math.max(-40, Math.min(40, dragStartRotX + dy * 0.4));
+                }
+                // Pinch zoom
+                if (e.touches.length === 2) {
+                    const dist = getPinchDist(e);
+                    const ratio = dist / initialPinchDist;
+                    RADIUS = Math.max(150, Math.min(500, initialRadius * ratio));
+                }
+            }, { passive: true });
+
+            container.addEventListener('touchend', (e) => {
+                if (e.touches.length === 0) {
+                    isDragging = false;
+                    isHovering = false;
+                }
+            }, { passive: true });
+
+            function getPinchDist(e) {
+                const dx = e.touches[0].clientX - e.touches[1].clientX;
+                const dy = e.touches[0].clientY - e.touches[1].clientY;
+                return Math.sqrt(dx * dx + dy * dy);
             }
-        }, { passive: true });
 
-        function getPinchDist(e) {
-            const dx = e.touches[0].clientX - e.touches[1].clientX;
-            const dy = e.touches[0].clientY - e.touches[1].clientY;
-            return Math.sqrt(dx * dx + dy * dy);
-        }
-
-        // === Modal ===
-        function openModal(index) {
-            const t = testimonials[index];
-            const borderStyle = t.avatarBorder ? 'border: 1px solid rgba(255,255,255,0.15);' : '';
-            modalContent.innerHTML = `
+            // === Modal ===
+            function openModal(index) {
+                const t = testimonials[index];
+                const borderStyle = t.avatarBorder ? 'border: 1px solid rgba(255,255,255,0.15);' : '';
+                modalContent.innerHTML = `
                 <button class="globe-modal-close" onclick="document.getElementById('globeModal').classList.remove('active')">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -1070,32 +1149,32 @@
                     </div>
                 </div>
             `;
-            modal.classList.add('active');
-        }
-
-        // Close modal
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
+                modal.classList.add('active');
             }
-        });
 
-        // Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') modal.classList.remove('active');
-        });
+            // Close modal
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
 
-        // === Start ===
-        render();
+            // Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') modal.classList.remove('active');
+            });
 
-        // Handle resize
-        window.addEventListener('resize', () => {
-            const nowMobile = window.innerWidth <= 768;
-            if (nowMobile !== isMobile) {
-                location.reload(); // simplest way to recalculate
-            }
-        });
-    })();
+            // === Start ===
+            render();
+
+            // Handle resize
+            window.addEventListener('resize', () => {
+                const nowMobile = window.innerWidth <= 768;
+                if (nowMobile !== isMobile) {
+                    location.reload(); // simplest way to recalculate
+                }
+            });
+        })();
     </script>
 
 </body>
