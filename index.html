@@ -1,96 +1,700 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Postify Studio</title>
+    <title>Postify Studio — Social Media & Business Growth Agency</title>
+    <meta name="description"
+        content="Postify Studio is a results-driven social media management and business consulting agency. We help brands grow with strategy, content, and data-driven campaigns.">
     <link rel="icon" type="image/png" href="postify-logo.png">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Modern Display Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
+        /* =============================================
+           DESIGN SYSTEM — Postify Studio V4
+           ============================================= */
         :root {
-            --neon: #ccff00;
-            /* High energy chartreuse */
-            --bg-dark: #070709;
-            --surface: #121217;
+            --lime: #b8ff00;
+            --lime-dim: rgba(184, 255, 0, 0.12);
+            --lime-glow: rgba(184, 255, 0, 0.35);
+            --violet: #8b5cf6;
+            --violet-dim: rgba(139, 92, 246, 0.12);
+            --cyan: #22d3ee;
+            --bg-primary: #050507;
+            --bg-elevated: #0c0c10;
+            --bg-card: #111116;
+            --bg-card-hover: #16161d;
+            --text-white: #f5f5f7;
+            --text-gray: #8e8e9a;
+            --text-dim: #55555f;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(184, 255, 0, 0.3);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-full: 999px;
+            --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: #ffffff;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-white);
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 15% 50%, rgba(204, 255, 0, 0.05), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(112, 0, 255, 0.05), transparent 25%);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         h1,
         h2,
         h3,
+        h4,
         .font-display {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Outfit', sans-serif;
         }
 
-        /* Float Animation */
-        .float-fast {
-            animation: float 4s ease-in-out infinite;
+        ::selection {
+            background: var(--lime);
+            color: #000;
         }
 
-        .float-slow {
-            animation: float 6s ease-in-out infinite reverse;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NOISE TEXTURE OVERLAY ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.5;
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-d1 {
+            transition-delay: 0.08s;
+        }
+
+        .reveal-d2 {
+            transition-delay: 0.16s;
+        }
+
+        .reveal-d3 {
+            transition-delay: 0.24s;
+        }
+
+        .reveal-d4 {
+            transition-delay: 0.32s;
+        }
+
+        /* ===== UTILITY ===== */
+        .text-lime {
+            color: var(--lime);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--lime), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(184, 255, 0, 0.18);
+            background: rgba(184, 255, 0, 0.05);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 24px;
+            font-family: 'Space Grotesk', sans-serif;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-heading {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-sub {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            max-width: 580px;
+            line-height: 1.75;
+        }
+
+        .section-sub.center {
+            margin: 0 auto;
+        }
+
+        .btn-glow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: var(--lime);
+            color: #000;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: var(--radius-full);
+            border: none;
+            cursor: pointer;
+            transition: all 0.35s var(--ease);
+            box-shadow: 0 0 30px rgba(184, 255, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(184, 255, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-white);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            transition: all 0.35s var(--ease);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* =========================================
+           NAVBAR
+           ========================================= */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s var(--ease);
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            background: rgba(5, 5, 7, 0.85);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-brand img {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+        }
+
+        .nav-brand span {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            transition: color 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-white);
+        }
+
+        .nav-cta-btn {
+            padding: 10px 24px !important;
+            background: var(--lime) !important;
+            color: #000 !important;
+            font-weight: 700 !important;
+            border-radius: var(--radius-full) !important;
+            font-size: 0.85rem !important;
+            box-shadow: 0 0 15px rgba(184, 255, 0, 0.2);
+            transition: all 0.3s var(--ease) !important;
+        }
+
+        .nav-cta-btn:hover {
+            box-shadow: 0 0 25px rgba(184, 255, 0, 0.4) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-white);
+            transition: all 0.3s var(--ease);
+            border-radius: 2px;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-hamburger {
+                display: flex;
             }
 
-            50% {
-                transform: translateY(-15px);
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: rgba(5, 5, 7, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 30px;
+                padding: 40px;
+                border-left: 1px solid var(--border);
+                transition: right 0.4s var(--ease);
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* =========================================
+           HERO — V4 (Ultra Premium cinematic)
+           ========================================= */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 80px;
+            background: radial-gradient(circle at 50% -20%, rgba(184, 255, 0, 0.12) 0%, transparent 70%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-left {
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            background: rgba(184, 255, 0, 0.08);
+            border: 1px solid rgba(184, 255, 0, 0.2);
+            border-radius: 100px;
+            color: var(--lime);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--lime);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--lime);
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+            0% {
+                box-shadow: 0 0 0 0 rgba(184, 255, 0, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(184, 255, 0, 0);
             }
 
             100% {
-                transform: translateY(0px);
+                box-shadow: 0 0 0 0 rgba(184, 255, 0, 0);
             }
         }
 
-        /* Marquee Animation */
-        .marquee-wrapper {
-            overflow: hidden;
-            white-space: nowrap;
-            display: flex;
-            background: var(--neon);
-            color: var(--bg-dark);
-            padding: 1rem 0;
-            transform: rotate(-2deg) scale(1.05);
-            /* Edgy slant */
-            box-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
-        }
-
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 20s linear infinite;
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 1rem;
+        .hero h1 {
+            font-size: clamp(3.2rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
             text-transform: uppercase;
         }
 
-        @media (min-width: 768px) {
-            .marquee-content {
-                font-size: 1.5rem;
+        .hero h1 .outline {
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.6);
+            display: block;
+        }
+
+        .hero h1 .highlight {
+            color: var(--lime);
+            text-shadow: 0 0 40px rgba(184, 255, 0, 0.25);
+            display: block;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 44px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Hero Right — 3D Interactive Cards */
+        .hero-right {
+            position: relative;
+            height: 600px;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-visual-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+        }
+
+        .hv-card {
+            position: absolute;
+            background: rgba(17, 17, 22, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform-style: preserve-3d;
+        }
+
+        .hv-card-1 {
+            top: 15%;
+            left: 0;
+            right: 15%;
+            height: 260px;
+            border-color: rgba(184, 255, 0, 0.25);
+            background: linear-gradient(135deg, rgba(184, 255, 0, 0.08), rgba(17, 17, 22, 0.85));
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(184, 255, 0, 0.05);
+        }
+
+        .hv-card-2 {
+            bottom: 15%;
+            right: 0;
+            left: 30%;
+            height: 200px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hv-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            transform: translateZ(40px);
+            /* 3D pop out */
+        }
+
+        .hv-card-1 .hv-icon {
+            background: var(--lime-dim);
+            color: var(--lime);
+        }
+
+        .hv-card-2 .hv-icon {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+
+        .hv-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #fff;
+            transform: translateZ(60px);
+            letter-spacing: -0.02em;
+        }
+
+        .hv-card-1 .hv-value {
+            color: var(--lime);
+        }
+
+        .hv-label {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 12px;
+            transform: translateZ(30px);
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-badge {
+                margin: 0 auto 24px;
+            }
+
+            .hero h1 .outline {
+                display: inline;
+            }
+
+            .hero h1 .highlight {
+                display: inline;
+            }
+
+            .hero-desc {
+                margin: 0 auto 36px;
+            }
+
+            .hero-ctas {
+                justify-content: center;
+            }
+
+            .hero-right {
+                height: 450px;
+            }
+
+            .hv-card-1 {
+                right: 5%;
+                left: 5%;
+                top: 10%;
+                height: 220px;
+            }
+
+            .hv-card-2 {
+                right: 10%;
+                left: 10%;
+                bottom: 10%;
+                height: 180px;
+            }
+
+            .hv-value {
+                font-size: 2.8rem;
             }
         }
 
-        @keyframes marquee {
+        /* =========================================
+           SALES BANNER — animated ticker
+           ========================================= */
+        .sales-banner {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(90deg, var(--lime), #8fff00, var(--lime));
+            background-size: 200% 100%;
+            animation: shimmerBg 3s ease-in-out infinite;
+            padding: 18px 0;
+            transform: rotate(-1.5deg) scale(1.03);
+            margin: 20px 0 40px;
+            z-index: 5;
+            box-shadow: 0 0 30px rgba(184, 255, 0, 0.15);
+        }
+
+        @keyframes shimmerBg {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .sales-banner-inner {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            animation: tickerScroll 20s linear infinite;
+        }
+
+        @keyframes tickerScroll {
             0% {
                 transform: translateX(0);
             }
@@ -100,98 +704,288 @@
             }
         }
 
-        /* Modern Bento Grid */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+        .sales-banner-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 40px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: clamp(0.9rem, 2vw, 1.3rem);
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
-        .bento-box {
-            background: var(--surface);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        .sales-banner-item .sale-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.4);
+            flex-shrink: 0;
+        }
+
+        /* =========================================
+           WHY POSTIFY
+           ========================================= */
+        .why-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            transition: all 0.4s var(--ease);
             position: relative;
             overflow: hidden;
         }
 
-        .bento-box:hover {
-            border-color: rgba(204, 255, 0, 0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(204, 255, 0, 0.2);
-        }
-
-        .bento-box::before {
+        .why-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at top right, rgba(204, 255, 0, 0.1), transparent 50%);
+            height: 2px;
+            background: linear-gradient(90deg, var(--lime), transparent);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
         }
 
-        .bento-box:hover::before {
+        .why-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(184, 255, 0, 0.05);
+        }
+
+        .why-card:hover::before {
             opacity: 1;
         }
 
-        /* Typography tricks */
-        .text-outline {
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
-            font-family: 'Syne', sans-serif;
+        .why-card .icon-wrap {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: var(--lime-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.3rem;
+            color: var(--lime);
         }
 
-        .text-neon {
-            color: var(--neon);
-            text-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
+        .why-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
         }
 
-        /* SVG Arrow */
-        .hand-drawn-arrow {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            z-index: 10;
-            filter: drop-shadow(0 0 8px var(--neon));
+        .why-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        /* Pricing Cards overriding */
-        .pricing-card {
-            background: linear-gradient(145deg, #121217, #0a0a0c);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            position: relative;
+        @media (max-width: 768px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .why-card {
+                padding: 32px 24px;
+            }
         }
 
-        .pricing-card.premium {
-            border-color: var(--neon);
-            box-shadow: 0 0 40px rgba(204, 255, 0, 0.1);
+        /* =========================================
+           SERVICES
+           ========================================= */
+        .services-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
         }
 
-        /* Sticky nav */
-        nav {
-            backdrop-filter: blur(10px);
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 56px;
         }
 
-        /* Real Growth Stats */
-        .stat-card {
-            background: linear-gradient(145deg, rgba(18, 18, 23, 0.9), rgba(10, 10, 12, 0.9));
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            padding: 2rem 1.5rem;
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 48px 40px;
+            transition: all 0.4s var(--ease);
             position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        .stat-card:hover {
-            border-color: rgba(204, 255, 0, 0.4);
-            transform: translateY(-6px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(204, 255, 0, 0.08);
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .service-card:nth-child(1)::after {
+            background: radial-gradient(circle, rgba(184, 255, 0, 0.08), transparent 70%);
+        }
+
+        .service-card:nth-child(2)::after {
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent 70%);
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(184, 255, 0, 0.05);
+        }
+
+        .service-card .svc-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 28px;
+        }
+
+        .service-card:nth-child(1) .svc-icon {
+            background: var(--lime-dim);
+            color: var(--lime);
+        }
+
+        .service-card:nth-child(2) .svc-icon {
+            background: var(--violet-dim);
+            color: var(--violet);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
+        }
+
+        .service-card .svc-desc {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .svc-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 36px;
+        }
+
+        .svc-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-white);
+        }
+
+        .svc-features li i {
+            font-size: 0.75rem;
+        }
+
+        .service-card:nth-child(1) .svc-features li i {
+            color: var(--lime);
+        }
+
+        .service-card:nth-child(2) .svc-features li i {
+            color: var(--violet);
+        }
+
+        .svc-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: gap 0.3s ease;
+        }
+
+        .service-card:nth-child(1) .svc-link {
+            color: var(--lime);
+        }
+
+        .service-card:nth-child(2) .svc-link {
+            color: var(--violet);
+        }
+
+        .svc-link:hover {
+            gap: 16px;
+        }
+
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 40px 32px;
+            }
+
+            .svc-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =========================================
+           STATS
+           ========================================= */
+        .stats-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 56px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 24px;
+            text-align: center;
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
         }
 
         .stat-card::after {
@@ -201,35 +995,77 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--neon), transparent);
+            background: linear-gradient(90deg, var(--lime), transparent);
             opacity: 0;
             transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(184, 255, 0, 0.05);
         }
 
         .stat-card:hover::after {
             opacity: 1;
         }
 
-        .stat-number {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, var(--neon), #a8e600);
+        .stat-num {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--lime), #a8ff00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.2;
+            line-height: 1.1;
+            margin-bottom: 8px;
         }
 
-        /* ===== 3D GLOBE TESTIMONIALS ===== */
+        .stat-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 6px;
+            color: var(--text-white);
+        }
+
+        .stat-desc {
+            color: var(--text-dim);
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .stat-num {
+                font-size: 2.2rem;
+            }
+
+            .stat-card {
+                padding: 24px 16px;
+            }
+        }
+
+        /* =========================================
+           GLOBE TESTIMONIALS (Updated content)
+           ========================================= */
         .globe-section {
             overflow: hidden;
             position: relative;
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
         }
 
         .globe-container {
             width: 100%;
             height: 700px;
+            margin-top: 80px;
+            margin-bottom: 80px;
             position: relative;
             display: flex;
             align-items: center;
@@ -244,13 +1080,12 @@
             cursor: grabbing;
         }
 
-        /* Glowing center orb */
         .globe-center-orb {
             position: absolute;
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(204, 255, 0, 0.15), transparent 70%);
+            background: radial-gradient(circle, rgba(184, 255, 0, 0.12), transparent 70%);
             filter: blur(40px);
             pointer-events: none;
             z-index: 0;
@@ -261,7 +1096,7 @@
             width: 400px;
             height: 400px;
             border-radius: 50%;
-            border: 1px solid rgba(204, 255, 0, 0.06);
+            border: 1px solid rgba(184, 255, 0, 0.06);
             pointer-events: none;
             z-index: 0;
         }
@@ -269,7 +1104,7 @@
         .globe-ring-2 {
             width: 550px;
             height: 550px;
-            border-color: rgba(204, 255, 0, 0.03);
+            border-color: rgba(184, 255, 0, 0.03);
         }
 
         .globe-world {
@@ -277,38 +1112,32 @@
             width: 1px;
             height: 1px;
             transform-style: preserve-3d;
-            /* Rotation is applied via JS */
         }
 
         .globe-card {
             position: absolute;
-            width: 280px;
-            background: linear-gradient(145deg, rgba(18, 18, 23, 0.95), rgba(10, 10, 12, 0.95));
+            width: 300px;
+            background: linear-gradient(145deg, rgba(17, 17, 22, 0.95), rgba(10, 10, 12, 0.95));
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            padding: 1.4rem;
             cursor: pointer;
             backface-visibility: hidden;
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-                box-shadow 0.4s ease,
-                border-color 0.4s ease,
-                opacity 0.3s ease;
-            transform-origin: center center;
-            /* Will be placed via JS transform */
+            transition: transform 0.4s var(--ease), box-shadow 0.4s ease, border-color 0.4s ease, opacity 0.3s ease;
         }
 
         .globe-card:hover {
-            border-color: rgba(204, 255, 0, 0.5);
-            box-shadow: 0 0 40px rgba(204, 255, 0, 0.15), 0 20px 60px rgba(0, 0, 0, 0.6);
+            border-color: rgba(184, 255, 0, 0.5);
+            box-shadow: 0 0 50px rgba(184, 255, 0, 0.15), 0 20px 60px rgba(0, 0, 0, 0.7);
             z-index: 100 !important;
         }
 
         .globe-card .g-quote {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-weight: 800;
-            font-size: 2rem;
+            font-size: 2.2rem;
             line-height: 1;
-            background: linear-gradient(135deg, var(--neon), rgba(204, 255, 0, 0.3));
+            background: linear-gradient(135deg, var(--lime), rgba(184, 255, 0, 0.3));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -316,65 +1145,68 @@
         }
 
         .globe-card .g-text {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.5;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.6;
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .globe-card .g-author {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.8rem;
         }
 
         .globe-card .g-avatar {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 0.75rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
             flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .globe-card .g-name {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: #fff;
+            letter-spacing: -0.01em;
         }
 
         .globe-card .g-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
-            padding: 0.2rem 0.5rem;
+            gap: 0.4rem;
+            padding: 0.25rem 0.6rem;
             border-radius: 999px;
-            background: rgba(204, 255, 0, 0.1);
-            border: 1px solid rgba(204, 255, 0, 0.2);
-            font-size: 0.6rem;
+            background: rgba(184, 255, 0, 0.08);
+            border: 1px solid rgba(184, 255, 0, 0.15);
+            font-size: 0.65rem;
             font-weight: 600;
-            color: var(--neon);
+            color: var(--lime);
             text-transform: uppercase;
-            letter-spacing: 0.04em;
-            margin-top: 0.2rem;
+            letter-spacing: 0.05em;
+            margin-top: 0.3rem;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Expanded card modal overlay */
+        /* Globe modal */
         .globe-modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(12px);
             z-index: 9999;
             align-items: center;
             justify-content: center;
@@ -389,20 +1221,20 @@
         }
 
         .globe-modal-card {
-            background: linear-gradient(145deg, rgba(18, 18, 23, 0.98), rgba(10, 10, 12, 0.98));
-            border: 1px solid rgba(204, 255, 0, 0.3);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 500px;
+            background: linear-gradient(145deg, rgba(17, 17, 22, 1), rgba(10, 10, 12, 1));
+            border: 1px solid rgba(184, 255, 0, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            max-width: 550px;
             width: 100%;
             position: relative;
-            box-shadow: 0 0 60px rgba(204, 255, 0, 0.1), 0 30px 80px rgba(0, 0, 0, 0.7);
-            animation: modalPop 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 0 80px rgba(184, 255, 0, 0.1), 0 40px 100px rgba(0, 0, 0, 0.8);
+            animation: modalPop 0.3s var(--ease);
         }
 
         @keyframes modalPop {
             from {
-                transform: scale(0.85);
+                transform: scale(0.9);
                 opacity: 0;
             }
 
@@ -412,771 +1244,1423 @@
             }
         }
 
-        .globe-modal-card .g-quote {
-            font-size: 2.5rem;
-        }
-
-        .globe-modal-card .g-text {
-            -webkit-line-clamp: unset;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .globe-modal-card .g-name {
-            font-size: 0.85rem;
-        }
-
-        .globe-modal-card .g-avatar {
-            width: 40px;
-            height: 40px;
-            font-size: 0.85rem;
-        }
-
         .globe-modal-close {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 36px;
-            height: 36px;
+            top: 1.2rem;
+            right: 1.2rem;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             background: rgba(255, 255, 255, 0.05);
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.2rem;
             transition: all 0.2s ease;
         }
 
         .globe-modal-close:hover {
-            background: var(--neon);
+            background: var(--lime);
             color: #000;
-            border-color: var(--neon);
+            border-color: var(--lime);
+            transform: scale(1.05);
         }
 
-        /* Desktop hover expand hint */
         .globe-hint {
             text-align: center;
             color: rgba(255, 255, 255, 0.3);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             margin-top: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .globe-hint i {
-            color: var(--neon);
-            margin-right: 0.3rem;
+            color: var(--lime);
+            margin-right: 0.4rem;
         }
 
         @media (max-width: 768px) {
             .globe-container {
                 height: 500px;
+                margin-top: 50px;
+                margin-bottom: 50px;
             }
 
             .globe-card {
-                width: 200px;
-                padding: 1rem;
+                width: 220px;
+                padding: 1.2rem;
             }
 
             .globe-card .g-text {
-                -webkit-line-clamp: 2;
-                font-size: 0.65rem;
+                -webkit-line-clamp: 3;
+                font-size: 0.75rem;
             }
 
             .globe-card .g-quote {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
             .globe-card .g-name {
-                font-size: 0.65rem;
-            }
-
-            .globe-card .g-avatar {
-                width: 26px;
-                height: 26px;
-                font-size: 0.6rem;
-            }
-
-            .globe-card .g-badge {
-                font-size: 0.5rem;
-                padding: 0.15rem 0.35rem;
+                font-size: 0.75rem;
             }
 
             .globe-ring {
-                width: 280px;
-                height: 280px;
+                width: 300px;
+                height: 300px;
             }
 
             .globe-ring-2 {
-                width: 380px;
-                height: 380px;
-            }
-
-            .globe-center-orb {
-                width: 120px;
-                height: 120px;
+                width: 420px;
+                height: 420px;
             }
         }
 
-        /* client badge used in modal */
-        .client-badge {
-            display: inline-flex;
+        /* =========================================
+           PROCESS
+           ========================================= */
+        .process-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 56px;
+            position: relative;
+        }
+
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: 80px;
+            right: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--lime), rgba(139, 92, 246, 0.4), var(--lime));
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 0 16px;
+        }
+
+        .process-step .step-num {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--lime);
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 0.85rem;
-            border-radius: 999px;
-            background: rgba(204, 255, 0, 0.1);
-            border: 1px solid rgba(204, 255, 0, 0.2);
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--lime);
+            margin: 0 auto 20px;
+            box-shadow: 0 0 24px rgba(184, 255, 0, 0.15);
+        }
+
+        .process-step h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .process-step p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .process-grid::before {
+                top: 0;
+                bottom: 0;
+                left: 40px;
+                right: auto;
+                width: 2px;
+                height: auto;
+            }
+
+            .process-step {
+                text-align: left;
+                padding-left: 86px;
+            }
+
+            .process-step .step-num {
+                position: absolute;
+                left: 10px;
+                top: 0;
+                margin: 0;
+            }
+        }
+
+        /* =========================================
+           PRICING
+           ========================================= */
+        .pricing-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 56px;
+            align-items: start;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 40px 28px;
+            transition: all 0.4s var(--ease);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--lime);
+            box-shadow: 0 0 50px rgba(184, 255, 0, 0.08);
+        }
+
+        .pricing-card.premium {
+            border-color: #ffd700;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.15);
+            background: linear-gradient(180deg, rgba(255, 215, 0, 0.08) 0%, var(--bg-card) 100%);
+            transform: scale(1.02);
+            z-index: 2;
+        }
+
+        .pricing-card.premium:hover {
+            transform: scale(1.02) translateY(-8px);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.2);
+            border-color: #ffaa00;
+        }
+
+        .pricing-card.premium .pop-badge {
+            background: linear-gradient(90deg, #ffd700, #ffaa00);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .pricing-card.premium .price {
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .pricing-card.premium .sel-btn.filled {
+            background: linear-gradient(90deg, #ffd700, #ffaa00);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .pricing-card.premium .sel-btn.filled:hover {
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .highlight-feature {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: var(--radius-sm);
+            padding: 8px 12px !important;
+            margin: 6px 0;
+            font-weight: 700;
+            color: #ffd700 !important;
+            box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.05);
+        }
+        
+        .highlight-feature i {
+            color: #ffd700 !important;
+        }
+
+        .pricing-card .pop-badge {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 6px 20px;
+            background: var(--lime);
+            color: #000;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .pricing-card .pc-desc {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .pricing-card .price {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 2.6rem;
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        .pricing-card .price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-dim);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .pricing-card.popular .price {
+            color: var(--lime);
+        }
+
+        .pricing-card .price-note {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 24px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .pricing-card .includes-note {
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--text-white);
+            padding: 6px 0;
+        }
+
+        .pricing-features li i {
+            margin-top: 4px;
+            font-size: 0.7rem;
+            color: var(--lime);
+        }
+
+        .pricing-card .sel-btn {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            border-radius: var(--radius-full);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.35s var(--ease);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 32px;
+        }
+
+        .sel-btn.outline {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-white);
+        }
+
+        .sel-btn.outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .sel-btn.filled {
+            background: var(--lime);
+            color: #000;
+            box-shadow: 0 0 24px rgba(184, 255, 0, 0.25);
+        }
+
+        .sel-btn.filled:hover {
+            box-shadow: 0 0 40px rgba(184, 255, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .pricing-note a {
+            color: var(--lime);
             font-weight: 600;
-            color: var(--neon);
+        }
+
+        /* Business Consulting Banner */
+        .consulting-banner {
+            margin-top: 40px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.06) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            transition: all 0.4s var(--ease);
+        }
+
+        .consulting-banner:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .cb-content h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cb-content h3 .badge {
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            background: rgba(184, 255, 0, 0.1);
+            color: var(--lime);
+            border: 1px solid rgba(184, 255, 0, 0.3);
+            border-radius: var(--radius-full);
             text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+
+        .cb-content p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .cb-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px 24px;
+        }
+
+        .cb-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--text-white);
+        }
+
+        .cb-features li i {
+            margin-top: 4px;
+            font-size: 0.7rem;
+            color: var(--lime);
+        }
+
+        .cb-action {
+            text-align: right;
+            min-width: 220px;
+            padding-left: 40px;
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cb-action .price {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 2.6rem;
+            margin-bottom: 16px;
+            line-height: 1;
+            color: var(--text-white);
+        }
+
+        .cb-action .price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-dim);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cb-action .sel-btn {
+            display: inline-block;
+            text-align: center;
+            padding: 14px 32px;
+            border-radius: var(--radius-full);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.35s var(--ease);
+            border: 1px solid var(--lime);
+            color: var(--lime);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .cb-action .sel-btn:hover {
+            background: var(--lime);
+            color: #000;
+        }
+
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .consulting-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 24px;
+                gap: 24px;
+            }
+            .cb-content h3 {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .cb-features {
+                grid-template-columns: 1fr;
+            }
+            .cb-action {
+                text-align: left;
+                width: 100%;
+                border-left: none;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                padding-left: 0;
+                padding-top: 24px;
+            }
+        }
+
+        /* =========================================
+           FAQ
+           ========================================= */
+        .faq-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-list {
+            max-width: 760px;
+            margin: 56px auto 0;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .faq-item.active {
+            border-color: var(--border-hover);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 28px;
+            cursor: pointer;
+            background: var(--bg-card);
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .faq-question .faq-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            flex-shrink: 0;
+            transition: all 0.4s var(--ease);
+        }
+
+        .faq-item.active .faq-icon {
+            background: var(--lime-dim);
+            color: var(--lime);
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s var(--ease);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 28px 24px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           CTA
+           ========================================= */
+        .cta-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(184, 255, 0, 0.08), transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-inner h2 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-inner p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 80px 0 32px;
+            background: var(--bg-elevated);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr 1fr 1.5fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-top: 18px;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--lime);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .footer-socials a {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            transition: all 0.3s var(--ease);
+            font-size: 1rem;
+        }
+
+        .footer-socials a:hover {
+            background: var(--lime);
+            color: #000;
+            border-color: var(--lime);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 
-<body class="relative min-h-screen selection:bg-[#ccff00] selection:text-black">
+<body>
 
-    <!-- Navbar -->
-    <nav class="fixed w-full top-0 z-50 border-b border-white/5 bg-black/50">
-        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2 md:gap-3">
-                <img src="postify-logo.png" alt="Postify" class="w-8 h-8 md:w-10 md:h-10 rounded-lg">
-                <span class="font-display font-bold text-base md:text-xl tracking-tight">POSTIFY STUDIO</span>
-            </div>
-            <a href="https://wa.me/917874414328"
-                class="px-4 md:px-6 py-1.5 md:py-2 rounded-full border border-[#ccff00] text-[#ccff00] text-sm md:text-base font-semibold hover:bg-[#ccff00] hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(204,255,0,0.3)]">
-                Ignite Growth
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-brand">
+                <img src="postify-logo.png" alt="Postify Studio">
+                <span>POSTIFY STUDIO</span>
             </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Clients</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact" class="nav-cta-btn">Get Started</a></li>
+            </ul>
+            <div class="nav-hamburger" id="navHamburger"
+                onclick="document.getElementById('navLinks').classList.toggle('open'); this.classList.toggle('active');">
+                <span></span><span></span><span></span>
+            </div>
         </div>
     </nav>
 
-    <!-- Ultra Modern Hero -->
-    <section
-        class="min-h-screen md:min-h-[90vh] pt-24 md:pt-32 pb-12 md:pb-20 container mx-auto px-4 md:px-6 flex flex-col-reverse lg:flex-row items-center relative z-10">
-
-        <!-- Left Content -->
-        <div class="w-full lg:w-1/2 mt-8 lg:mt-0 relative z-20">
-            <div
-                class="inline-block px-3 md:px-4 py-1 md:py-1.5 rounded-full border border-white/10 bg-white/5 text-xs md:text-sm font-semibold tracking-wide text-gray-400 mb-4 md:mb-6 uppercase">
-                Welcome to the new era
-            </div>
-            <h1 class="text-4xl md:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.05] tracking-tight mb-6 md:mb-8">
-                STOP <br>
-                SCROLLING.<br>
-                <span class="text-outline text-[1.2em] block -mt-1 md:-mt-2">START</span>
-                <span class="text-neon block -mt-2 md:-mt-4">DOMINATING.</span>
-            </h1>
-            <p class="text-base md:text-xl text-gray-400 max-w-lg mb-8 md:mb-10 font-light leading-relaxed">
-                I don't just post nice pictures. I engineer complete digital takeovers. Welcome to the portfolio of a
-                growth hacker masquerading as an agency.
-            </p>
-            <div class="flex flex-wrap gap-3 md:gap-4">
-                <a href="#work"
-                    class="px-6 md:px-8 py-3 md:py-4 bg-[#ccff00] text-black text-sm md:text-base font-bold rounded-full hover:scale-105 transition-transform duration-300">
-                    See The Proof
-                </a>
-                <a href="#pricing"
-                    class="px-6 md:px-8 py-3 md:py-4 bg-transparent border border-white/20 text-white text-sm md:text-base font-bold rounded-full hover:bg-white/5 transition-all duration-300">
-                    View Packages
-                </a>
-            </div>
-        </div>
-
-        <!-- Right Content: Floating Image & Creative Arrow -->
-        <div
-            class="w-full lg:w-1/2 relative min-h-[320px] md:min-h-[500px] flex justify-center items-center mt-4 lg:mt-0">
-
-            <!-- Background Giant Text -->
-            <div
-                class="absolute inset-0 flex items-center justify-center opacity-10 select-none pointer-events-none overflow-hidden">
-                <span
-                    class="font-display font-extrabold text-[8rem] md:text-[12rem] lg:text-[15rem] leading-none text-white whitespace-nowrap rotate-90 lg:rotate-0">Dev</span>
-            </div>
-
-            <!-- Glowing Orb behind image -->
-            <div
-                class="absolute w-[180px] h-[180px] md:w-[250px] md:h-[250px] lg:w-[350px] lg:h-[350px] bg-[#ccff00] rounded-full blur-[80px] md:blur-[100px] opacity-20 float-slow">
-            </div>
-
-            <!-- Hand-drawn SVG Arrow pointing to Dev -->
-            <div
-                class="absolute -top-4 right-4 md:-top-6 md:right-6 lg:top-20 lg:right-auto lg:-left-5 z-40 animate-bounce cursor-pointer flex flex-row-reverse lg:flex-row gap-1 md:gap-2 lg:gap-4 items-start lg:items-center">
-                <div
-                    class="bg-black/80 backdrop-blur border border-[#ccff00] p-2 md:p-3 lg:p-4 rounded-xl shadow-lg -rotate-6 max-w-[120px] md:max-w-[150px] lg:max-w-[200px]">
-                    <p class="font-display font-bold text-xs md:text-sm lg:text-lg text-[#ccff00]">Hello, I am Dev!</p>
-                    <p class="text-[8px] md:text-[10px] lg:text-xs text-gray-300 font-mono">Founder of Postify</p>
+    <!-- ===== HERO (V4 Ultra Premium) ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-layout">
+                <!-- Left: Typography & CTAs -->
+                <div class="hero-left">
+                    <div class="hero-badge reveal">
+                        <span class="dot"></span> Social Media & Business Growth
+                    </div>
+                    <h1 class="reveal reveal-d1">
+                        We Build <span class="outline">Brands</span><br>
+                        That <span class="highlight">Dominate.</span>
+                    </h1>
+                    <p class="hero-desc reveal reveal-d2">
+                        Strategy, premium content, and business consulting that turns overlooked brands into industry
+                        leaders. We don't guess — we engineer growth.
+                    </p>
+                    <div class="hero-ctas reveal reveal-d3">
+                        <a href="#testimonials" class="btn-glow">View Client Results <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#pricing" class="btn-ghost">See Packages</a>
+                    </div>
                 </div>
-                <svg class="w-8 h-8 md:w-12 md:h-12 lg:w-20 lg:h-20 text-[#ccff00] transform rotate-[160deg] lg:rotate-0"
-                    viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M10,90 Q50,90 80,30" />
-                    <path d="M60,30 L80,30 L80,50" />
-                </svg>
-            </div>
 
-            <!-- The Image itself -->
-            <img src="MyProfile.png" alt="Dev - Founder"
-                class="relative z-20 max-w-[70%] md:max-w-[90%] lg:max-w-md w-full object-contain float-fast drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                <!-- Right: Interactive 3D Cards -->
+                <div class="hero-right reveal reveal-d2">
+                    <div class="hero-visual-container" id="heroVisualContainer">
+                        <div class="hv-card hv-card-1">
+                            <div class="hv-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                            <div class="hv-value">75L+</div>
+                            <div class="hv-label">Sales Generated in 30 Days</div>
+                        </div>
+                        <div class="hv-card hv-card-2">
+                            <div class="hv-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <div class="hv-value">3x</div>
+                            <div class="hv-label">Average Client ROI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Endless Marquee Banner -->
-    <div class="marquee-wrapper my-6 md:my-10">
-        <div class="marquee-content">
-            VIRAL CONTENT CREATION • HYPER-LOCAL DOMINATION • 100% REVENUE FOCUSED • DATA-DRIVEN SCALING • VIRAL CONTENT
-            CREATION • HYPER-LOCAL DOMINATION • 100% REVENUE FOCUSED • DATA-DRIVEN SCALING • VIRAL CONTENT CREATION •
-            HYPER-LOCAL DOMINATION • 100% REVENUE FOCUSED • DATA-DRIVEN SCALING •
+    <!-- ===== SALES BANNER ===== -->
+    <div class="sales-banner">
+        <div class="sales-banner-inner">
+            <span class="sales-banner-item"><span class="sale-dot"></span> ₹75L+ Sales Generated in 30 Days</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> 1.3M+ Reel Views</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> 3x Average ROI</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> 10x Lead Growth</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> Results, Not Promises</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> ₹75L+ Sales Generated in 30 Days</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> 1.3M+ Reel Views</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> 3x Average ROI</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> 10x Lead Growth</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> Results, Not Promises</span>
         </div>
     </div>
 
-    <!-- Real Growth Stats Section -->
-    <section id="real-growth"
-        class="container mx-auto px-4 md:px-6 py-16 md:py-24 relative z-10 border-t border-white/5">
-        <div class="mb-10 md:mb-16 max-w-2xl">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4">Real <span class="text-neon">Growth</span>, Not
-                Vanity Metrics.
-            </h2>
-            <p class="text-gray-400 text-base md:text-lg leading-relaxed">Every number below reflects actual brand
-                impact, audience
-                response, and business results.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Stat 1 -->
-            <div class="stat-card group">
-                <div class="stat-number mb-3">5x</div>
-                <h4 class="font-display font-bold text-xl text-white mb-2">Reach Growth</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">Social media management that actually expands
-                    visibility and puts the brand in front of more people.</p>
+    <!-- ===== WHY POSTIFY ===== -->
+    <section class="why-section" id="about">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-tag"><i class="fa-solid fa-bolt"></i> Why Postify?</div>
+                <h2 class="section-heading">We Don't Just Post.<br>We <span class="text-lime">Engineer Growth.</span>
+                </h2>
+                <p class="section-sub">Most agencies deliver content. We deliver revenue. Every post, reel, and campaign
+                    is designed with one goal — growing your business measurably.</p>
             </div>
-
-            <!-- Stat 2 -->
-            <div class="stat-card group">
-                <div class="stat-number mb-3">1M+</div>
-                <h4 class="font-display font-bold text-xl text-white mb-2">Reel Views</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">One reel crossed 1 million views with only 152
-                    followers, showing the power of strong content and smart distribution.</p>
-            </div>
-
-            <!-- Stat 3 -->
-            <div class="stat-card group">
-                <div class="stat-number mb-3">10x</div>
-                <h4 class="font-display font-bold text-xl text-white mb-2">More Leads</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">Content, profile optimization, and clear
-                    calls-to-action helped turn attention into real inquiries.</p>
-            </div>
-
-            <!-- Stat 4 -->
-            <div class="stat-card group">
-                <div class="stat-number mb-3">3x</div>
-                <h4 class="font-display font-bold text-xl text-white mb-2">More Conversations</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">More DMs, more comments, and more direct interactions
-                    from people genuinely interested in the business.</p>
-            </div>
-
-            <!-- Stat 5 -->
-            <div class="stat-card group sm:col-span-2 lg:col-span-2">
-                <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-                    <div>
-                        <div
-                            class="w-14 h-14 rounded-full bg-[#ccff00]/10 flex items-center justify-center mb-3 sm:mb-0 group-hover:scale-110 transition-transform">
-                            <i class="fa-brands fa-instagram text-2xl text-[#ccff00]"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-display font-bold text-xl text-white mb-2">Real Customers from Instagram</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed">Not just likes and views—actual inquiries,
-                            calls, and customers came through the platform.</p>
-                    </div>
+            <div class="why-grid">
+                <div class="why-card reveal reveal-d1">
+                    <div class="icon-wrap"><i class="fa-solid fa-crosshairs"></i></div>
+                    <h3>Strategy Before Content</h3>
+                    <p>We study your market, competitors, and audience before creating a single post. Content without
+                        strategy is just noise.</p>
+                </div>
+                <div class="why-card reveal reveal-d2">
+                    <div class="icon-wrap"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h3>Data-Driven Decisions</h3>
+                    <p>Every campaign is tracked, measured, and optimized. We make decisions based on real analytics —
+                        not guesswork or trends alone.</p>
+                </div>
+                <div class="why-card reveal reveal-d3">
+                    <div class="icon-wrap"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>Your Growth Partner</h3>
+                    <p>We think like your co-founder, not a vendor. Your business goals are our KPIs. We're invested in
+                        your success as deeply as you are.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Words from Real Clients — 3D Globe -->
-    <section id="testimonials" class="globe-section py-16 md:py-24 relative z-10 border-t border-white/5">
-        <div class="mb-6 md:mb-8 text-center px-4 md:px-6">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4 font-display">Words from <span
-                    class="text-neon">Real Clients</span></h2>
-            <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">We let our clients do the talking. Here's
-                what they have
-                to say about working with Postify.</p>
+    <!-- ===== SERVICES ===== -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <div class="section-tag"><i class="fa-solid fa-rocket"></i> Our Services</div>
+                <h2 class="section-heading">Two Engines of <span class="text-lime">Business Growth.</span></h2>
+                <p class="section-sub center">Whether you need a commanding social media presence or a strategic roadmap
+                    to outpace competitors — we deliver both.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Social Media -->
+                <div class="service-card reveal reveal-d1">
+                    <div class="svc-icon"><i class="fa-brands fa-instagram"></i></div>
+                    <h3>Social Media Growth</h3>
+                    <p class="svc-desc">End-to-end social media management that builds your brand, engages your
+                        audience, and drives real business results — not just vanity metrics.</p>
+                    <ul class="svc-features">
+                        <li><i class="fa-solid fa-check"></i> Premium Content Creation</li>
+                        <li><i class="fa-solid fa-check"></i> Viral Reels & Videos</li>
+                        <li><i class="fa-solid fa-check"></i> Profile Optimization</li>
+                        <li><i class="fa-solid fa-check"></i> Community Engagement</li>
+                        <li><i class="fa-solid fa-check"></i> SEO Captions & Hashtags</li>
+                        <li><i class="fa-solid fa-check"></i> Monthly Analytics Reports</li>
+                    </ul>
+                    <a href="#pricing" class="svc-link">View Packages <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <!-- Business Consulting -->
+                <div class="service-card reveal reveal-d2">
+                    <div class="svc-icon"><i class="fa-solid fa-compass"></i></div>
+                    <h3>Business Consulting</h3>
+                    <p class="svc-desc">We show you how to grow your business differently from your competitors — with
+                        strategies that actually work and generate real inquiries. No theory. No fluff. Just results.
+                    </p>
+                    <ul class="svc-features">
+                        <li><i class="fa-solid fa-check"></i> Competitor Deep-Dive</li>
+                        <li><i class="fa-solid fa-check"></i> Market Positioning</li>
+                        <li><i class="fa-solid fa-check"></i> Differentiation Strategy</li>
+                        <li><i class="fa-solid fa-check"></i> Custom Growth Roadmap</li>
+                        <li><i class="fa-solid fa-check"></i> Revenue Optimization</li>
+                        <li><i class="fa-solid fa-check"></i> 1-on-1 Strategy Sessions</li>
+                    </ul>
+                    <a href="#pricing" class="svc-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
         </div>
+    </section>
 
+    <!-- ===== STATS ===== -->
+    <section class="stats-section" id="stats">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <div class="section-tag"><i class="fa-solid fa-signal"></i> Our Impact</div>
+                <h2 class="section-heading">Numbers Don't Lie.<br><span class="text-lime">Results Speak.</span></h2>
+                <p class="section-sub center">Every number below reflects actual brand impact, audience response, and
+                    business outcomes across our client campaigns.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card reveal reveal-d1">
+                    <div class="stat-num" data-target="75" data-suffix="L+">0</div>
+                    <div class="stat-label">Sales Generated</div>
+                    <div class="stat-desc">In the last 30 days for real clients</div>
+                </div>
+                <div class="stat-card reveal reveal-d2">
+                    <div class="stat-num" data-target="1" data-suffix="M+">0</div>
+                    <div class="stat-label">Reel Views</div>
+                    <div class="stat-desc">Single reel with just 152 followers</div>
+                </div>
+                <div class="stat-card reveal reveal-d3">
+                    <div class="stat-num" data-target="10" data-suffix="x">0</div>
+                    <div class="stat-label">Lead Growth</div>
+                    <div class="stat-desc">Through strategic content positioning</div>
+                </div>
+                <div class="stat-card reveal reveal-d4">
+                    <div class="stat-num" data-target="3" data-suffix="x">0</div>
+                    <div class="stat-label">Average ROI</div>
+                    <div class="stat-desc">On client marketing spend</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS — Globe ===== -->
+    <section id="testimonials" class="globe-section">
+        <div class="container">
+            <div class="reveal" style="text-align:center; margin-bottom:8px;">
+                <div class="section-tag"><i class="fa-solid fa-quote-left"></i> Client Stories</div>
+                <h2 class="section-heading">Words from <span class="text-lime">Real Clients.</span></h2>
+                <p class="section-sub center">We let our clients do the talking. Here's what they have to say about
+                    working with Postify.</p>
+            </div>
+        </div>
         <div class="globe-container" id="globeContainer">
-            <!-- Decorative elements -->
             <div class="globe-center-orb"></div>
             <div class="globe-ring"></div>
             <div class="globe-ring globe-ring-2"></div>
-
-            <!-- The 3D world that rotates -->
-            <div class="globe-world" id="globeWorld">
-                <!-- Cards are injected by JS -->
-            </div>
+            <div class="globe-world" id="globeWorld"></div>
         </div>
-
         <p class="globe-hint">
             <i class="fa-solid fa-hand-pointer"></i>
-            <span class="hidden md:inline">Hover to pause · Click to read full review</span>
-            <span class="md:hidden">Drag to spin · Pinch to zoom · Tap to read</span>
+            <span class="desktop-hint">Hover to pause · Click to read full review</span>
+            <span class="mobile-hint">Drag to spin · Tap to read</span>
         </p>
     </section>
 
-    <!-- Modal overlay for expanded card -->
+    <!-- Globe Modal -->
     <div class="globe-modal-overlay" id="globeModal">
         <div class="globe-modal-card" id="globeModalContent">
             <button class="globe-modal-close" id="globeModalClose"><i class="fa-solid fa-xmark"></i></button>
-            <!-- Content injected by JS -->
         </div>
     </div>
 
-    <!-- Sleek Pricing -->
-    <section id="pricing" class="container mx-auto px-4 md:px-6 py-16 md:py-24 relative z-10 border-t border-white/5">
-        <div class="text-center mb-12 md:mb-20">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4">Choose Your <span
-                    class="text-neon">Weapon.</span></h2>
-            <p class="text-gray-400 text-base md:text-lg max-w-xl mx-auto">No confusing fluff. Just highly structured
-                tiers designed
-                to scale your business at your current level.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start">
-            <!-- Tier 1: Growth Starter -->
-            <div class="pricing-card rounded-2xl p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
-                <h3 class="text-2xl md:text-3xl font-display font-bold mb-2">Growth Starter</h3>
-                <p class="text-gray-500 text-sm mb-6">Perfect for startups & local businesses wanting consistent online
-                    presence.</p>
-                <div class="text-4xl font-black mb-8">₹2,999<span
-                        class="text-base text-gray-500 font-normal">/month</span>
-                </div>
-
-                <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 10–12
-                        High-Quality Posts</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 3-4
-                        Reels with Viral Audio</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i>
-                        Instagram Optimization</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Smart
-                        Hashtags + Captions</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Daily
-                        Engagement (Comments/DMs)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Basic
-                        Monthly Report</li>
-                </ul>
-                <a href="https://wa.me/917874414328"
-                    class="block text-center py-3 w-full rounded-xl bg-white/5 hover:bg-white/10 transition font-semibold border border-white/10">Select
-                    Plan</a>
+    <!-- ===== PROCESS ===== -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <div class="section-tag"><i class="fa-solid fa-diagram-project"></i> How We Work</div>
+                <h2 class="section-heading">Our Proven <span class="text-lime">4-Step Process.</span></h2>
+                <p class="section-sub center">A systematic approach that turns struggling brands into market leaders.
+                </p>
             </div>
-
-            <!-- Tier 2: Momentum Builder (Most Popular) -->
-            <div
-                class="pricing-card premium rounded-2xl p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300 md:-mt-6 relative">
-                <div
-                    class="absolute top-0 inset-x-0 mx-auto w-max px-4 py-1.5 bg-[#ccff00] text-black text-xs font-bold uppercase rounded-b-lg tracking-wider">
-                    Most Popular ✨
+            <div class="process-grid">
+                <div class="process-step reveal reveal-d1">
+                    <div class="step-num">01</div>
+                    <h3>Discovery</h3>
+                    <p>We study your business, competitors, and market to find your unique strengths and untapped
+                        opportunities.</p>
                 </div>
-                <h3 class="text-2xl md:text-3xl font-display font-bold mb-2 mt-4">Momentum Builder</h3>
-                <p class="text-gray-500 text-sm mb-6">Perfect for growing brands that want to dominate their niche.</p>
-                <div class="text-4xl md:text-5xl font-black mb-6 text-[#ccff00]">₹6,999<span
-                        class="text-base text-gray-500 font-normal">/month</span></div>
-
-                <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-400 mb-6">
-                    Includes everything in Growth Starter, plus:
+                <div class="process-step reveal reveal-d2">
+                    <div class="step-num">02</div>
+                    <h3>Strategy</h3>
+                    <p>Custom growth plan with clear milestones, content pillars, and a differentiation roadmap.</p>
                 </div>
-
-                <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> 15–17
-                        Premium Posts (More Variety)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> 6-8
-                        Trending Reels</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> Insta +
-                        Google My Business Optimization</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> Advanced
-                        Hashtag + SEO Captions</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> Monthly
-                        30-min Strategic Meeting Call (or in-person)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i>
-                        Professional Monthly Report</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-[#ccff00] mt-0.5"></i> Priority
-                        WhatsApp Support</li>
-                </ul>
-                <a href="https://wa.me/917874414328"
-                    class="block text-center py-4 w-full rounded-xl bg-[#ccff00] hover:bg-[#b3e600] text-black transition font-bold shadow-[0_0_20px_rgba(204,255,0,0.4)]">Select
-                    Plan</a>
-            </div>
-
-            <!-- Tier 3: Authority Dominator -->
-            <div class="pricing-card rounded-2xl p-6 md:p-8 hover:-translate-y-2 transition-transform duration-300">
-                <h3 class="text-2xl md:text-3xl font-display font-bold mb-2">Authority Dominator</h3>
-                <p class="text-gray-500 text-sm mb-6">For serious brands wanting to own their industry & max leads.</p>
-                <div class="text-4xl font-black mb-6">₹9,999<span
-                        class="text-base text-gray-500 font-normal">/month</span>
+                <div class="process-step reveal reveal-d3">
+                    <div class="step-num">03</div>
+                    <h3>Execute</h3>
+                    <p>Premium content creation, campaign launches, daily engagement, and performance tracking.</p>
                 </div>
-
-                <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-400 mb-6">
-                    Includes everything in Momentum Builder, plus:
+                <div class="process-step reveal reveal-d4">
+                    <div class="step-num">04</div>
+                    <h3>Scale</h3>
+                    <p>Monthly reviews, data-driven optimization, growth consulting, and strategy refinement.</p>
                 </div>
-
-                <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 20–22
-                        Premium Posts (Carousel, Infographics)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 10-12
-                        High-Production Reels</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 1
-                        Professional Video Shoot + Editing (On-location)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i>
-                        Competitor Spying Report</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Full
-                        Engagement (Insta, FB, Google, LinkedIn)</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Paid Ad
-                        Management</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> Market
-                        Trends & Business Growth Strategy</li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-purple-400 mt-0.5"></i> 2
-                        Strategy Meetings + ROI Focused Report</li>
-                </ul>
-                <a href="https://wa.me/917874414328"
-                    class="block text-center py-3 w-full rounded-xl bg-white/5 hover:bg-white/10 transition font-semibold border border-white/10">Select
-                    Plan</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/5 py-12 bg-[#050505]">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
-                <span class="font-display font-bold text-2xl text-white opacity-50">POSTIFY STUDIO.</span>
+    <!-- ===== PRICING ===== -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <div class="section-tag"><i class="fa-solid fa-tags"></i> Pricing</div>
+                <h2 class="section-heading">Plans Built for <span class="text-lime">Growth.</span></h2>
+                <p class="section-sub center">Structured tiers designed to scale your business at your current stage. No
+                    hidden fees.</p>
             </div>
-            <div class="flex gap-6">
-                <a href="https://instagram.com/postify.studioo"
-                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#ccff00] hover:text-black hover:border-transparent transition-all">
-                    <i class="fa-brands fa-instagram text-xl"></i>
-                </a>
-                <a href="mailto:postifystudio1008@gmail.com"
-                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#ccff00] hover:text-black hover:border-transparent transition-all">
-                    <i class="fa-solid fa-envelope text-xl"></i>
-                </a>
-                <a href="tel:+917874414328"
-                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#ccff00] hover:text-black hover:border-transparent transition-all">
-                    <i class="fa-solid fa-phone text-xl"></i>
-                </a>
+            <div class="pricing-grid">
+                <!-- Tier 1 -->
+                <div class="pricing-card reveal reveal-d1">
+                    <h3>Growth Starter</h3>
+                    <p class="pc-desc">For startups & local businesses wanting consistent online presence.</p>
+                    <div class="price">₹2,999 <span>/month</span></div>
+                    <p class="price-note">Best for getting started</p>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 10–12 High-Quality Posts</li>
+                        <li><i class="fa-solid fa-check"></i> 3-4 Reels with Trending Audio</li>
+                        <li><i class="fa-solid fa-check"></i> Instagram Profile Optimization</li>
+                        <li><i class="fa-solid fa-check"></i> Smart Hashtags + Captions</li>
+                        <li><i class="fa-solid fa-check"></i> Daily Engagement (Comments/DMs)</li>
+                        <li><i class="fa-solid fa-check"></i> Basic Monthly Report</li>
+                    </ul>
+                    <a href="https://wa.me/917874414328" class="sel-btn outline">Select Plan</a>
+                </div>
+                <!-- Tier 2 -->
+                <div class="pricing-card popular reveal reveal-d2">
+                    <h3 style="margin-top:10px;">Momentum Builder</h3>
+                    <p class="pc-desc">For growing brands that want to dominate their niche.</p>
+                    <div class="price">₹6,999 <span>/month</span></div>
+                    <p class="price-note">Best value for growth</p>
+                    <div class="includes-note">Everything in Growth Starter, plus:</div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 15–17 Premium Posts</li>
+                        <li><i class="fa-solid fa-check"></i> 6-8 Trending Reels</li>
+                        <li><i class="fa-solid fa-check"></i> Insta + Google My Business</li>
+                        <li><i class="fa-solid fa-check"></i> Advanced SEO Captions</li>
+                        <li><i class="fa-solid fa-check"></i> Monthly 30-min Strategy Call</li>
+                        <li><i class="fa-solid fa-check"></i> Professional Monthly Report</li>
+                        <li><i class="fa-solid fa-check"></i> Priority WhatsApp Support</li>
+                    </ul>
+                    <a href="https://wa.me/917874414328" class="sel-btn filled">Select Plan</a>
+                </div>
+                <!-- Tier 3 -->
+                <div class="pricing-card premium reveal reveal-d3">
+                    <div class="pop-badge">VIP Premium</div>
+                    <h3 style="margin-top:10px;">Authority Dominator</h3>
+                    <p class="pc-desc">For serious brands wanting to own their industry & maximize leads.</p>
+                    <div class="price">₹9,999 <span>/month</span></div>
+                    <p class="price-note">Best for market leadership</p>
+                    <div class="includes-note">Everything in Momentum Builder, plus:</div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 20–22 Posts (Carousel + Infographics)</li>
+                        <li><i class="fa-solid fa-check"></i> 10-12 High-Production Reels</li>
+                        <li class="highlight-feature"><i class="fa-solid fa-star"></i> 2 Cinematic Shoots</li>
+                        <li class="highlight-feature"><i class="fa-solid fa-star"></i> Business Consulting</li>
+                        <li><i class="fa-solid fa-check"></i> Competitor Analysis Report</li>
+                        <li><i class="fa-solid fa-check"></i> Multi-Platform Management</li>
+                        <li><i class="fa-solid fa-check"></i> Paid Ad Management</li>
+                        <li><i class="fa-solid fa-check"></i> Market Trends & Growth Strategy</li>
+                        <li><i class="fa-solid fa-check"></i> 2 Strategy Meetings + ROI Report</li>
+                    </ul>
+                    <a href="https://wa.me/917874414328" class="sel-btn filled">Select VIP Plan</a>
+                </div>
             </div>
-            <p class="text-xs text-gray-600">© 2026 Dev & Postify Studio. All limits destroyed.</p>
+            
+            <!-- Business Consulting Standalone Banner -->
+            <div class="consulting-banner reveal reveal-d4">
+                <div class="cb-content">
+                    <h3>Business Consulting <span class="badge">Standalone Service</span></h3>
+                    <p>Learn how to grow differently from competitors with strategies that generate real inquiries. Tailored specifically to your business.</p>
+                    <ul class="cb-features">
+                        <li><i class="fa-solid fa-check"></i> Deep Competitor Analysis</li>
+                        <li><i class="fa-solid fa-check"></i> Market Positioning Strategy</li>
+                        <li><i class="fa-solid fa-check"></i> Differentiation Roadmap</li>
+                        <li><i class="fa-solid fa-check"></i> Custom Growth Plan</li>
+                        <li><i class="fa-solid fa-check"></i> Revenue Optimization</li>
+                        <li><i class="fa-solid fa-check"></i> 1-on-1 Strategy Sessions</li>
+                    </ul>
+                </div>
+                <div class="cb-action">
+                    <div class="price">₹1,999 <span>/meeting</span></div>
+                    <a href="https://wa.me/917874414328" class="sel-btn">Let's Talk <i class="fa-solid fa-arrow-right" style="font-size:0.7rem; margin-left: 4px;"></i></a>
+                </div>
+            </div>
+            <p class="pricing-note reveal">Not sure which plan is right for your business? <a
+                    href="https://wa.me/917874414328">Let's have
+                    a quick chat →</a></p>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <div class="section-tag"><i class="fa-solid fa-circle-question"></i> FAQ</div>
+                <h2 class="section-heading">Common <span class="text-lime">Questions.</span></h2>
+                <p class="section-sub center">Everything you need to know before getting started.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>How long before I see results?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Most clients see noticeable improvements in engagement and reach
+                            within the first 30 days. Significant lead generation and business growth typically kicks in
+                            by month 2-3, depending on your industry and starting point.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Do you work with businesses outside of Ahmedabad?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Absolutely! While we have a strong local presence in Ahmedabad, we
+                            work with brands across India. All our communication and strategy sessions can happen
+                            virtually.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>What platforms do you manage?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Our core focus is Instagram, but depending on your plan, we also
+                            manage Facebook, Google My Business, and LinkedIn. We recommend starting with the platforms
+                            where your audience is most active.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>What's included in Business Consulting?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We show you how to grow your business differently from your
+                            competitors — with strategies that actually work and generate real inquiries. This includes
+                            competitor analysis, market positioning, differentiation roadmaps, and 1-on-1 strategy
+                            sessions tailored to your business.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>How do we communicate during the project?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We use WhatsApp for day-to-day communication and quick updates.
+                            Monthly strategy calls happen via Google Meet or in-person (for Ahmedabad clients). You'll
+                            also receive professional monthly reports.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-inner reveal">
+                <div class="section-tag"><i class="fa-solid fa-paper-plane"></i> Let's Connect</div>
+                <h2>Ready to Grow?<br><span class="text-lime">Let's Talk.</span></h2>
+                <p>Whether you need a social media overhaul or a strategic growth partner, we're here to help your brand
+                    win.</p>
+                <div class="cta-btns">
+                    <a href="https://wa.me/917874414328" class="btn-glow"><i class="fa-brands fa-whatsapp"></i> Chat on
+                        WhatsApp</a>
+                    <a href="mailto:postifystudio1008@gmail.com" class="btn-ghost"><i class="fa-solid fa-envelope"></i>
+                        Send an Email</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <img src="postify-logo.png" alt="Postify" style="width:38px;height:38px;border-radius:12px;">
+                        <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.1rem;">POSTIFY
+                            STUDIO</span>
+                    </div>
+                    <p>A results-driven social media & business consulting agency helping brands grow with strategy,
+                        content, and data.</p>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com/postify.studioo" aria-label="Instagram"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="mailto:postifystudio1008@gmail.com" aria-label="Email"><i
+                                class="fa-solid fa-envelope"></i></a>
+                        <a href="tel:+917874414328" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Social Media Management</a></li>
+                        <li><a href="#services">Business Consulting</a></li>
+                        <li><a href="#services">Content Creation</a></li>
+                        <li><a href="#services">Brand Strategy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:postifystudio1008@gmail.com">postifystudio1008@gmail.com</a></li>
+                        <li><a href="tel:+917874414328">+91 78744 14328</a></li>
+                        <li><a href="https://wa.me/917874414328">WhatsApp Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Postify Studio. All rights reserved.</p>
+                <p>Designed with <span style="color:var(--lime);">♥</span> for growth.</p>
+            </div>
         </div>
     </footer>
 
 
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
+        // === Navbar scroll ===
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+
+        // Close mobile nav
+        document.querySelectorAll('.nav-links a').forEach(l => {
+            l.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+                document.getElementById('navHamburger').classList.remove('active');
+            });
+        });
+
+        // === Scroll Reveal ===
+        const ro = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+        // === Stat Counter ===
+        const co = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                const el = e.target;
+                const target = parseInt(el.dataset.target);
+                const suffix = el.dataset.suffix || '';
+                let cur = 0;
+                const step = target / (1200 / 16);
+                const t = setInterval(() => {
+                    cur += step;
+                    if (cur >= target) { cur = target; clearInterval(t); }
+                    el.textContent = Math.floor(cur) + suffix;
+                }, 16);
+                co.unobserve(el);
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stat-num[data-target]').forEach(el => co.observe(el));
+
+        // === Hero 3D Card Interactive Effect ===
+        const heroVisual = document.getElementById('heroVisualContainer');
+        const hCards = document.querySelectorAll('.hv-card');
+
+        if (heroVisual && window.innerWidth > 992) {
+            document.querySelector('.hero-right').addEventListener('mousemove', (e) => {
+                const rect = heroVisual.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -12; // Max 12 deg
+                const rotateY = ((x - centerX) / centerX) * 12;
+
+                hCards.forEach(card => {
+                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+            });
+
+            document.querySelector('.hero-right').addEventListener('mouseleave', () => {
+                hCards.forEach(card => {
+                    card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                });
+            });
+        }
+
+        // === Responsive hint ===
+        const isMob = window.innerWidth <= 768;
+        if (isMob) document.querySelectorAll('.desktop-hint').forEach(e => e.style.display = 'none');
+        else document.querySelectorAll('.mobile-hint').forEach(e => e.style.display = 'none');
+
+        // === 3D Globe Testimonials ===
         (function () {
-            // === Testimonial Data ===
             const testimonials = [
-                {
-                    text: "Before working with Postify, our Instagram had minimal traction. Within a short span, our content started gaining serious momentum—one reel crossed 1 million views even when we had just around 150 followers. More importantly, this wasn't just vanity growth—we started receiving genuine travel inquiries directly through Instagram, turning content into real business opportunities.",
-                    name: "Waycation Tours & Internationals",
-                    initial: "W",
-                    avatarGrad: "linear-gradient(135deg, #ccff00, #16a34a)",
-                    avatarTextColor: "#000",
-                    badge: "Travel Agency",
-                    badgeIcon: "fa-solid fa-plane-departure"
-                },
-                {
-                    text: "Postify didn't just manage our social media—they helped us position our brand strategically. Through consistent content and smart campaigns, our cafe started gaining strong local recognition across Ahmedabad. We've seen a noticeable increase in customer engagement and footfall driven by Instagram.",
-                    name: "The Black Bird's Cafe",
-                    initial: "B",
-                    avatarGrad: "linear-gradient(135deg, #1a1a2e, #0f0f1a)",
-                    avatarTextColor: "#fff",
-                    badge: "Cafe",
-                    badgeIcon: "fa-solid fa-mug-hot",
-                    avatarBorder: true
-                },
-                {
-                    text: "Our Instagram presence has completely transformed. The content quality, design, and overall feed now look professional and premium, which has significantly improved how customers perceive our brand. We finally have a profile that builds trust at first glance.",
-                    name: "Jay Mahakali Tours & Travels",
-                    initial: "J",
-                    avatarGrad: "linear-gradient(135deg, #f97316, #c2410c)",
-                    avatarTextColor: "#fff",
-                    badge: "Travel",
-                    badgeIcon: "fa-solid fa-van-shuttle"
-                },
-                {
-                    text: "Our account was almost inactive before Postify stepped in. After proper optimization and content strategy, our page is now active, engaging, and bringing in real customer inquiries. It feels like our business finally exists online in a meaningful way.",
-                    name: "Kensho Furniture",
-                    initial: "K",
-                    avatarGrad: "linear-gradient(135deg, #b45309, #78350f)",
-                    avatarTextColor: "#fff",
-                    badge: "Furniture",
-                    badgeIcon: "fa-solid fa-couch"
-                },
-                {
-                    text: "Honestly, the results felt like magic—but it's actually strategy. Soon after starting with Postify, we experienced a sharp increase in calls and booking inquiries. Instagram has now become a consistent source of clients for us.",
-                    name: "Riddhi Nail Studio",
-                    initial: "R",
-                    avatarGrad: "linear-gradient(135deg, #ec4899, #e11d48)",
-                    avatarTextColor: "#fff",
-                    badge: "Beauty",
-                    badgeIcon: "fa-solid fa-hand-sparkles"
-                },
-                {
-                    text: "Postify helped us reach the right audience. We started receiving genuine student inquiries and direct calls, which has directly contributed to our growth. The content is not just attractive—it actually converts.",
-                    name: "Skillkit Design Institute",
-                    initial: "S",
-                    avatarGrad: "linear-gradient(135deg, #3b82f6, #4f46e5)",
-                    avatarTextColor: "#fff",
-                    badge: "Education",
-                    badgeIcon: "fa-solid fa-graduation-cap"
-                }
+                { text: "Since Postify optimized our Instagram presence, our visibility has skyrocketed. We are getting significantly more views and local footfall. It truly works wonders for local businesses!", name: "Khodiyar Garments", initial: "K", avatarGrad: "linear-gradient(135deg, #3b82f6, #1d4ed8)", avatarTextColor: "#fff", badge: "Apparel", badgeIcon: "fa-solid fa-shirt" },
+                { text: "Postify held my hand from day one. Through professional video shoots, proven growth strategies, and highly creative ideas, they elevated my brand and positioned my profile squarely in the premium category.", name: "Elegant Layers by Khyati", initial: "E", avatarGrad: "linear-gradient(135deg, #ec4899, #be185d)", avatarTextColor: "#fff", badge: "Fashion", badgeIcon: "fa-solid fa-gem" },
+                { text: "I spent thousands on other agencies with zero ROI. Postify changed everything. Within a month, we saw real results, and two of our reels went completely viral. They deliver what they promise.", name: "Egg World", initial: "E", avatarGrad: "linear-gradient(135deg, #eab308, #a16207)", avatarTextColor: "#fff", badge: "Food", badgeIcon: "fa-solid fa-utensils" },
+                { text: "I've run my Garba classes for 9 years, but Postify took us to the next level. The creative business ideas and strategies they implemented helped us engage a massive new wave of students.", name: "Shakti Keshav Garba", initial: "S", avatarGrad: "linear-gradient(135deg, #8b5cf6, #6d28d9)", avatarTextColor: "#fff", badge: "Dance", badgeIcon: "fa-solid fa-music" },
+                { text: "Built a content strategy that crossed 1.3M reel views with just 152 followers. Turned Instagram into a consistent source of travel bookings.", name: "Waycation Tours", initial: "W", avatarGrad: "linear-gradient(135deg, #b8ff00, #16a34a)", avatarTextColor: "#000", badge: "Travel", badgeIcon: "fa-solid fa-plane-departure" },
+                { text: "Positioned our brand strategically. Smart campaigns drove strong local recognition and increased footfall noticeably across the city.", name: "The Black Bird's Cafe", initial: "B", avatarGrad: "linear-gradient(135deg, #1a1a2e, #0f0f1a)", avatarTextColor: "#fff", badge: "Cafe", badgeIcon: "fa-solid fa-mug-hot", avatarBorder: true }
             ];
 
-            // === DOM Elements ===
             const container = document.getElementById('globeContainer');
             const world = document.getElementById('globeWorld');
             const modal = document.getElementById('globeModal');
             const modalContent = document.getElementById('globeModalContent');
-            const modalClose = document.getElementById('globeModalClose');
-
-            // === Globe Config ===
             const isMobile = window.innerWidth <= 768;
             let RADIUS = isMobile ? 220 : 340;
-            let rotationY = 0;
-            let rotationX = 15; // slight tilt for 3D depth
-            let autoSpeed = 0.15; // degrees per frame
-            let isHovering = false;
-            let isDragging = false;
-            let dragStartX = 0;
-            let dragStartY = 0;
-            let dragStartRotY = 0;
-            let dragStartRotX = 0;
-            let velocity = 0;
+            let rotY = 0, rotX = 15, autoSpd = 0.15;
+            let hovering = false, dragging = false;
+            let dStartX = 0, dStartY = 0, dStartRY = 0, dStartRX = 0, vel = 0;
+            let pinchD0 = 0, pinchR0 = RADIUS;
 
-            // Pinch zoom
-            let initialPinchDist = 0;
-            let initialRadius = RADIUS;
-
-            // === Build Card HTML ===
-            function buildCardHTML(t) {
-                const borderStyle = t.avatarBorder ? 'border: 1px solid rgba(255,255,255,0.15);' : '';
-                return `
-                <div class="g-quote">"</div>
-                <div class="g-text">${t.text}</div>
-                <div class="g-author">
-                    <div class="g-avatar" style="background:${t.avatarGrad}; color:${t.avatarTextColor}; ${borderStyle}">${t.initial}</div>
-                    <div>
-                        <div class="g-name">${t.name}</div>
-                        <div class="g-badge"><i class="${t.badgeIcon}" style="font-size:0.55rem"></i> ${t.badge}</div>
-                    </div>
-                </div>
-            `;
+            function buildHTML(t) {
+                const bs = t.avatarBorder ? 'border:1px solid rgba(255,255,255,0.15);' : '';
+                return `<div class="g-quote">"</div><div class="g-text">${t.text}</div><div class="g-author"><div class="g-avatar" style="background:${t.avatarGrad};color:${t.avatarTextColor};${bs}">${t.initial}</div><div><div class="g-name">${t.name}</div><div class="g-badge"><i class="${t.badgeIcon}" style="font-size:0.55rem"></i> ${t.badge}</div></div></div>`;
             }
 
-            // === Create Cards ===
             const cards = [];
-            const cardCount = testimonials.length;
-
-            // Distribute cards on a sphere using golden angle for even spacing
             testimonials.forEach((t, i) => {
-                const card = document.createElement('div');
-                card.className = 'globe-card';
-                card.innerHTML = buildCardHTML(t);
-                card.dataset.index = i;
-
-                card.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    openModal(i);
-                });
-
-                // Pause only when hovering directly on a card
-                card.addEventListener('mouseenter', () => { isHovering = true; });
-                card.addEventListener('mouseleave', () => { isHovering = false; });
-
-                world.appendChild(card);
-                cards.push(card);
+                const c = document.createElement('div');
+                c.className = 'globe-card'; c.innerHTML = buildHTML(t); c.dataset.index = i;
+                c.addEventListener('click', e => { e.stopPropagation(); openModal(i); });
+                c.addEventListener('mouseenter', () => hovering = true);
+                c.addEventListener('mouseleave', () => hovering = false);
+                world.appendChild(c); cards.push(c);
             });
 
-            // === Spherical positioning ===
-            // Distribute cards on an arc (latitude bands) for visual balance
-            function getSphericalPositions(count) {
-                const positions = [];
-                for (let i = 0; i < count; i++) {
-                    // Golden angle distribution for even-ish spread
-                    const phi = Math.acos(1 - (2 * (i + 0.5)) / count); // latitude: 0 to PI
-                    const theta = (2 * Math.PI * i) / ((1 + Math.sqrt(5)) / 2); // golden angle
-                    positions.push({ phi, theta });
+            function getSphPos(n) {
+                const p = [];
+                for (let i = 0; i < n; i++) {
+                    p.push({ phi: Math.acos(1 - (2 * (i + 0.5)) / n), theta: (2 * Math.PI * i) / ((1 + Math.sqrt(5)) / 2) });
                 }
-                return positions;
+                return p;
             }
+            const pos = getSphPos(cards.length);
 
-            const positions = getSphericalPositions(cardCount);
-
-            // === Render Loop ===
             function render() {
-                if (!isDragging && !isHovering) {
-                    rotationY += autoSpeed + velocity;
-                    velocity *= 0.95; // decay momentum
-                    if (Math.abs(velocity) < 0.01) velocity = 0;
-                }
-
-                // Apply rotation to each card individually (fake world rotation)
-                const radY = (rotationY * Math.PI) / 180;
-                const radX = (rotationX * Math.PI) / 180;
-
-                cards.forEach((card, i) => {
-                    const { phi, theta } = positions[i];
-
-                    // Spherical to cartesian
-                    let x = RADIUS * Math.sin(phi) * Math.cos(theta + radY);
+                if (!dragging && !hovering) { rotY += autoSpd + vel; vel *= 0.95; if (Math.abs(vel) < 0.01) vel = 0; }
+                const ry = rotY * Math.PI / 180, rx = rotX * Math.PI / 180;
+                cards.forEach((c, i) => {
+                    const { phi, theta } = pos[i];
+                    let x = RADIUS * Math.sin(phi) * Math.cos(theta + ry);
                     let y = RADIUS * Math.cos(phi);
-                    let z = RADIUS * Math.sin(phi) * Math.sin(theta + radY);
-
-                    // Apply X rotation (tilt)
-                    const y2 = y * Math.cos(radX) - z * Math.sin(radX);
-                    const z2 = y * Math.sin(radX) + z * Math.cos(radX);
-                    y = y2;
-                    z = z2;
-
-                    // Scale and opacity based on depth (z)
-                    const scale = mapRange(z, -RADIUS, RADIUS, 0.5, 1.1);
-                    const opacity = mapRange(z, -RADIUS, RADIUS, 0.2, 1);
-                    const zIndex = Math.round(mapRange(z, -RADIUS, RADIUS, 0, 50));
-
-                    // Center the card
-                    const cardW = isMobile ? 200 : 280;
-                    const cardH = isMobile ? 140 : 180;
-
-                    card.style.transform = `translate3d(${x - cardW / 2}px, ${y - cardH / 2}px, ${z}px) scale(${scale})`;
-                    card.style.opacity = opacity;
-                    card.style.zIndex = zIndex;
+                    let z = RADIUS * Math.sin(phi) * Math.sin(theta + ry);
+                    const y2 = y * Math.cos(rx) - z * Math.sin(rx);
+                    const z2 = y * Math.sin(rx) + z * Math.cos(rx);
+                    y = y2; z = z2;
+                    const sc = mr(z, -RADIUS, RADIUS, 0.5, 1.1);
+                    const op = mr(z, -RADIUS, RADIUS, 0.2, 1);
+                    const zi = Math.round(mr(z, -RADIUS, RADIUS, 0, 50));
+                    const cw = isMobile ? 220 : 300, ch = isMobile ? 150 : 190;
+                    c.style.transform = `translate3d(${x - cw / 2}px,${y - ch / 2}px,${z}px) scale(${sc})`;
+                    c.style.opacity = op; c.style.zIndex = zi;
                 });
-
                 requestAnimationFrame(render);
             }
+            function mr(v, a, b, c, d) { return c + ((v - a) / (b - a)) * (d - c); }
 
-            function mapRange(value, inMin, inMax, outMin, outMax) {
-                return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin);
-            }
+            container.addEventListener('mousedown', e => { dragging = true; dStartX = e.clientX; dStartY = e.clientY; dStartRY = rotY; dStartRX = rotX; });
+            window.addEventListener('mousemove', e => { if (!dragging) return; rotY = dStartRY - (e.clientX - dStartX) * 0.3; rotX = Math.max(-40, Math.min(40, dStartRX - (e.clientY - dStartY) * 0.3)); });
+            window.addEventListener('mouseup', e => { if (dragging) { dragging = false; vel = -(e.clientX - dStartX) * 0.05; } });
+            container.addEventListener('touchstart', e => { if (e.touches.length === 1) { dragging = true; hovering = true; dStartX = e.touches[0].clientX; dStartY = e.touches[0].clientY; dStartRY = rotY; dStartRX = rotX; } if (e.touches.length === 2) { pinchD0 = gPD(e); pinchR0 = RADIUS; } }, { passive: true });
+            container.addEventListener('touchmove', e => { if (e.touches.length === 1 && dragging) { rotY = dStartRY - (e.touches[0].clientX - dStartX) * 0.4; rotX = Math.max(-40, Math.min(40, dStartRX - (e.touches[0].clientY - dStartY) * 0.4)); } if (e.touches.length === 2) { RADIUS = Math.max(150, Math.min(500, pinchR0 * (gPD(e) / pinchD0))); } }, { passive: true });
+            container.addEventListener('touchend', e => { if (e.touches.length === 0) { dragging = false; hovering = false; } }, { passive: true });
+            function gPD(e) { const dx = e.touches[0].clientX - e.touches[1].clientX, dy = e.touches[0].clientY - e.touches[1].clientY; return Math.sqrt(dx * dx + dy * dy); }
 
-            // === Desktop: Hover pause is handled per-card (see card creation above) ===
-
-            // === Desktop: Drag to spin ===
-            container.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                dragStartX = e.clientX;
-                dragStartY = e.clientY;
-                dragStartRotY = rotationY;
-                dragStartRotX = rotationX;
-            });
-
-            window.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                const dx = e.clientX - dragStartX;
-                const dy = e.clientY - dragStartY;
-                rotationY = dragStartRotY - dx * 0.3;
-                rotationX = Math.max(-40, Math.min(40, dragStartRotX + dy * 0.3));
-            });
-
-            window.addEventListener('mouseup', (e) => {
-                if (isDragging) {
-                    isDragging = false;
-                    const dx = e.clientX - dragStartX;
-                    velocity = -dx * 0.05;
-                }
-            });
-
-            // === Mobile: Touch drag ===
-            container.addEventListener('touchstart', (e) => {
-                if (e.touches.length === 1) {
-                    isDragging = true;
-                    isHovering = true;
-                    dragStartX = e.touches[0].clientX;
-                    dragStartY = e.touches[0].clientY;
-                    dragStartRotY = rotationY;
-                    dragStartRotX = rotationX;
-                }
-                // Pinch start
-                if (e.touches.length === 2) {
-                    initialPinchDist = getPinchDist(e);
-                    initialRadius = RADIUS;
-                }
-            }, { passive: true });
-
-            container.addEventListener('touchmove', (e) => {
-                if (e.touches.length === 1 && isDragging) {
-                    const dx = e.touches[0].clientX - dragStartX;
-                    const dy = e.touches[0].clientY - dragStartY;
-                    rotationY = dragStartRotY - dx * 0.4;
-                    rotationX = Math.max(-40, Math.min(40, dragStartRotX + dy * 0.4));
-                }
-                // Pinch zoom
-                if (e.touches.length === 2) {
-                    const dist = getPinchDist(e);
-                    const ratio = dist / initialPinchDist;
-                    RADIUS = Math.max(150, Math.min(500, initialRadius * ratio));
-                }
-            }, { passive: true });
-
-            container.addEventListener('touchend', (e) => {
-                if (e.touches.length === 0) {
-                    isDragging = false;
-                    isHovering = false;
-                }
-            }, { passive: true });
-
-            function getPinchDist(e) {
-                const dx = e.touches[0].clientX - e.touches[1].clientX;
-                const dy = e.touches[0].clientY - e.touches[1].clientY;
-                return Math.sqrt(dx * dx + dy * dy);
-            }
-
-            // === Modal ===
-            function openModal(index) {
-                const t = testimonials[index];
-                const borderStyle = t.avatarBorder ? 'border: 1px solid rgba(255,255,255,0.15);' : '';
-                modalContent.innerHTML = `
-                <button class="globe-modal-close" onclick="document.getElementById('globeModal').classList.remove('active')">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <div class="g-quote">"</div>
-                <div class="g-text" style="-webkit-line-clamp:unset; display:block; font-size:0.85rem; color:rgba(255,255,255,0.7); line-height:1.7; margin-bottom:1.25rem;">${t.text}</div>
-                <div class="g-author">
-                    <div class="g-avatar" style="background:${t.avatarGrad}; color:${t.avatarTextColor}; ${borderStyle} width:40px; height:40px; font-size:0.85rem;">${t.initial}</div>
-                    <div>
-                        <div class="g-name" style="font-size:0.85rem;">${t.name}</div>
-                        <div class="g-badge"><i class="${t.badgeIcon}" style="font-size:0.55rem"></i> ${t.badge}</div>
-                    </div>
-                </div>
-            `;
+            function openModal(i) {
+                const t = testimonials[i]; const bs = t.avatarBorder ? 'border:1px solid rgba(255,255,255,0.15);' : '';
+                modalContent.innerHTML = `<button class="globe-modal-close" onclick="document.getElementById('globeModal').classList.remove('active')"><i class="fa-solid fa-xmark"></i></button><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:2.8rem;background:linear-gradient(135deg,var(--lime),rgba(184,255,0,0.3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.8rem;line-height:1;">"</div><div style="font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:1.5rem;">${t.text}</div><div style="display:flex;align-items:center;gap:0.8rem;"><div style="background:${t.avatarGrad};color:${t.avatarTextColor};${bs}width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.95rem;">${t.initial}</div><div><div style="font-family:'Outfit',sans-serif;font-weight:800;font-size:0.95rem;letter-spacing:-0.01em;">${t.name}</div><div style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.25rem 0.6rem;border-radius:999px;background:rgba(184,255,0,0.08);border:1px solid rgba(184,255,0,0.15);font-size:0.65rem;font-weight:600;color:var(--lime);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.3rem;"><i class="${t.badgeIcon}" style="font-size:0.6rem"></i> ${t.badge}</div></div></div>`;
                 modal.classList.add('active');
             }
-
-            // Close modal
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                }
-            });
-
-            // Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') modal.classList.remove('active');
-            });
-
-            // === Start ===
+            modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('active'); });
             render();
-
-            // Handle resize
-            window.addEventListener('resize', () => {
-                const nowMobile = window.innerWidth <= 768;
-                if (nowMobile !== isMobile) {
-                    location.reload(); // simplest way to recalculate
-                }
-            });
+            window.addEventListener('resize', () => { if ((window.innerWidth <= 768) !== isMobile) location.reload(); });
         })();
     </script>
-
 </body>
 
 </html>
