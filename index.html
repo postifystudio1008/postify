@@ -2008,6 +2008,292 @@
                 text-align: center;
             }
         }
+
+        /* =========================================
+           PRICING ENHANCEMENTS — V5
+           ========================================= */
+        .price-original {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text-dim);
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-bottom: 2px;
+            opacity: 0.5;
+        }
+
+        .savings-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(34, 211, 238, 0.25);
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--cyan);
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 20px;
+        }
+
+        .urgency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.12), rgba(239, 68, 68, 0.04));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: var(--radius-full);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #ef4444;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 20px;
+            animation: urgencyPulse 2s ease-in-out infinite;
+        }
+
+        .urgency-badge .fire-icon {
+            font-size: 1rem;
+        }
+
+        @keyframes urgencyPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.15);
+            }
+
+            50% {
+                box-shadow: 0 0 20px 0 rgba(239, 68, 68, 0.1);
+            }
+        }
+
+        .trial-banner {
+            margin-top: 40px;
+            padding: 36px 40px;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.06), rgba(139, 92, 246, 0.06));
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            border-radius: var(--radius-xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trial-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.04), transparent);
+            animation: trialShimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes trialShimmer {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(50%);
+            }
+        }
+
+        .trial-banner h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .trial-banner p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .trial-highlight {
+            color: var(--cyan);
+            font-weight: 700;
+        }
+
+        .btn-trial {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(34, 211, 238, 0.35);
+            border-radius: var(--radius-full);
+            color: var(--cyan);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.35s var(--ease);
+            position: relative;
+            z-index: 1;
+            text-decoration: none;
+        }
+
+        .btn-trial:hover {
+            background: var(--cyan);
+            color: #000;
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .trust-strip {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+            padding: 28px 32px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-gray);
+        }
+
+        .trust-item i {
+            font-size: 1.1rem;
+            color: var(--lime);
+        }
+
+        .comparison-wrapper {
+            margin-top: 48px;
+            overflow-x: auto;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+            font-size: 0.88rem;
+        }
+
+        .comparison-table thead th {
+            padding: 20px 16px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .comparison-table thead th:first-child {
+            text-align: left;
+            padding-left: 24px;
+            color: var(--text-gray);
+            font-weight: 600;
+        }
+
+        .comparison-table thead th:nth-child(3) {
+            color: var(--lime);
+        }
+
+        .comparison-table thead th:nth-child(4) {
+            color: #ffd700;
+        }
+
+        .comparison-table tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.2s ease;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .comparison-table tbody td {
+            padding: 14px 16px;
+            text-align: center;
+            color: var(--text-white);
+        }
+
+        .comparison-table tbody td:first-child {
+            text-align: left;
+            padding-left: 24px;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .comparison-table .check-yes {
+            color: var(--lime);
+            font-size: 0.85rem;
+        }
+
+        .comparison-table .check-no {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+        }
+
+        @keyframes goldBorderGlow {
+
+            0%,
+            100% {
+                border-color: rgba(255, 215, 0, 0.4);
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+            }
+
+            50% {
+                border-color: rgba(255, 170, 0, 0.65);
+                box-shadow: 0 0 50px rgba(255, 215, 0, 0.18);
+            }
+        }
+
+        .pricing-card.premium {
+            animation: goldBorderGlow 3s ease-in-out infinite;
+        }
+
+        .pricing-card.premium:hover {
+            animation: none;
+        }
+
+        @media (max-width: 768px) {
+            .trust-strip {
+                gap: 16px;
+                padding: 20px 16px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .urgency-badge {
+                font-size: 0.72rem;
+                padding: 8px 16px;
+            }
+
+            .trial-banner {
+                padding: 24px 20px;
+            }
+
+            .trial-banner h3 {
+                font-size: 1.15rem;
+            }
+        }
     </style>
 </head>
 
@@ -2063,13 +2349,13 @@
                     <div class="hero-visual-container" id="heroVisualContainer">
                         <div class="hv-card hv-card-1">
                             <div class="hv-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
-                            <div class="hv-value">75L+</div>
+                            <div class="hv-value">₹75L+</div>
                             <div class="hv-label">Sales Generated in 30 Days</div>
                         </div>
                         <div class="hv-card hv-card-2">
                             <div class="hv-icon"><i class="fa-solid fa-bolt"></i></div>
-                            <div class="hv-value">3x</div>
-                            <div class="hv-label">Average Client ROI</div>
+                            <div class="hv-value">100M+</div>
+                            <div class="hv-label">Reel Views</div>
                         </div>
                     </div>
                 </div>
@@ -2081,12 +2367,12 @@
     <div class="sales-banner">
         <div class="sales-banner-inner">
             <span class="sales-banner-item"><span class="sale-dot"></span> ₹75L+ Sales Generated in 30 Days</span>
-            <span class="sales-banner-item"><span class="sale-dot"></span> 1.3M+ Reel Views</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> 100M+ Reel Views</span>
             <span class="sales-banner-item"><span class="sale-dot"></span> 3x Average ROI</span>
             <span class="sales-banner-item"><span class="sale-dot"></span> 10x Lead Growth</span>
             <span class="sales-banner-item"><span class="sale-dot"></span> Results, Not Promises</span>
             <span class="sales-banner-item"><span class="sale-dot"></span> ₹75L+ Sales Generated in 30 Days</span>
-            <span class="sales-banner-item"><span class="sale-dot"></span> 1.3M+ Reel Views</span>
+            <span class="sales-banner-item"><span class="sale-dot"></span> 100M+ Reel Views</span>
             <span class="sales-banner-item"><span class="sale-dot"></span> 3x Average ROI</span>
             <span class="sales-banner-item"><span class="sale-dot"></span> 10x Lead Growth</span>
             <span class="sales-banner-item"><span class="sale-dot"></span> Results, Not Promises</span>
@@ -2189,9 +2475,9 @@
                     <div class="stat-desc">In the last 30 days for real clients</div>
                 </div>
                 <div class="stat-card reveal reveal-d2">
-                    <div class="stat-num" data-target="1" data-suffix="M+">0</div>
+                    <div class="stat-num" data-target="100" data-suffix="M+">0</div>
                     <div class="stat-label">Reel Views</div>
-                    <div class="stat-desc">Single reel with just 152 followers</div>
+                    <div class="stat-desc">Across all client accounts without any ad spent</div>
                 </div>
                 <div class="stat-card reveal reveal-d3">
                     <div class="stat-num" data-target="10" data-suffix="x">0</div>
@@ -2278,38 +2564,45 @@
             <div class="reveal" style="text-align:center;">
                 <div class="section-tag"><i class="fa-solid fa-tags"></i> Pricing</div>
                 <h2 class="section-heading">Plans Built for <span class="text-lime">Growth.</span></h2>
-                <p class="section-sub center">Structured tiers designed to scale your business at your current stage. No
-                    hidden fees.</p>
+                <p class="section-sub center">Structured tiers designed to scale your business at your current stage.
+                </p>
             </div>
             <div class="pricing-grid">
                 <!-- Tier 1 -->
                 <div class="pricing-card reveal reveal-d1">
                     <h3>Growth Starter</h3>
                     <p class="pc-desc">For startups & local businesses wanting consistent online presence.</p>
+                    <div class="price-original">₹4,999/month</div>
                     <div class="price">₹2,999 <span>/month</span></div>
-                    <p class="price-note">Best for getting started</p>
+                    <div class="savings-badge">Save ₹2,000/mo</div>
+                    <p class="price-note">Instagram Only · Best for getting started</p>
                     <ul class="pricing-features">
                         <li><i class="fa-solid fa-check"></i> 8–10 High-Quality Posts</li>
                         <li><i class="fa-solid fa-check"></i> 3-4 Reels</li>
                         <li><i class="fa-solid fa-check"></i> Basic Instagram Profile Optimization</li>
                         <li><i class="fa-solid fa-check"></i> Hashtags + Captions</li>
+                        <li><i class="fa-solid fa-check"></i> 1 Platform (Instagram)</li>
                     </ul>
                     <a href="https://wa.me/917874414328" class="sel-btn outline">Select Plan</a>
                 </div>
                 <!-- Tier 2 -->
                 <div class="pricing-card popular reveal reveal-d2">
+                    <div class="pop-badge">Most Popular</div>
                     <h3 style="margin-top:10px;">Momentum Builder</h3>
                     <p class="pc-desc">For growing brands that want to dominate their niche.</p>
+                    <div class="price-original">₹9,999/month</div>
                     <div class="price">₹6,999 <span>/month</span></div>
-                    <p class="price-note">Best value for growth</p>
+                    <div class="savings-badge">Save ₹3,000/mo</div>
+                    <p class="price-note">Instagram + Facebook · Best value for growth</p>
                     <div class="includes-note">Everything in Growth Starter, plus:</div>
                     <ul class="pricing-features">
-                        <li><i class="fa-solid fa-check"></i> 13–15 Premium Posts/Carousals</li>
+                        <li><i class="fa-solid fa-check"></i> 13–15 Premium Posts/Carousels</li>
                         <li><i class="fa-solid fa-check"></i> 6-8 Trending Reels</li>
-                        <li><i class="fa-solid fa-check"></i> Instagram + Google My Business Optimization</li>
+                        <li><i class="fa-solid fa-check"></i> 8 Instagram Stories/month</li>
+                        <li><i class="fa-solid fa-check"></i> Instagram + Facebook Optimization</li>
                         <li><i class="fa-solid fa-check"></i> Daily Engagement (Comments/DMs)</li>
                         <li><i class="fa-solid fa-check"></i> SEO Optimized Captions</li>
-                        <li><i class="fa-solid fa-check"></i> Priority WhatsApp Support</li>
+                        <li><i class="fa-solid fa-check"></i> 2 Platforms (Instagram + Facebook)</li>
                     </ul>
                     <a href="https://wa.me/917874414328" class="sel-btn filled">Select Plan</a>
                 </div>
@@ -2318,23 +2611,146 @@
                     <div class="pop-badge">VIP Premium</div>
                     <h3 style="margin-top:10px;">Authority Dominator</h3>
                     <p class="pc-desc">For serious brands wanting to own their industry & maximize leads.</p>
+                    <div class="price-original">₹14,999/month</div>
                     <div class="price">₹9,999 <span>/month</span></div>
-                    <p class="price-note">Best for market leadership</p>
+                    <div class="savings-badge"
+                        style="background:rgba(255,215,0,0.1);border-color:rgba(255,215,0,0.25);color:#ffd700;">Save
+                        ₹5,000/mo</div>
+                    <p class="price-note">Instagram + Facebook + GMB · Best for market leadership</p>
                     <div class="includes-note">Everything in Momentum Builder, plus:</div>
                     <ul class="pricing-features">
                         <li><i class="fa-solid fa-check"></i> 18–20 Posts (Carousel + Infographics)</li>
                         <li><i class="fa-solid fa-check"></i> 10-12 High-Production Reels</li>
+                        <li><i class="fa-solid fa-check"></i> 15 Instagram Stories/month</li>
                         <li class="highlight-feature"><i class="fa-solid fa-star"></i> 1 Cinematic Shoot or 2 Extra
-                            reels</li>
-                        <li class="highlight-feature"><i class="fa-solid fa-star"></i> Business Consulting</li>
+                            Reels</li>
+                        <li class="highlight-feature"><i class="fa-solid fa-star"></i> Business Consulting Included</li>
                         <li><i class="fa-solid fa-check"></i> Competitor Analysis</li>
-                        <li><i class="fa-solid fa-check"></i> Multi-Platform Management</li>
+                        <li><i class="fa-solid fa-check"></i> 3 Platforms (Instagram + Facebook + GMB)</li>
                         <li><i class="fa-solid fa-check"></i> Paid Ad Management</li>
+                        <li><i class="fa-solid fa-check"></i> Priority Support</li>
                         <li><i class="fa-solid fa-check"></i> Market Trends & Growth Strategy</li>
                         <li><i class="fa-solid fa-check"></i> 2 Strategy Meetings</li>
                     </ul>
                     <a href="https://wa.me/917874414328" class="sel-btn filled">Select VIP Plan</a>
                 </div>
+            </div>
+
+            <!-- 7-Day Trial Offer -->
+            <div class="trial-banner reveal">
+                <h3>🚀 Not Sure Yet? Try Us Risk-Free for <span class="trial-highlight">7 Days</span></h3>
+                <p>Start with just <span class="trial-highlight">25% payment</span> and experience our work firsthand.
+                    If you love it, continue with the full plan. No pressure.</p>
+                <a href="https://wa.me/917874414328" class="btn-trial">Start My 7-Day Trial <i
+                        class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Feature Comparison Table -->
+            <div class="comparison-wrapper reveal" id="comparisonTable">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Growth Starter</th>
+                            <th>Momentum Builder</th>
+                            <th>Authority Dominator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Posts/month</td>
+                            <td>8-10</td>
+                            <td>13-15</td>
+                            <td>18-20</td>
+                        </tr>
+                        <tr>
+                            <td>Reels/month</td>
+                            <td>3-4</td>
+                            <td>6-8</td>
+                            <td>10-12</td>
+                        </tr>
+                        <tr>
+                            <td>Stories/month</td>
+                            <td><span class="check-no">—</span></td>
+                            <td>8</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>Platforms</td>
+                            <td>Instagram</td>
+                            <td>IG + FB</td>
+                            <td>IG + FB + GMB</td>
+                        </tr>
+                        <tr>
+                            <td>Profile Optimization</td>
+                            <td>Basic</td>
+                            <td>Advanced</td>
+                            <td>Premium</td>
+                        </tr>
+                        <tr>
+                            <td>Hashtags + Captions</td>
+                            <td><span class="check-yes"><i class="fa-solid fa-check"></i></span></td>
+                            <td><span class="check-yes"><i class="fa-solid fa-check"></i></span></td>
+                            <td><span class="check-yes"><i class="fa-solid fa-check"></i></span></td>
+                        </tr>
+                        <tr>
+                            <td>SEO Optimized Captions</td>
+                            <td><span class="check-no">—</span></td>
+                            <td><span class="check-yes"><i class="fa-solid fa-check"></i></span></td>
+                            <td><span class="check-yes"><i class="fa-solid fa-check"></i></span></td>
+                        </tr>
+                        <tr>
+                            <td>Daily Engagement</td>
+                            <td><span class="check-no">—</span></td>
+                            <td><span class="check-yes"><i class="fa-solid fa-check"></i></span></td>
+                            <td><span class="check-yes"><i class="fa-solid fa-check"></i></span></td>
+                        </tr>
+                        <tr>
+                            <td>Strategy Calls</td>
+                            <td><span class="check-no">—</span></td>
+                            <td><span class="check-no">—</span></td>
+                            <td>2/month</td>
+                        </tr>
+                        <tr>
+                            <td>Competitor Analysis</td>
+                            <td><span class="check-no">—</span></td>
+                            <td><span class="check-no">—</span></td>
+                            <td><span class="check-yes"><i class="fa-solid fa-check"></i></span></td>
+                        </tr>
+                        <tr>
+                            <td>Business Consulting</td>
+                            <td><span class="check-no">—</span></td>
+                            <td><span class="check-no">—</span></td>
+                            <td><span class="check-yes"><i class="fa-solid fa-check"></i></span></td>
+                        </tr>
+                        <tr>
+                            <td>Cinematic Shoot</td>
+                            <td><span class="check-no">—</span></td>
+                            <td><span class="check-no">—</span></td>
+                            <td>1/month</td>
+                        </tr>
+                        <tr>
+                            <td>Paid Ad Management</td>
+                            <td><span class="check-no">—</span></td>
+                            <td><span class="check-no">—</span></td>
+                            <td><span class="check-yes"><i class="fa-solid fa-check"></i></span></td>
+                        </tr>
+                        <tr>
+                            <td>Support</td>
+                            <td>Basic</td>
+                            <td>Within 6 hours</td>
+                            <td>Priority</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Trust Strip -->
+            <div class="trust-strip reveal">
+                <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> No Lock-in Contracts</div>
+                <div class="trust-item"><i class="fa-solid fa-palette"></i> 100% Custom Content</div>
+                <div class="trust-item"><i class="fa-solid fa-rocket"></i> 7-Day Risk-Free Trial</div>
+                <div class="trust-item"><i class="fa-solid fa-headset"></i> Dedicated Support</div>
             </div>
 
             <!-- Business Consulting Standalone Banner -->
@@ -2401,9 +2817,9 @@
                         <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">Our core focus is Instagram, but depending on your plan, we also
-                            manage Facebook, Google My Business, and LinkedIn. We recommend starting with the platforms
-                            where your audience is most active.</div>
+                        <div class="faq-answer-inner">It depends on your plan: Growth Starter covers Instagram, Momentum
+                            Builder covers Instagram + Google My Business, and Authority Dominator covers Instagram,
+                            Facebook, and Google My Business. This way, your investment grows with your reach.</div>
                     </div>
                 </div>
                 <div class="faq-item reveal">
@@ -2426,6 +2842,29 @@
                     <div class="faq-answer">
                         <div class="faq-answer-inner">We use WhatsApp for day-to-day communication and quick updates.
                             Monthly strategy calls happen via Google Meet or in-person (for Ahmedabad clients).</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Do I own the content you create for my brand?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes! All content — posts, reels, graphics, captions — created for
+                            your brand is 100% yours. You have full rights to use, repurpose, or share it across any
+                            platform.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>What is the 7-day risk-free trial?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Not sure if we're the right fit? Start with just ₹750 for a 7-day
+                            trial period. Experience our content quality, communication, and strategic
+                            approach firsthand. If you love it, continue with the full monthly plan. No pressure, no
+                            risk.</div>
                     </div>
                 </div>
             </div>
