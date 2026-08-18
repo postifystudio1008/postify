@@ -3303,6 +3303,7 @@
             const compFull = document.getElementById('comparisonFull');
             const compHybrid = document.getElementById('comparisonHybrid');
             const subtitle = document.getElementById('toggleSubtitle');
+            if (!optFull || !optHybrid) return;
             let currentPlan = 'full';
 
             function updateSlider() {
