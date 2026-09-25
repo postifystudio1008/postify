@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Postify Studio — Social Media & Business Growth Agency</title>
+    <meta name="description"
+        content="Postify Studio is a results-driven social media marketing agency in Ahmedabad. 75+ reels, 15+ brands, 100M+ views. Explore our creative portfolio.">
+    <meta name="theme-color" content="#050507">
+    <link rel="icon" type="image/png" href="postify-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="master.css">
+</head>
+
+<body>
+
+    <!-- ===== LOADING SCREEN ===== -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-logo">
+                <img src="postify-logo.png" alt="Postify" class="loader-logo-img">
+                <span class="loader-text">POSTIFY STUDIO</span>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-bar-fill" id="loaderFill"></div>
+            </div>
+            <p class="loader-tagline">Loading creative vault...</p>
+        </div>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-brand">
+                <img src="postify-logo.png" alt="Postify Studio">
+                <span>POSTIFY STUDIO</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#portfolio">Our Work</a></li>
+                <li><a href="#testimonials">Clients</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact" class="nav-cta-btn">Get Started</a></li>
+            </ul>
+            <div class="nav-hamburger" id="navHamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <!-- Hero Ambient Reel Montage Background -->
+        <div class="hero-montage" aria-hidden="true">
+            <div class="montage-track">
+                <div class="montage-column col-up">
+                    <div class="montage-item"><video src="videos/Cinematic.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/travel2.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/cinematic4.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/Cinematic.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                </div>
+                <div class="montage-column col-down">
+                    <div class="montage-item"><video src="videos/Travel.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/Cinematic2.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/travel3.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/Travel.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                </div>
+                <div class="montage-column col-up col-desktop">
+                    <div class="montage-item"><video src="videos/cinematic5.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/travel5.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/Cinematic3.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/cinematic5.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                </div>
+                <div class="montage-column col-down col-desktop">
+                    <div class="montage-item"><video src="videos/AI.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/travel7.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/cinematic6.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                    <div class="montage-item"><video src="videos/AI.mp4" autoplay loop muted playsinline
+                            webkit-playsinline preload="metadata"></video></div>
+                </div>
+            </div>
+            <div class="hero-montage-overlay"></div>
+        </div>
+        <div class="hero-glow"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge reveal">
+                    <span class="dot"></span> Social Media & Business Growth
+                </div>
+                <h1 class="reveal reveal-d1">
+                    We Build <span class="outline">Brands</span><br>
+                    That <span class="highlight">Dominate.</span>
+                </h1>
+                <p class="hero-desc reveal reveal-d2">
+                    Strategy, premium viral reels, and business growth engineering that turns local Ahmedabad businesses
+                    into market leaders.
+                </p>
+                <div class="hero-ctas reveal reveal-d3">
+                    <a href="#portfolio" class="btn-glow">View Our Work <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#pricing" class="btn-ghost">See Packages</a>
+                </div>
+            </div>
+            <!-- Floating stat cards with live tilt -->
+            <div class="hero-cards reveal reveal-d2">
+                <div class="hv-card hv-card-1">
+                    <div class="hv-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                    <div class="hv-value">₹75L+</div>
+                    <div class="hv-label">Sales Generated in 30 Days</div>
+                </div>
+                <div class="hv-card hv-card-2">
+                    <div class="hv-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="hv-value">100M+</div>
+                    <div class="hv-label">Reel Views</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PORTFOLIO / THE VAULT ===== -->
+    <section class="vault-section" id="portfolio">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <div class="section-tag"><i class="fa-solid fa-film"></i> Our Creative Work</div>
+                <h2 class="section-heading">The Creative <span class="text-lime">Vault.</span></h2>
+                <p class="section-sub center">Tap any category to dive into our curated reel collection. 75+ reels
+                    across 10 categories.</p>
+            </div>
+            <div class="vault-grid" id="vaultGrid">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS — Globe ===== -->
+    <section id="testimonials" class="globe-section">
+        <div class="container">
+            <div class="reveal" style="text-align:center; margin-bottom:8px;">
+                <div class="section-tag"><i class="fa-solid fa-quote-left"></i> Client Stories</div>
+                <h2 class="section-heading">Words from <span class="text-lime">Real Clients.</span></h2>
+                <p class="section-sub center">We let our clients do the talking. Here's what they have to say about
+                    working with Postify.</p>
+            </div>
+        </div>
+        <div class="globe-container" id="globeContainer">
+            <div class="globe-center-orb"></div>
+            <div class="globe-ring"></div>
+            <div class="globe-ring globe-ring-2"></div>
+            <div class="globe-world" id="globeWorld"></div>
+        </div>
+        <p class="globe-hint">
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span class="desktop-hint">Hover to pause · Click to read full review</span>
+            <span class="mobile-hint">Drag to spin · Tap to read</span>
+        </p>
+    </section>
+
+    <!-- Globe Modal -->
+    <div class="globe-modal-overlay" id="globeModal">
+        <div class="globe-modal-card" id="globeModalContent">
+            <button class="globe-modal-close" id="globeModalClose"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- ===== PROCESS ===== -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <div class="section-tag"><i class="fa-solid fa-diagram-project"></i> How We Work</div>
+                <h2 class="section-heading">Our Proven <span class="text-lime">4-Step Process.</span></h2>
+                <p class="section-sub center">A systematic approach that turns struggling brands into market leaders.
+                </p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step reveal reveal-d1">
+                    <div class="step-num">01</div>
+                    <h3>Discovery</h3>
+                    <p>We study your business, competitors, and market to find your unique strengths and untapped
+                        opportunities.</p>
+                </div>
+                <div class="process-step reveal reveal-d2">
+                    <div class="step-num">02</div>
+                    <h3>Strategy</h3>
+                    <p>Custom growth plan with clear milestones, content pillars, and a differentiation roadmap.</p>
+                </div>
+                <div class="process-step reveal reveal-d3">
+                    <div class="step-num">03</div>
+                    <h3>Execute</h3>
+                    <p>Premium content creation, campaign launches and performance tracking.</p>
+                </div>
+                <div class="process-step reveal reveal-d4">
+                    <div class="step-num">04</div>
+                    <h3>Scale</h3>
+                    <p>Monthly reviews, data-driven optimization, growth consulting, and strategy refinement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <div class="section-tag"><i class="fa-solid fa-tags"></i> Pricing</div>
+                <h2 class="section-heading">Plans Built for <span class="text-lime">Growth.</span></h2>
+                <p class="section-sub center">Structured tiers designed to scale your business at every stage. Commit
+                    longer, save more.</p>
+            </div>
+
+            <!-- Duration Toggle -->
+            <div class="duration-toggle-wrap reveal">
+                <div class="duration-toggle" id="durationToggle">
+                    <div class="dur-option active" data-dur="monthly" id="durMonthly">Monthly</div>
+                    <div class="dur-option" data-dur="3mo" id="dur3mo">3 Months</div>
+                    <div class="dur-option" data-dur="6mo" id="dur6mo">6 Months</div>
+                    <div class="dur-slider" id="durSlider"></div>
+                </div>
+            </div>
+            <p class="duration-sub" id="durationSub">Flexible monthly plans. Cancel anytime.</p>
+
+            <!-- Core Plans -->
+            <div class="pricing-grid core-plans">
+                <!-- Starter -->
+                <div class="pricing-card reveal reveal-d1" id="planStarter">
+                    <h3>Starter</h3>
+                    <p class="pc-desc">For startups & local businesses wanting consistent online presence.</p>
+                    <div class="price-block">
+                        <div class="price-original dur-hide" id="starterOriginal"></div>
+                        <div class="price"><span class="currency">₹</span><span class="price-num"
+                                id="starterPrice">3,000</span> <span class="price-period">/month</span></div>
+                        <div class="savings-badge dur-hide" id="starterSavings"></div>
+                        <div class="price-total dur-hide" id="starterTotal"></div>
+                    </div>
+                    <div class="duration-bonus dur-hide" id="starterBonus"></div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 4-5 High-Quality Posters</li>
+                        <li><i class="fa-solid fa-check"></i> 3-4 Reels</li>
+                        <li><i class="fa-solid fa-check"></i> Basic Instagram Profile Optimization</li>
+                        <li><i class="fa-solid fa-check"></i> Hashtags + Captions</li>
+                        <li><i class="fa-solid fa-check"></i> 1 Platform (Instagram)</li>
+                    </ul>
+                    <a href="https://wa.me/917874414328" class="sel-btn outline">Select Plan</a>
+                </div>
+
+                <!-- Builder -->
+                <div class="pricing-card popular reveal reveal-d2" id="planBuilder">
+                    <div class="pop-badge">Most Popular</div>
+                    <h3 style="margin-top:10px;">Builder</h3>
+                    <p class="pc-desc">For growing brands that want to dominate their niche.</p>
+                    <div class="price-block">
+                        <div class="price-original dur-hide" id="builderOriginal"></div>
+                        <div class="price"><span class="currency">₹</span><span class="price-num"
+                                id="builderPrice">8,000</span> <span class="price-period">/month</span></div>
+                        <div class="savings-badge dur-hide" id="builderSavings"></div>
+                        <div class="price-total dur-hide" id="builderTotal"></div>
+                    </div>
+                    <div class="duration-bonus dur-hide" id="builderBonus"></div>
+                    <div class="includes-note">Everything in Starter, plus:</div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 5 Premium Posters/Carousels</li>
+                        <li><i class="fa-solid fa-check"></i> 6-8 Trending Reels</li>
+                        <li><i class="fa-solid fa-check"></i> SEO Optimized Captions</li>
+                        <li><i class="fa-solid fa-check"></i> 2 Platforms (Instagram + Facebook)</li>
+                        <li><i class="fa-solid fa-check"></i> Market Trend Research</li>
+                        <li class="highlight-feature"><i class="fa-solid fa-star"></i> 1 Cinematic Shoot / 2 Extra Reels
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/917874414328" class="sel-btn filled">Select Plan</a>
+                </div>
+
+                <!-- Dominator -->
+                <div class="pricing-card premium reveal reveal-d3" id="planDominator">
+                    <div class="pop-badge">Premium</div>
+                    <h3 style="margin-top:10px;">Dominator</h3>
+                    <p class="pc-desc">For serious brands wanting to own their industry & maximize leads.</p>
+                    <div class="price-block">
+                        <div class="price-original dur-hide" id="dominatorOriginal"></div>
+                        <div class="price"><span class="currency">₹</span><span class="price-num"
+                                id="dominatorPrice">12,000</span> <span class="price-period">/month</span></div>
+                        <div class="savings-badge dur-hide" id="dominatorSavings"
+                            style="background:rgba(255,215,0,0.1);border-color:rgba(255,215,0,0.25);color:#ffd700;">
+                        </div>
+                        <div class="price-total dur-hide" id="dominatorTotal"></div>
+                    </div>
+                    <div class="duration-bonus dur-hide" id="dominatorBonus"></div>
+                    <div class="includes-note">Everything in Builder, plus:</div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 6-7 Posts (Carousel + Infographics)</li>
+                        <li><i class="fa-solid fa-check"></i> 10-12 High-Production Reels</li>
+                        <li class="highlight-feature"><i class="fa-solid fa-star"></i> 2 Cinematic Shoot or 3 Extra
+                            Reels</li>
+                        <li class="highlight-feature"><i class="fa-solid fa-star"></i> Business Consulting Included</li>
+                        <li><i class="fa-solid fa-check"></i> 3 Platforms (Insta + FB + Google)</li>
+                        <li><i class="fa-solid fa-check"></i> Ads Management</li>
+                        <li><i class="fa-solid fa-check"></i> Competitor Analysis</li>
+                        <li><i class="fa-solid fa-check"></i> Market Trends & Growth Strategy</li>
+                        <li><i class="fa-solid fa-check"></i> Priority Support</li>
+                    </ul>
+                    <a href="https://wa.me/917874414328?text=Hi%20Postify,%20I'm%20interested%20in%20the%20Dominator%20Plan"
+                        class="sel-btn filled">Select Dominator Plan</a>
+                </div>
+            </div>
+
+            <!-- VIP Suite Toggle Trigger -->
+            <div class="vip-toggle-wrapper reveal">
+                <button type="button" class="vip-toggle-trigger" id="vipToggleBtn" aria-expanded="false"
+                    onclick="toggleVipSection()">
+                    <span class="vip-trigger-badge"><i class="fa-solid fa-crown"></i> High Growth & Scale</span>
+                    <span class="vip-trigger-label">
+                        Looking for Guaranteed Inquiries?
+                        <strong>View VIP & Enterprise Plans (Elite & Empire)</strong>
+                    </span>
+                    <span class="vip-trigger-arrow" id="vipToggleArrow">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                </button>
+            </div>
+
+            <!-- VIP Guaranteed Inquiries Showcase Section (Collapsed by default) -->
+            <div class="vip-showcase-section vip-collapsed" id="vipSection">
+                <div class="vip-showcase-content">
+                    <div class="vip-live-pill">
+                        <span class="vip-live-dot"></span>
+                        <i class="fa-solid fa-crown"></i> EXCLUSIVE VIP SUITE · GUARANTEED INQUIRIES
+                    </div>
+                    <h3 class="vip-showcase-title">Looking for <span class="vip-shimmer-text">Guaranteed
+                            Inquiries?</span></h3>
+                    <p class="vip-showcase-sub">Take your business to the next level with our all-inclusive growth
+                        engines. Dedicated team, pro camera shoots, influencer collaborations & verified business
+                        inquiries delivered.</p>
+
+                    <div class="vip-perks-preview">
+                        <span class="vip-perk-chip"><i class="fa-solid fa-bullseye"></i> Guaranteed Inquiries</span>
+                        <span class="vip-perk-chip"><i class="fa-solid fa-camera"></i> Pro Camera Shoot</span>
+                        <span class="vip-perk-chip"><i class="fa-solid fa-globe"></i> Custom Webpage</span>
+                        <span class="vip-perk-chip"><i class="fa-solid fa-handshake"></i> Influencer Collabs</span>
+                        <span class="vip-perk-chip"><i class="fa-solid fa-certificate"></i> Blue Tick Verified</span>
+                    </div>
+
+                    <!-- Premium Plans Grid -->
+                    <div class="pricing-grid premium-plans">
+                        <!-- Elite -->
+                        <div class="pricing-card launched" id="planElite">
+                            <div class="pop-badge">Newly Launched · VIP</div>
+                            <h3 style="margin-top:10px;">Elite</h3>
+                            <p class="pc-desc">For ambitious brands ready for total market domination & explosive
+                                growth.</p>
+                            <div class="price-block">
+                                <div class="price"><span class="currency">₹</span><span class="price-num"
+                                        id="elitePrice">17,999</span> <span class="price-period">/month</span></div>
+                            </div>
+                            <p class="price-note">All Platforms · Maximum growth engine</p>
+                            <ul class="pricing-features">
+                                <li class="launched-highlight-feature vip-attention-feature">
+                                    <span><i class="fa-solid fa-bullseye fa-beat-fade"></i> <strong>Guaranteed Limited
+                                            Inquiries</strong></span>
+                                    <span class="vip-tag-glow cyan">Direct Leads</span>
+                                </li>
+                                <li class="launched-highlight-feature">
+                                    <span><i class="fa-solid fa-globe"></i> <strong>Your Own Webpage
+                                            Included</strong></span>
+                                </li>
+                                <li><i class="fa-solid fa-camera"></i> Professional Camera Shoot</li>
+                                <li><i class="fa-solid fa-check"></i> Meta Verified Blue Tick</li>
+                                <li><i class="fa-solid fa-check"></i> 10-12 High-Production Reels</li>
+                                <li><i class="fa-solid fa-check"></i> 6-7 Posts (Carousel + Infographics)</li>
+                                <li><i class="fa-solid fa-check"></i> Business Consulting Included</li>
+                                <li><i class="fa-solid fa-check"></i> Google Profile Optimization</li>
+                                <li><i class="fa-solid fa-check"></i> Ads Management</li>
+                            </ul>
+                            <a href="https://wa.me/917874414328?text=Hi%20Postify,%20I'm%20interested%20in%20the%20Elite%20Plan%20with%20Guaranteed%20Inquiries"
+                                class="sel-btn filled vip-cta-btn">
+                                <span>Select Elite Plan</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <!-- Empire -->
+                        <div class="pricing-card empire" id="planEmpire">
+                            <div class="pop-badge"><i class="fa-solid fa-crown"></i> Ultimate VIP</div>
+                            <h3 style="margin-top:10px;">Empire</h3>
+                            <p class="pc-desc">The ultimate package for brands that demand absolute market leadership &
+                                VIP treatment.</p>
+                            <div class="price-block">
+                                <div class="price"><span class="currency">₹</span><span class="price-num"
+                                        id="empirePrice">24,999</span> <span class="price-period">/month</span></div>
+                            </div>
+                            <p class="price-note">All Platforms + VIP Perks · Our most powerful package</p>
+                            <div class="includes-note">Everything in Elite, plus:</div>
+                            <ul class="pricing-features">
+                                <li class="empire-highlight vip-attention-feature">
+                                    <span><i class="fa-solid fa-bullseye fa-beat-fade"></i> <strong>Guaranteed
+                                            Inquiries</strong></span>
+                                    <span class="vip-tag-glow gold">Top Tier</span>
+                                </li>
+                                <li class="empire-highlight">
+                                    <span><i class="fa-solid fa-handshake"></i> <strong>Influencer
+                                            Collaboration</strong></span>
+                                </li>
+                                <li class="empire-highlight">
+                                    <span><i class="fa-solid fa-user-group"></i> <strong>Complimentary Model
+                                            Shoot</strong></span>
+                                </li>
+                                <li class="empire-highlight">
+                                    <span><i class="fa-solid fa-globe"></i> <strong>Premium Webpage (Enhanced
+                                            Design)</strong></span>
+                                </li>
+                                <li><i class="fa-solid fa-camera"></i> Professional Camera Shoot</li>
+                                <li><i class="fa-solid fa-check"></i> Meta Verified Blue Tick</li>
+                                <li><i class="fa-solid fa-check"></i> 10-12 High-Production Reels</li>
+                                <li><i class="fa-solid fa-check"></i> 6-7 Posts (Carousel + Infographics)</li>
+                                <li><i class="fa-solid fa-check"></i> Business Consulting Included</li>
+                                <li><i class="fa-solid fa-check"></i> Google Profile Optimization</li>
+                                <li><i class="fa-solid fa-check"></i> Ads Management</li>
+                            </ul>
+                            <a href="https://wa.me/917874414328?text=Hi%20Postify,%20I'm%20interested%20in%20the%20Empire%20Plan%20with%20Guaranteed%20Inquiries"
+                                class="sel-btn filled vip-cta-btn">
+                                <span>Select Empire Plan</span> <i class="fa-solid fa-crown"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Guarantee Ribbon -->
+                    <div class="vip-guarantee-ribbon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div class="vip-guarantee-text">
+                            <strong>The Postify Inquiries Guarantee:</strong> Real customer inquiries delivered to your
+                            business. If we do not generate measurable inquiries, our team continues working at zero
+                            extra fee until we do.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Strip -->
+            <div class="trust-strip reveal">
+                <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> No Lock-in Contracts</div>
+                <div class="trust-item"><i class="fa-solid fa-palette"></i> 100% Custom Content</div>
+                <div class="trust-item"><i class="fa-solid fa-rocket"></i> Commit Longer, Save More</div>
+                <div class="trust-item"><i class="fa-solid fa-headset"></i> Dedicated Support</div>
+            </div>
+
+            <p class="pricing-note reveal">Not sure which plan is right for your business? <a
+                    href="https://wa.me/917874414328">Let's have a quick chat →</a></p>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="reveal" style="text-align:center;">
+                <div class="section-tag"><i class="fa-solid fa-circle-question"></i> FAQ</div>
+                <h2 class="section-heading">Common <span class="text-lime">Questions.</span></h2>
+                <p class="section-sub center">Everything you need to know before getting started.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>How long before I see results?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Most clients see noticeable improvements in engagement and reach
+                            within the first 30 days. Significant lead generation and business growth typically kicks in
+                            by month 2-3, depending on your industry and starting point.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Do you work with businesses outside of Ahmedabad?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Absolutely! While we have a strong local presence in Ahmedabad, we
+                            work with brands across India. All our communication and strategy sessions can happen
+                            virtually.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>What platforms do you manage?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">It depends on your plan: Starter covers Instagram, Builder covers
+                            Instagram + Facebook, and Dominator covers Instagram, Facebook, and Google My Business. Our
+                            Elite and Empire plans cover all platforms. Your investment grows with your reach.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>What's included in Business Consulting?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We show you how to grow your business differently from your
+                            competitors — with strategies that actually work and generate real inquiries. This includes
+                            competitor analysis, market positioning, differentiation roadmaps, and 1-on-1 strategy
+                            sessions tailored to your business.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>How do we communicate during the project?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">We use WhatsApp for day-to-day communication and quick updates.
+                            Monthly strategy calls happen via Google Meet or in-person (for Ahmedabad clients).</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        <span>Do I own the content you create for my brand?</span>
+                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Yes! All content — posts, reels, graphics, captions — created for
+                            your brand is 100% yours. You have full rights to use, repurpose, or share it across any
+                            platform.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-inner reveal">
+                <div class="section-tag"><i class="fa-solid fa-paper-plane"></i> Let's Connect</div>
+                <h2>Ready to Grow?<br><span class="text-lime">Let's Talk.</span></h2>
+                <p>Whether you need a social media overhaul or a strategic growth partner, we're here to help your brand
+                    win.</p>
+                <div class="cta-btns">
+                    <a href="https://wa.me/917874414328" class="btn-glow"><i class="fa-brands fa-whatsapp"></i> Chat on
+                        WhatsApp</a>
+                    <a href="mailto:postifystudio1008@gmail.com" class="btn-ghost"><i class="fa-solid fa-envelope"></i>
+                        Send an Email</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <img src="postify-logo.png" alt="Postify" style="width:38px;height:38px;border-radius:12px;">
+                        <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.1rem;">POSTIFY
+                            STUDIO</span>
+                    </div>
+                    <p>A results-driven social media & business consulting agency helping brands grow with strategy,
+                        content, and data.</p>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com/postify.studioo" aria-label="Instagram"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="mailto:postifystudio1008@gmail.com" aria-label="Email"><i
+                                class="fa-solid fa-envelope"></i></a>
+                        <a href="tel:+917874414328" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#portfolio">Our Work</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#pricing">Social Media Management</a></li>
+                        <li><a href="#pricing">Business Consulting</a></li>
+                        <li><a href="#pricing">Content Creation</a></li>
+                        <li><a href="#pricing">Brand Strategy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:postifystudio1008@gmail.com">postifystudio1008@gmail.com</a></li>
+                        <li><a href="tel:+917874414328">+91 78744 14328</a></li>
+                        <li><a href="https://wa.me/917874414328">WhatsApp Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Postify Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== REEL VIEWER (Full-screen overlay) ===== -->
+    <div class="reel-viewer" id="reelViewer">
+        <div class="reel-topbar">
+            <button class="reel-back" id="reelBack" aria-label="Go back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <div class="reel-category-pill" id="reelCategoryPill">Category</div>
+            <div class="reel-counter" id="reelCounter">1/5</div>
+        </div>
+        <div class="category-switcher" id="categorySwitcher"></div>
+        <button class="reel-mute" id="reelMute" aria-label="Toggle sound">
+            <svg class="mute-icon-off" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                <line x1="23" y1="9" x2="17" y2="15" />
+                <line x1="17" y1="9" x2="23" y2="15" />
+            </svg>
+            <svg class="mute-icon-on" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" style="display:none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                <path d="M19.07 4.93a10 10 0 010 14.14" />
+                <path d="M15.54 8.46a5 5 0 010 7.07" />
+            </svg>
+        </button>
+        <div class="reel-snap" id="reelSnap"></div>
+        <div class="reel-progress" id="reelProgress"></div>
+        <div class="reel-tap-overlay" id="reelTapOverlay">
+            <div class="play-pause-icon" id="playPauseIcon">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="white">
+                    <polygon points="5,3 19,12 5,21" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="master.js"></script>
+</body>
+
+</html>
