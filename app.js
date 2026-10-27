@@ -1,5 +1,5 @@
 // ===== DATA — Categories & Videos =====
-const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/zxoh1vbu/video/upload/';
+const CLOUDINARY_BASE_URL = 'https://github.com/postifystudio1008/postify/releases/download/v1.0-media/';
 
 const CATEGORIES = [
     {
